@@ -1,0 +1,158 @@
+<div class="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+    <!-- Left sidebar navigation -->
+    <div class="hidden lg:relative lg:block lg:flex-none">
+        <div class="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"></div>
+        <div class="absolute top-16 right-0 bottom-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"></div>
+        <div class="absolute top-28 right-0 bottom-0 hidden w-px bg-slate-800 dark:block"></div>
+        <div class="sticky top-[4.75rem] -ml-0.5 h-[calc(100vh-4.75rem)] w-64 overflow-x-hidden overflow-y-auto py-16 pr-8 pl-0.5 xl:w-72 xl:pr-16">
+            {{ partial:docs-nav }}
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+        <article>
+            <header class="mb-9 space-y-1">
+                {{ if category }}
+                    {{ category }}
+                        <p class="font-display text-sm font-medium text-sky-500">
+                            <a href="/docs/{{ slug }}" class="hover:text-sky-600">{{ title }}</a>
+                        </p>
+                    {{ /category }}
+                {{ /if }}
+                <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">{{ name }}</h1>
+                {{ if title && title != name }}
+                    <p class="text-lg text-slate-600 dark:text-slate-400">{{ title }}</p>
+                {{ /if }}
+            </header>
+
+            <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 prose-code:before:content-none prose-code:after:content-none">
+
+                <!-- Description -->
+                {{ if description }}
+                    <p class="lead">{{ description | markdown }}</p>
+                {{ /if }}
+
+                <!-- Usage -->
+                {{ if usage }}
+                    <h2 id="usage">Usage</h2>
+                    <pre><code class="language-r">{{ usage }}</code></pre>
+                {{ /if }}
+
+                <!-- Parameters -->
+                {{ if parameters | count > 0 }}
+                    <h2 id="arguments">Arguments</h2>
+                    <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
+                        <table class="min-w-full divide-y divide-slate-700 text-left">
+                            <thead class="bg-slate-800/60">
+                                <tr>
+                                    <th scope="col" class="py-2 pl-4 pr-3 text-sm font-semibold text-slate-100">Argument</th>
+                                    <th scope="col" class="px-3 py-2 text-sm font-semibold text-slate-100">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                {{ parameters }}
+                                <tr>
+                                    <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm align-top">
+                                        <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-sky-400">{{ name }}</code>
+                                    </td>
+                                    <td class="px-3 py-2 text-sm text-slate-300">{{ description | markdown }}</td>
+                                </tr>
+                                {{ /parameters }}
+                            </tbody>
+                        </table>
+                    </div>
+                {{ /if }}
+
+                <!-- Details -->
+                {{ if details }}
+                    <h2 id="details">Details</h2>
+                    {{ details | markdown }}
+                {{ /if }}
+
+                <!-- Value / Return -->
+                {{ if value }}
+                    <h2 id="value">Value</h2>
+                    {{ value | markdown }}
+                {{ /if }}
+
+                <!-- Additional Sections -->
+                {{ sections }}
+                    <h2 id="{{ section_title | slugify }}">{{ section_title }}</h2>
+                    {{ content | markdown }}
+
+                    {{ subsections }}
+                        <h3 id="{{ subsection_title | slugify }}">{{ subsection_title }}</h3>
+                        {{ content | markdown }}
+                    {{ /subsections }}
+                {{ /sections }}
+
+                <!-- Examples -->
+                {{ if examples | count > 0 }}
+                    <h2 id="examples">Examples</h2>
+                    {{ examples }}
+                        {{ if is_dontrun }}
+                            <p class="text-xs text-slate-500 italic mb-1">Example (not run):</p>
+                        {{ /if }}
+                        <pre><code class="language-r">{{ code }}</code></pre>
+                    {{ /examples }}
+                {{ /if }}
+
+                <!-- Note -->
+                {{ if note }}
+                    <div class="not-prose my-8 flex gap-2.5 rounded-2xl border border-sky-500/20 bg-sky-50/50 p-4 leading-6 text-sky-900 dark:border-sky-500/30 dark:bg-sky-500/5 dark:text-sky-200">
+                        <svg viewBox="0 0 16 16" aria-hidden="true" class="mt-1 h-4 w-4 flex-none fill-sky-500 stroke-white dark:fill-sky-200/20 dark:stroke-sky-200">
+                            <circle cx="8" cy="8" r="8" stroke-width="0"></circle>
+                            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 7.75h1.5v3.5"></path>
+                            <circle cx="8" cy="4" r=".5" fill="none"></circle>
+                        </svg>
+                        <div class="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
+                            {{ note | markdown }}
+                        </div>
+                    </div>
+                {{ /if }}
+
+                <!-- Aliases -->
+                {{ if aliases | count > 0 }}
+                    <h2 id="aliases">Aliases</h2>
+                    <p>This function is also available as:</p>
+                    <ul>
+                        {{ aliases }}
+                            <li><code>{{ value }}</code></li>
+                        {{ /aliases }}
+                    </ul>
+                {{ /if }}
+
+                <!-- See Also -->
+                {{ if seealso | count > 0 }}
+                    <h2 id="see-also">See Also</h2>
+                    <ul>
+                        {{ seealso }}
+                            <li>
+                                {{ if link_type == "url" }}
+                                    <a href="{{ url }}" target="_blank" rel="noopener">{{ reference }}</a>
+                                {{ else }}
+                                    <a href="/docs/{{ reference | slugify }}">{{ reference }}</a>
+                                {{ /if }}
+                            </li>
+                        {{ /seealso }}
+                    </ul>
+                {{ /if }}
+
+                <!-- Source -->
+                {{ if source_file }}
+                    <div class="mt-12 border-t border-slate-200 pt-4 dark:border-slate-800">
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                            Source: <code class="text-xs">{{ source_file }}</code>
+                        </p>
+                    </div>
+                {{ /if }}
+            </div>
+        </article>
+
+        <!-- Navigation -->
+        <dl class="mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800">
+            <!-- Previous/Next would go here -->
+        </dl>
+    </div>
+</div>

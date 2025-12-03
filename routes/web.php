@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::statamic('example', 'example-view', [
-//    'title' => 'Example'
-// ]);
+// Documentation index
+Route::statamic('/docs', 'docs.index', [
+    'title' => 'Documentation',
+    'layout' => 'layout'
+]);

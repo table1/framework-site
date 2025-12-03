@@ -1,0 +1,273 @@
+title: 'Documentation Function'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Basic Info
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+              required: true
+              validate:
+                - required
+          -
+            handle: name
+            field:
+              type: text
+              display: Function Name
+              instructions: 'The actual R function name (e.g., data_read)'
+              required: true
+              validate:
+                - required
+          -
+            handle: category
+            field:
+              type: entries
+              display: Category
+              collections:
+                - doc_categories
+              max_items: 1
+          -
+            handle: is_common
+            field:
+              type: toggle
+              display: Common Function
+              instructions: 'Mark as commonly used function'
+              default: false
+          -
+            handle: is_exported
+            field:
+              type: toggle
+              display: Exported
+              instructions: 'Is this function exported from the package?'
+              default: true
+  content:
+    display: Content
+    sections:
+      -
+        display: Description
+        fields:
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+              instructions: 'Brief description of what the function does'
+          -
+            handle: details
+            field:
+              type: markdown
+              display: Details
+              instructions: 'Detailed explanation and notes'
+          -
+            handle: note
+            field:
+              type: textarea
+              display: Note
+              instructions: 'Additional notes or warnings'
+      -
+        display: Usage
+        fields:
+          -
+            handle: usage
+            field:
+              type: textarea
+              display: Usage
+              instructions: 'Function signature and usage syntax'
+              font_family: monospace
+          -
+            handle: value
+            field:
+              type: textarea
+              display: Return Value
+              instructions: 'What the function returns'
+  parameters:
+    display: Parameters
+    sections:
+      -
+        fields:
+          -
+            handle: parameters
+            field:
+              type: replicator
+              display: Parameters
+              collapse: accordion
+              sets:
+                parameter:
+                  display: Parameter
+                  fields:
+                    -
+                      handle: name
+                      field:
+                        type: text
+                        display: Name
+                        required: true
+                    -
+                      handle: description
+                      field:
+                        type: textarea
+                        display: Description
+                    -
+                      handle: position
+                      field:
+                        type: integer
+                        display: Position
+                        default: 0
+  examples:
+    display: Examples
+    sections:
+      -
+        fields:
+          -
+            handle: examples
+            field:
+              type: replicator
+              display: Examples
+              collapse: accordion
+              sets:
+                example:
+                  display: Example
+                  fields:
+                    -
+                      handle: code
+                      field:
+                        type: textarea
+                        display: Code
+                        font_family: monospace
+                    -
+                      handle: is_dontrun
+                      field:
+                        type: toggle
+                        display: "Don't Run"
+                        instructions: 'Example should not be executed'
+                        default: false
+                    -
+                      handle: position
+                      field:
+                        type: integer
+                        display: Position
+                        default: 0
+  sections:
+    display: Sections
+    sections:
+      -
+        fields:
+          -
+            handle: sections
+            field:
+              type: replicator
+              display: Sections
+              instructions: 'Additional documentation sections'
+              collapse: accordion
+              sets:
+                section:
+                  display: Section
+                  fields:
+                    -
+                      handle: section_title
+                      field:
+                        type: text
+                        display: Title
+                    -
+                      handle: content
+                      field:
+                        type: markdown
+                        display: Content
+                    -
+                      handle: position
+                      field:
+                        type: integer
+                        display: Position
+                        default: 0
+                    -
+                      handle: subsections
+                      field:
+                        type: replicator
+                        display: Subsections
+                        collapse: accordion
+                        sets:
+                          subsection:
+                            display: Subsection
+                            fields:
+                              -
+                                handle: subsection_title
+                                field:
+                                  type: text
+                                  display: Title
+                              -
+                                handle: content
+                                field:
+                                  type: markdown
+                                  display: Content
+                              -
+                                handle: position
+                                field:
+                                  type: integer
+                                  display: Position
+                                  default: 0
+  related:
+    display: Related
+    sections:
+      -
+        fields:
+          -
+            handle: aliases
+            field:
+              type: list
+              display: Aliases
+              instructions: 'Alternative function names'
+          -
+            handle: seealso
+            field:
+              type: replicator
+              display: See Also
+              collapse: accordion
+              sets:
+                reference:
+                  display: Reference
+                  fields:
+                    -
+                      handle: reference
+                      field:
+                        type: text
+                        display: Reference
+                        instructions: 'Function name or reference text'
+                    -
+                      handle: link_type
+                      field:
+                        type: select
+                        display: Link Type
+                        options:
+                          function: Function
+                          url: URL
+                          topic: Topic
+                        default: function
+                    -
+                      handle: url
+                      field:
+                        type: text
+                        display: URL
+                        instructions: 'External URL (if link_type is url)'
+                        if:
+                          link_type: 'equals url'
+  meta:
+    display: Meta
+    sections:
+      -
+        fields:
+          -
+            handle: source_file
+            field:
+              type: text
+              display: Source File
+              instructions: 'R source file containing this function'
+          -
+            handle: keywords
+            field:
+              type: text
+              display: Keywords
+              instructions: 'Search keywords (comma-separated)'

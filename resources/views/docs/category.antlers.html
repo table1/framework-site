@@ -1,0 +1,76 @@
+<div class="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+    <!-- Left sidebar navigation -->
+    <div class="hidden lg:relative lg:block lg:flex-none">
+        <div class="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"></div>
+        <div class="absolute top-16 right-0 bottom-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"></div>
+        <div class="absolute top-28 right-0 bottom-0 hidden w-px bg-slate-800 dark:block"></div>
+        <div class="sticky top-[4.75rem] -ml-0.5 h-[calc(100vh-4.75rem)] w-64 overflow-x-hidden overflow-y-auto py-16 pr-8 pl-0.5 xl:w-72 xl:pr-16">
+            {{ partial:docs-nav }}
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+        <article>
+            <header class="mb-9 space-y-1">
+                <p class="font-display text-sm font-medium text-sky-500">
+                    <a href="/docs" class="hover:text-sky-600">Documentation</a>
+                </p>
+                <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">{{ title }}</h1>
+            </header>
+
+            <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600">
+
+                {{ if description }}
+                    <p class="lead">{{ description }}</p>
+                {{ /if }}
+
+                <!-- Common Functions -->
+                {{ collection:doc_functions category:contains="{id}" is_common:is="true" sort="name:asc" as="common_funcs" }}
+                    {{ if common_funcs | count > 0 }}
+                        <h2 id="common">Common Functions</h2>
+                        <p>These are the most commonly used functions in this category:</p>
+
+                        <div class="not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            {{ common_funcs }}
+                            <div class="group relative rounded-xl border border-slate-200 p-4 dark:border-slate-800">
+                                <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
+                                    <a href="/docs/{{ slug }}" class="hover:text-sky-500">
+                                        <span class="absolute -inset-px rounded-xl"></span>
+                                        {{ name }}
+                                    </a>
+                                </h3>
+                                <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ description | truncate:100 }}</p>
+                            </div>
+                            {{ /common_funcs }}
+                        </div>
+                    {{ /if }}
+                {{ /collection:doc_functions }}
+
+                <!-- All Functions -->
+                <h2 id="all-functions">All Functions</h2>
+
+                <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
+                    <table class="min-w-full divide-y divide-slate-700 text-left">
+                        <thead class="bg-slate-800/60">
+                            <tr>
+                                <th scope="col" class="py-3 pl-4 pr-3 text-sm font-semibold text-slate-100">Function</th>
+                                <th scope="col" class="px-3 py-3 text-sm font-semibold text-slate-100">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800">
+                            {{ collection:doc_functions category:contains="{id}" sort="name:asc" }}
+                            <tr class="hover:bg-slate-800/50 transition-colors">
+                                <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm align-top">
+                                    <a href="/docs/{{ slug }}" class="font-medium text-sky-400 hover:text-sky-300">{{ name }}</a>
+                                </td>
+                                <td class="px-3 py-3 text-sm text-slate-300">{{ description | truncate:80 }}</td>
+                            </tr>
+                            {{ /collection:doc_functions }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

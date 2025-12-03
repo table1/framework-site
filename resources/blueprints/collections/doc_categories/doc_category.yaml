@@ -1,0 +1,36 @@
+title: 'Documentation Category'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+              required: true
+              validate:
+                - required
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              instructions: 'Internal category name (e.g., data_management)'
+              required: true
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+          -
+            handle: position
+            field:
+              type: integer
+              display: Position
+              instructions: 'Sort order for the category'
+              default: 0

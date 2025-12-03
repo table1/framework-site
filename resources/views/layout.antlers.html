@@ -1,14 +1,21 @@
 <!doctype html>
-<html lang="{{ site:short_locale }}">
+<html lang="{{ site:short_locale }}" class="h-full antialiased">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ title ?? site:name }}</title>
+        <meta name="description" content="{{ meta_description ?? 'Framework - A data management and project scaffolding system for reproducible data analysis workflows in R.' }}">
+
+        <!-- Alpine.js for interactive components -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <style>[x-cloak] { display: none !important; }</style>
+
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
     </head>
-    <body class="bg-slate-100 dark:bg-gray-800 font-sans leading-normal text-slate-800 dark:text-gray-400">
-        <div class="mx-auto px-2 lg:min-h-screen flex flex-col items-center justify-center">
+    <body class="flex min-h-full bg-white dark:bg-slate-900">
+        <div class="flex w-full flex-col">
+            {{ partial:header }}
             {{ template_content }}
         </div>
     </body>
