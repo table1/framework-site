@@ -1,5 +1,5 @@
 ---
-id: 1d927b4f-2d20-4e5e-872f-48e76221bf4e
+id: 862e4d83-dc64-4a61-900b-97ee1efea6f9
 blueprint: doc_function
 title: 'Show Changes (Diff)'
 name: git_diff
@@ -33,5 +33,5 @@ examples:
       git_diff(file = "R/foo.R")
     is_dontrun: true
     position: 2
-category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
+category: b5ae3ab8-9430-4da3-b0a6-b1b475d85c6f
 ---

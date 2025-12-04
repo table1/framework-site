@@ -1,5 +1,5 @@
 ---
-id: 7047bc8a-c7de-4b48-909e-40cb537b744d
+id: cd326913-d1fb-4a28-bdaf-0fb42d6b6e09
 blueprint: doc_function
 title: 'Read data using dot notation path or direct file path'
 name: data_read
@@ -31,5 +31,5 @@ parameters:
     name: ...
     description: 'Additional arguments passed to read functions (readr::read_delim, readxl::read_excel, haven::read_*, etc.)'
     position: 4
-category: 40c9c329-549a-4d17-8eb7-67b81580d7b8
+category: c10f7229-66ef-4fe5-974e-a56510eeed43
 ---

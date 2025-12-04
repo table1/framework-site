@@ -1,5 +1,5 @@
 ---
-id: 67c41ca1-efd1-4aa5-9c2c-2c56589fcad7
+id: 21d83f74-793a-42fa-83b5-c36547e28b89
 blueprint: doc_function
 title: 'Execute code with a managed database connection'
 name: db_with
@@ -48,5 +48,5 @@ examples:
       )
     is_dontrun: true
     position: 2
-category: f96cabbe-df7e-4d15-9d8c-0ae8f8423dc4
+category: d15b259b-59e7-4345-bb0c-d82d3e1b52aa
 ---

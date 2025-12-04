@@ -1,5 +1,5 @@
 ---
-id: 1b1bb358-5ede-433f-b82c-054c74d0553b
+id: 725ac50d-076c-4ca9-9ebb-39f335b06627
 blueprint: doc_function
 title: 'Remember a value (get from cache or compute and store)'
 name: cache_remember
@@ -63,5 +63,5 @@ examples:
       }, refresh = file.mtime("data.csv") > cache_time)
     is_dontrun: true
     position: 2
-category: e534a2c6-9352-411f-a7e2-33c14a55c141
+category: ce8414c1-306f-491e-8070-17e77cb911f4
 ---

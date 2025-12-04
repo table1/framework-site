@@ -1,5 +1,5 @@
 ---
-id: 9b4abebe-bd54-4c8e-956f-6bbe508bb43f
+id: 1b05d55e-a046-45ba-b80c-8f68495b1c68
 blueprint: doc_function
 title: 'Get current datetime'
 name: now
@@ -13,5 +13,5 @@ value: |-
 source_file: R/datetime.R
 is_exported: true
 is_common: false
-category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
+category: 7dcd3a24-b128-4b06-b2dc-05b0479c2bd3
 ---

@@ -1,5 +1,5 @@
 ---
-id: 037cd961-512e-442f-9e7d-e241c293970a
+id: 6024ebbf-e889-46be-ad76-054afff97c49
 blueprint: doc_function
 title: 'List all data entries from config'
 name: data_list
@@ -24,5 +24,5 @@ examples:
       list_data()
     is_dontrun: true
     position: 2
-category: 40c9c329-549a-4d17-8eb7-67b81580d7b8
+category: c10f7229-66ef-4fe5-974e-a56510eeed43
 ---

@@ -1,5 +1,5 @@
 ---
-id: 0354236e-b98c-4d47-a837-a5c78db66fa6
+id: 40839b64-5848-4b4d-a64b-d8d30a196163
 blueprint: doc_function
 title: 'Publish Stub Templates for Customization'
 name: stubs_publish
@@ -93,5 +93,5 @@ seealso:
     reference: stubs_path()
     link_type: function
     url: null
-category: b517b2b4-400e-45b0-b341-974f612409b2
+category: 68768d7e-9d9b-416c-ac5c-08a34f7fcd99
 ---

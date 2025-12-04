@@ -1,5 +1,5 @@
 ---
-id: 4c9ecee7-1420-4b75-9f22-2fda3c5c8cbf
+id: 457f7173-cf09-4f99-a6b4-a90939af0d71
 blueprint: doc_function
 title: 'Read project settings'
 name: settings_read
@@ -24,5 +24,5 @@ parameters:
     name: environment
     description: 'Active environment name (default: R_CONFIG_ACTIVE or "default")'
     position: 2
-category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
+category: 7dcd3a24-b128-4b06-b2dc-05b0479c2bd3
 ---

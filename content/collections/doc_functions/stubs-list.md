@@ -1,5 +1,5 @@
 ---
-id: 6e01cf56-954b-4406-ac5f-299b18c8b857
+id: 2724e5e8-9311-4495-9c4d-82b89abed2da
 blueprint: doc_function
 title: 'List Available Stubs'
 name: stubs_list
@@ -33,5 +33,5 @@ examples:
       stubs_list("script")
     is_dontrun: true
     position: 2
-category: b517b2b4-400e-45b0-b341-974f612409b2
+category: 68768d7e-9d9b-416c-ac5c-08a34f7fcd99
 ---

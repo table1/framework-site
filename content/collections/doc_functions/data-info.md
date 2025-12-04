@@ -1,12 +1,12 @@
 ---
-id: 585ab311-3d4b-4f63-b951-d5fb8a84e2c7
+id: 1d6014f1-0e43-4c3b-a8be-57284c83b506
 blueprint: doc_function
 title: 'Get data specification from config'
-name: data_spec_get
+name: data_info
 description: |-
 
   Gets the data specification for a given dot notation path from settings.yml. Supports dot notation (e.g., "source.private.example"), relative paths, and absolute paths. Auto-detects file type from extension and applies intelligent defaults for common formats.
-usage: data_spec_get(path)
+usage: data_info(path)
 value: |-
 
   A list with data specification including:
@@ -31,12 +31,12 @@ examples:
   -
     type: example
     code: |-
-      # Get spec from dot notation
-      spec <- data_spec_get("source.private.my_data")
+      # Get info from dot notation
+      info <- data_info("source.private.my_data")
 
-      # Get spec from file path
-      spec <- data_spec_get("data/public/example.csv")
+      # Get info from file path
+      info <- data_info("data/public/example.csv")
     is_dontrun: true
     position: 2
-category: 40c9c329-549a-4d17-8eb7-67b81580d7b8
+category: c10f7229-66ef-4fe5-974e-a56510eeed43
 ---

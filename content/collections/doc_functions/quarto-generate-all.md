@@ -1,5 +1,5 @@
 ---
-id: 344373ad-a9be-4d4c-8b20-5b48830c6ee9
+id: 56261345-84d9-47a0-978d-edc90c6eb272
 blueprint: doc_function
 title: 'Generate Quarto Configurations for Project'
 name: quarto_generate_all
@@ -52,5 +52,5 @@ parameters:
     name: root_output_dir
     description: 'Optional output directory to set on the root _quarto.yml'
     position: 6
-category: b517b2b4-400e-45b0-b341-974f612409b2
+category: 68768d7e-9d9b-416c-ac5c-08a34f7fcd99
 ---

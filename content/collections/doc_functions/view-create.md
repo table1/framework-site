@@ -1,5 +1,5 @@
 ---
-id: 3d784398-d30d-45a8-a41b-11ac329d7eac
+id: fa9f995d-f31b-4cb4-ae11-f685a68461d2
 blueprint: doc_function
 title: 'Create an enhanced view of R objects in the browser'
 name: view_create
@@ -47,5 +47,5 @@ examples:
       view_create(list(a = 1, b = 2, c = list(d = 3)))
     is_dontrun: true
     position: 2
-category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
+category: 7dcd3a24-b128-4b06-b2dc-05b0479c2bd3
 ---

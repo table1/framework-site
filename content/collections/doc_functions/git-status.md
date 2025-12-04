@@ -1,5 +1,5 @@
 ---
-id: 0fa1bbc0-4215-4931-ae19-df6f28891faa
+id: 628abd49-5714-43ff-82bc-e044ce789fb4
 blueprint: doc_function
 title: 'Show Git Status'
 name: git_status
@@ -27,5 +27,5 @@ examples:
       git_status(short = TRUE)
     is_dontrun: true
     position: 2
-category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
+category: b5ae3ab8-9430-4da3-b0a6-b1b475d85c6f
 ---

@@ -1,5 +1,5 @@
 ---
-id: 2f434958-9a31-47ee-85df-a8a154a9594e
+id: 3302676c-cc62-4820-809c-301c5f608727
 blueprint: doc_function
 title: 'View data with enhanced browser-based interface'
 name: view_detail
@@ -64,5 +64,5 @@ seealso:
     reference: view_create
     link_type: function
     url: null
-category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
+category: 7dcd3a24-b128-4b06-b2dc-05b0479c2bd3
 ---

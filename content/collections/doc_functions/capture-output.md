@@ -1,5 +1,5 @@
 ---
-id: 3f347d79-1118-4e87-bddc-9b6dcb67f887
+id: 3e1e0750-82ed-4bc7-88e6-ba9a26f94858
 blueprint: doc_function
 title: 'Capture console output and errors from an expression'
 name: capture_output
@@ -19,5 +19,5 @@ parameters:
     name: expr
     description: 'Expression to evaluate'
     position: 1
-category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
+category: 7dcd3a24-b128-4b06-b2dc-05b0479c2bd3
 ---

@@ -1,5 +1,5 @@
 ---
-id: c8541b75-87e9-4f17-b193-82c6d894713c
+id: 9ee1151c-8321-49e1-93f2-29ec81f8be45
 blueprint: doc_function
 title: 'Standardize Working Directory for Framework Projects'
 name: standardize_wd
@@ -20,7 +20,7 @@ value: |-
   Invisibly returns the standardized project root path.
 source_file: R/framework_util.R
 is_exported: true
-is_common: true
+is_common: false
 parameters:
   -
     type: parameter
@@ -38,5 +38,5 @@ examples:
       scaffold()
     is_dontrun: true
     position: 2
-category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
+category: 7dcd3a24-b128-4b06-b2dc-05b0479c2bd3
 ---

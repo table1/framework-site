@@ -1,5 +1,5 @@
 ---
-id: 2609ea38-95fb-4d46-b507-bb978f90466f
+id: 7c58823f-3f1e-44cc-866c-8f83955cf335
 blueprint: doc_function
 title: 'List all projects in global configuration'
 name: project_list
@@ -12,6 +12,6 @@ value: |-
   Data frame with project information
 source_file: R/gui_helpers.R
 is_exported: true
-is_common: true
-category: 0eca8382-a9c5-4abb-b323-4f53e31a6d05
+is_common: false
+category: 03dbf8c4-6a04-4747-923a-de1860585213
 ---

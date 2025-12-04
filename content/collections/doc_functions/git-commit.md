@@ -1,5 +1,5 @@
 ---
-id: f0045983-521c-43e3-9219-b2237dc8bf2a
+id: 5cbf94e1-d357-4ecf-89f5-e843cf58e32f
 blueprint: doc_function
 title: 'Commit Staged Changes'
 name: git_commit
@@ -32,5 +32,5 @@ examples:
       git_commit("Update README", all = TRUE)  # Stage and commit
     is_dontrun: true
     position: 2
-category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
+category: b5ae3ab8-9430-4da3-b0a6-b1b475d85c6f
 ---

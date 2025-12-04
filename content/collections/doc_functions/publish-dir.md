@@ -1,5 +1,5 @@
 ---
-id: 2afa83ec-ef2b-4307-97fe-01dd00c90f0c
+id: fc0a36ab-9ff6-4367-b230-ed3cdcfdc705
 blueprint: doc_function
 title: 'Publish a directory to S3'
 name: publish_dir
@@ -62,5 +62,5 @@ examples:
       publish_dir("outputs/", pattern = "\\.html$")
     is_dontrun: true
     position: 2
-category: fa39312c-45c6-4862-a3b7-f2b9ef062cdc
+category: 2ceadc91-ec68-4318-9fc3-b75b4ca3bec7
 ---

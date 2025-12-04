@@ -1,5 +1,5 @@
 ---
-id: 60b5caf8-fb55-47d0-a15c-fa5aa66e93d1
+id: edb2f77c-7af0-45af-aab9-08a237129d31
 blueprint: doc_function
 title: 'Push to Remote'
 name: git_push
@@ -32,5 +32,5 @@ examples:
       git_push(remote = "origin", branch = "main")
     is_dontrun: true
     position: 2
-category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
+category: b5ae3ab8-9430-4da3-b0a6-b1b475d85c6f
 ---

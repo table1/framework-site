@@ -1,5 +1,5 @@
 ---
-id: 2e3be017-19ad-48de-9531-e28e458791ac
+id: 6dfbdbf6-6a5f-4e2c-b681-ed906bd8d920
 blueprint: doc_function
 title: 'Publish data to S3'
 name: publish_data
@@ -55,5 +55,5 @@ examples:
       publish_data("outputs/model.rds", "models/v2/model.rds")
     is_dontrun: true
     position: 2
-category: fa39312c-45c6-4862-a3b7-f2b9ef062cdc
+category: 2ceadc91-ec68-4318-9fc3-b75b4ca3bec7
 ---

@@ -1,5 +1,5 @@
 ---
-id: dca8379f-7410-4b8d-8fb3-6dfe8869135d
+id: 351d2b9e-5359-4355-a8ac-338191217125
 blueprint: doc_function
 title: 'Publishing Functions'
 name: publish
@@ -58,5 +58,5 @@ examples:
       publish("data.csv", connection = "s3_backup")
     is_dontrun: true
     position: 2
-category: fa39312c-45c6-4862-a3b7-f2b9ef062cdc
+category: 2ceadc91-ec68-4318-9fc3-b75b4ca3bec7
 ---

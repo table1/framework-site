@@ -1,5 +1,5 @@
 ---
-id: fc082e5e-93d7-4894-912c-5d830c6170c9
+id: 223ab299-fd97-46e6-9411-eb746aaa71bb
 blueprint: doc_function
 title: 'Create a Quarto Notebook'
 name: make_qmd
@@ -61,5 +61,5 @@ seealso:
     reference: make_rmd()
     link_type: function
     url: null
-category: b517b2b4-400e-45b0-b341-974f612409b2
+category: 68768d7e-9d9b-416c-ac5c-08a34f7fcd99
 ---

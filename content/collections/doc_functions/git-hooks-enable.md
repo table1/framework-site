@@ -1,5 +1,5 @@
 ---
-id: cd5d52e1-c704-45ef-8a99-7ce364eb43fc
+id: 69683d8a-6cf4-4058-8699-4020e5cb47ae
 blueprint: doc_function
 title: 'Enable Specific Git Hook'
 name: git_hooks_enable
@@ -37,5 +37,5 @@ examples:
       git_hooks_enable("data_security")
     is_dontrun: true
     position: 2
-category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
+category: b5ae3ab8-9430-4da3-b0a6-b1b475d85c6f
 ---

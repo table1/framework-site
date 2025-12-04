@@ -1,5 +1,5 @@
 ---
-id: d983f435-19d5-4841-b246-bde20bc888f0
+id: 97400bb8-bb89-4547-8616-809835a99a7f
 blueprint: doc_function
 title: 'Check if renv is enabled for this project'
 name: renv_enabled
@@ -22,5 +22,5 @@ examples:
       }
     is_dontrun: false
     position: 1
-category: 4e3d8e4d-7d2e-4b09-8cd7-1c4b4797d52d
+category: cacb883e-9a21-4374-8f1b-5399fc490f0f
 ---

@@ -1,5 +1,5 @@
 ---
-id: a01efa6a-0796-4218-a13b-5736925076e4
+id: 72427e46-1b36-4d01-a4ab-da7ec01927c3
 blueprint: doc_function
 title: 'Save a report to the outputs directory'
 name: save_report
@@ -50,5 +50,5 @@ examples:
       save_report("notebooks/summary.pdf", "public_summary", public = TRUE)
     is_dontrun: true
     position: 2
-category: ecad8af3-1d69-426c-bff5-e6fd71e2cdf8
+category: f1676317-d065-45d8-870c-e7b6f67a1be9
 ---

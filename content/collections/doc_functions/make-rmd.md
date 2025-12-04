@@ -1,5 +1,5 @@
 ---
-id: d39d48a6-ff34-4b7c-9580-938f85340243
+id: 7cf1829d-0038-49d1-b008-e5004378b76b
 blueprint: doc_function
 title: 'Create an RMarkdown Notebook'
 name: make_rmd
@@ -61,5 +61,5 @@ seealso:
     reference: make_qmd()
     link_type: function
     url: null
-category: b517b2b4-400e-45b0-b341-974f612409b2
+category: 68768d7e-9d9b-416c-ac5c-08a34f7fcd99
 ---

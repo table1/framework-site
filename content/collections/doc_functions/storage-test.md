@@ -1,5 +1,5 @@
 ---
-id: 5585bc82-b9ce-420a-af82-13b81d73d7e1
+id: f7c95037-25fe-4cf0-9ca0-d70f43c9cd91
 blueprint: doc_function
 title: 'Test storage connection'
 name: storage_test
@@ -30,5 +30,5 @@ examples:
       storage_test("my_s3_backup")
     is_dontrun: true
     position: 2
-category: fa39312c-45c6-4862-a3b7-f2b9ef062cdc
+category: 2ceadc91-ec68-4318-9fc3-b75b4ca3bec7
 ---
