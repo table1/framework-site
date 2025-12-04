@@ -1,43 +1,109 @@
-<p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
+# Framework Documentation Site
 
-## About Statamic
+The official documentation and marketing website for the [Framework R package](https://github.com/table1/framework).
 
-Statamic is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
+## Overview
 
-> [!NOTE]
-> This repository contains the code for a fresh Statamic project that is installed via the Statamic CLI tool.
->
-> The code for the Statamic Composer package itself can be found at the [Statamic core package repository][cms-repo].
+This site is built with **Statamic 5** on **Laravel 12**, using a flat-file CMS architecture. Documentation is imported from the Framework package's `docs.db` SQLite database, which is generated from R/roxygen documentation.
 
+## Tech Stack
 
-## Learning Statamic
+- **Framework:** Laravel 12
+- **CMS:** Statamic 5 (flat-file)
+- **PHP:** 8.2+
+- **CSS:** Tailwind CSS 4 + @tailwindcss/typography
+- **JS:** Alpine.js 3
+- **Syntax Highlighting:** Shiki
+- **Bundler:** Vite 7
 
-Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
+## Local Development
 
-## Support
+```bash
+# Install dependencies
+composer install
+npm install
 
-We provide official developer support on [Statamic Pro](https://statamic.com/pricing) projects. Community-driven support is available on the [forum](https://statamic.com/forum) and in [Discord][discord].
+# Start dev servers (run in separate terminals)
+php artisan serve
+npm run dev
+```
 
+The site will be available at `http://localhost:8000` (or via Laravel Herd/Valet).
 
-## Contributing
+## Documentation Import
 
-Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
+Function documentation is imported from the Framework R package:
 
+```bash
+# Import docs (auto-detects docs.db location)
+php artisan framework:import-docs
 
-## Code of Conduct
+# Import from specific path
+php artisan framework:import-docs /path/to/docs.db
 
-In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
+# Fresh import (deletes existing entries first)
+php artisan framework:import-docs --fresh
+```
 
+The command looks for `docs.db` in:
+1. `storage/docs.db`
+2. `../framework/inst/gui/docs.db`
+3. `../framework/gui-dev/public/docs.db`
 
-## Important Links
+### Import Flow
 
-- [Statamic Main Site](https://statamic.com)
-- [Statamic Documentation][docs]
-- [Statamic Core Package Repo][cms-repo]
-- [Statamic Migrator](https://github.com/statamic/migrator)
-- [Statamic Discord][discord]
+```
+Framework R Package              framework-site
+───────────────────              ──────────────
+R/docs_export.R
+       │
+       ▼
+docs.db (SQLite)  ────────►  php artisan framework:import-docs
+   • categories                        │
+   • functions                         ▼
+   • parameters              content/collections/
+   • examples                   • doc_categories/*.md
+   • sections                   • doc_functions/*.md
+   • aliases
+   • seealso
+```
 
-[docs]: https://statamic.dev/
-[discord]: https://statamic.com/discord
-[contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
-[cms-repo]: https://github.com/statamic/cms
+## Project Structure
+
+```
+framework-site/
+├── app/Console/Commands/
+│   └── ImportFrameworkDocs.php    # Documentation import command
+├── content/collections/
+│   ├── doc_functions/             # Imported function docs (87 entries)
+│   └── doc_categories/            # Category groupings (11 entries)
+├── resources/
+│   ├── views/
+│   │   ├── layout.antlers.html    # Base layout + Shiki config
+│   │   ├── home.antlers.html      # Landing page
+│   │   ├── docs/
+│   │   │   ├── show.antlers.html  # Function detail page
+│   │   │   └── category.antlers.html
+│   │   └── partials/
+│   │       ├── header.antlers.html
+│   │       └── docs-nav.antlers.html
+│   └── css/site.css               # Tailwind + custom styles
+├── storage/docs.db                # SQLite docs database
+└── public/build/                  # Vite output
+```
+
+## Build & Deploy
+
+```bash
+# Build production assets
+npm run build
+
+# Clear caches
+php artisan statamic:stache:clear
+php artisan cache:clear
+php artisan view:clear
+```
+
+## Related Repositories
+
+- **[framework](https://github.com/table1/framework)** - The R package this site documents
