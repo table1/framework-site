@@ -10,37 +10,20 @@
     </div>
 
     <!-- Main content -->
-    <div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+    <div class="min-w-0 max-w-none flex-auto px-4 py-16 lg:pr-0 lg:pl-8 xl:px-16">
         <article>
             <header class="mb-9 space-y-1">
-                <p class="font-display text-sm font-medium text-sky-500">Getting started</p>
+                <p class="font-display text-sm font-medium text-sky-500">Getting Started</p>
                 <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">Documentation</h1>
+                <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">
+                    Welcome to the Framework documentation. Framework is a data management and project scaffolding system for reproducible data analysis workflows in R.
+                </p>
             </header>
 
             <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10">
-                <p class="lead">
-                    Welcome to the Framework documentation. Framework is a data management and project scaffolding system for reproducible data analysis workflows in R.
-                </p>
 
-                <!-- Quick Links -->
-                <div class="not-prose my-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    {{ collection:doc_categories sort="position:asc" limit="4" }}
-                    <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">
-                        <div class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 transition group-hover:opacity-100 group-hover:border-sky-500"></div>
-                        <div class="relative overflow-hidden rounded-xl p-6">
-                            <h2 class="mt-4 font-display text-base text-slate-900 dark:text-white">
-                                <a href="/docs/{{ slug }}">
-                                    <span class="absolute -inset-px rounded-xl"></span>
-                                    {{ title }}
-                                </a>
-                            </h2>
-                            <p class="mt-1 text-sm text-slate-700 dark:text-slate-400">{{ description | truncate:100 }}</p>
-                        </div>
-                    </div>
-                    {{ /collection:doc_categories }}
-                </div>
-
-                <h2>Quick Start</h2>
+                <!-- Quick Start -->
+                <h2 id="quick-start">Quick Start</h2>
                 <p>Install Framework from GitHub:</p>
 
                 <pre><code class="language-r"># Install remotes if needed
@@ -54,7 +37,59 @@ remotes::install_github("erikwestlund/framework")</code></pre>
                 <pre><code class="language-r">library(framework)
 init()</code></pre>
 
-                <h2>All Categories</h2>
+                <!-- Getting Started Guides -->
+                <h2 id="getting-started">Getting Started</h2>
+                <div class="not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    {{ collection:doc_guides section:is="getting_started" sort="position:asc" }}
+                    <div class="group relative rounded-xl border border-slate-200 p-5 transition-colors hover:border-sky-300 dark:border-slate-800 dark:hover:border-sky-700">
+                        <h3 class="font-display text-base font-semibold text-slate-900 dark:text-white">
+                            <a href="/docs/{{ slug }}">
+                                <span class="absolute -inset-px rounded-xl"></span>
+                                {{ title }}
+                            </a>
+                        </h3>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ description }}</p>
+                    </div>
+                    {{ /collection:doc_guides }}
+                </div>
+
+                <!-- Core Concepts -->
+                <h2 id="core-concepts">Core Concepts</h2>
+                <p>Understand the key concepts that power Framework:</p>
+                <div class="not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    {{ collection:doc_guides section:is="core_concepts" sort="position:asc" }}
+                    <div class="group relative rounded-xl border border-slate-200 p-5 transition-colors hover:border-sky-300 dark:border-slate-800 dark:hover:border-sky-700">
+                        <h3 class="font-display text-base font-semibold text-slate-900 dark:text-white">
+                            <a href="/docs/{{ slug }}">
+                                <span class="absolute -inset-px rounded-xl"></span>
+                                {{ title }}
+                            </a>
+                        </h3>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ description }}</p>
+                    </div>
+                    {{ /collection:doc_guides }}
+                </div>
+
+                <!-- Project Types -->
+                <h2 id="project-types">Project Types</h2>
+                <p>Framework supports different project types for different workflows:</p>
+                <div class="not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    {{ collection:doc_guides section:is="project_types" sort="position:asc" }}
+                    <div class="group relative rounded-xl border border-slate-200 p-5 transition-colors hover:border-sky-300 dark:border-slate-800 dark:hover:border-sky-700">
+                        <h3 class="font-display text-base font-semibold text-slate-900 dark:text-white">
+                            <a href="/docs/{{ slug }}">
+                                <span class="absolute -inset-px rounded-xl"></span>
+                                {{ title }}
+                            </a>
+                        </h3>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ description }}</p>
+                    </div>
+                    {{ /collection:doc_guides }}
+                </div>
+
+                <!-- API Reference -->
+                <h2 id="api-reference">API Reference</h2>
+                <p>Explore Framework's complete API by category:</p>
 
                 <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800/50 ring-1 ring-slate-900/7.5 dark:ring-white/10">
                     <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-700 text-left text-sm">
@@ -78,5 +113,19 @@ init()</code></pre>
                 </div>
             </div>
         </article>
+    </div>
+
+    <!-- Right sidebar: On This Page -->
+    <div class="hidden xl:sticky xl:top-[4.75rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
+        <nav aria-labelledby="on-this-page-title" class="w-56">
+            <h2 id="on-this-page-title" class="font-display text-sm font-medium text-slate-900 dark:text-white">On this page</h2>
+            <ol role="list" class="mt-4 space-y-3 text-sm">
+                <li><a href="#quick-start" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Quick Start</a></li>
+                <li><a href="#getting-started" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Getting Started</a></li>
+                <li><a href="#core-concepts" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Core Concepts</a></li>
+                <li><a href="#project-types" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Project Types</a></li>
+                <li><a href="#api-reference" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">API Reference</a></li>
+            </ol>
+        </nav>
     </div>
 </div>

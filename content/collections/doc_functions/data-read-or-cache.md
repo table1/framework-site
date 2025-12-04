@@ -1,5 +1,5 @@
 ---
-id: d2c84a35-b463-43f8-908b-a1bfecf89dd1
+id: 80e1e4b6-67d3-4b5a-a193-f41eb5ad370d
 blueprint: doc_function
 title: 'Read data with caching'
 name: data_read_or_cache
@@ -29,5 +29,5 @@ parameters:
     name: refresh
     description: 'Optional boolean or function that returns boolean to force refresh'
     position: 3
-category: 1ed092eb-a460-4c61-8d52-60fdebeace65
+category: 92619a88-7705-41b4-ad68-1cd847136481
 ---

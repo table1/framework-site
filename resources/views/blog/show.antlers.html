@@ -1,0 +1,50 @@
+<main class="flex-auto">
+    <article class="mx-auto max-w-3xl px-6 py-16 sm:px-8 lg:px-12">
+        <!-- Header -->
+        <header class="mb-12">
+            <div class="flex items-center gap-x-4 text-xs mb-6">
+                <time datetime="{{ date format='Y-m-d' }}" class="text-slate-500 dark:text-slate-400">{{ date format='F j, Y' }}</time>
+                {{ if tags }}
+                    {{ tags }}
+                        <span class="rounded-full bg-sky-100 px-3 py-1.5 font-medium text-sky-700 dark:bg-sky-900/50 dark:text-sky-300">{{ value }}</span>
+                    {{ /tags }}
+                {{ /if }}
+            </div>
+            <h1 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">{{ title }}</h1>
+            {{ if excerpt }}
+                <p class="mt-6 text-xl text-slate-600 dark:text-slate-400">{{ excerpt }}</p>
+            {{ /if }}
+            <div class="mt-8 flex items-center gap-x-4 border-t border-slate-200 pt-8 dark:border-slate-700">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sky-100 dark:bg-sky-900/50">
+                    <svg class="h-5 w-5 text-sky-600 dark:text-sky-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                </div>
+                <div class="text-sm leading-6">
+                    <p class="font-semibold text-slate-900 dark:text-white">{{ author ?? 'Framework Team' }}</p>
+                </div>
+            </div>
+        </header>
+
+        {{ if featured_image }}
+            <div class="mb-12">
+                <img src="{{ featured_image }}" alt="{{ title }}" class="w-full rounded-2xl object-cover">
+            </div>
+        {{ /if }}
+
+        <!-- Content -->
+        <div class="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-sky-600 dark:prose-a:text-sky-400 prose-code:text-sky-600 dark:prose-code:text-sky-400 prose-pre:bg-slate-900 prose-pre:shadow-lg">
+            {{ content | markdown }}
+        </div>
+
+        <!-- Back to Blog -->
+        <div class="mt-16 border-t border-slate-200 pt-8 dark:border-slate-700">
+            <a href="/blog" class="group inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300">
+                <svg class="h-4 w-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                Back to Blog
+            </a>
+        </div>
+    </article>
+</main>

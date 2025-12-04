@@ -1,5 +1,5 @@
 ---
-id: a6a4116a-2917-40b0-8a32-97c21728d641
+id: b4f0e4c5-0d2e-4e02-a01c-283c963b56d9
 blueprint: doc_function
 title: 'Get data specification from config'
 name: data_spec_get
@@ -37,5 +37,5 @@ examples:
       spec <- data_spec_get("data/public/example.csv")
     is_dontrun: true
     position: 2
-category: 1ed092eb-a460-4c61-8d52-60fdebeace65
+category: 92619a88-7705-41b4-ad68-1cd847136481
 ---

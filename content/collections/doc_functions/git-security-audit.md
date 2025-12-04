@@ -1,5 +1,5 @@
 ---
-id: 79e72f15-7296-4b96-a286-b4b0032ddbe2
+id: fc640133-635e-4bea-b993-3d85ea709f91
 blueprint: doc_function
 title: 'Security audit for Framework projects'
 name: git_security_audit
@@ -84,5 +84,5 @@ examples:
       audit <- git_security_audit(auto_fix = TRUE)
     is_dontrun: true
     position: 2
-category: afbdb383-dead-4998-b2ee-f6e3f0c63115
+category: d7e03087-dcc9-4f26-86aa-5e7491e5e0df
 ---

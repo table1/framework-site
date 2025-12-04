@@ -1,11 +1,124 @@
 <!doctype html>
-<html lang="{{ site:short_locale }}" class="h-full antialiased">
+<html lang="{{ site:short_locale }}" class="h-full antialiased" x-data x-bind:class="{ 'dark': $store.app.darkMode }">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ title ?? site:name }}</title>
+        <title>{{ title ?? 'Framework - Structured Data Science in R' }}</title>
         <meta name="description" content="{{ meta_description ?? 'Framework - A data management and project scaffolding system for reproducible data analysis workflows in R.' }}">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- highlight.js for syntax highlighting (custom theme in site.css) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/base16/tomorrow-night.min.css">
+
+        <!-- Prevent flash of wrong theme -->
+        <script>
+            if (localStorage.getItem('darkMode') === 'true' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        </script>
+
+        <!-- Alpine.js Store (must be before Alpine loads) -->
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.store('app', {
+                    darkMode: localStorage.getItem('darkMode') === 'true' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                    searchOpen: false,
+                    searchQuery: '',
+                    searchResults: [],
+                    searchIndex: [],
+                    selectedIndex: -1,
+
+                    toggleDarkMode() {
+                        this.darkMode = !this.darkMode;
+                        localStorage.setItem('darkMode', this.darkMode);
+                    },
+
+                    async initSearch() {
+                        try {
+                            const response = await fetch('/search-index.json');
+                            if (response.ok) {
+                                this.searchIndex = await response.json();
+                            }
+                        } catch (e) {
+                            console.warn('Search index not available');
+                        }
+                    },
+
+                    search() {
+                        if (!this.searchQuery.trim()) {
+                            this.searchResults = [];
+                            this.selectedIndex = -1;
+                            return;
+                        }
+                        const query = this.searchQuery.toLowerCase();
+                        this.searchResults = this.searchIndex
+                            .filter(item =>
+                                item.name?.toLowerCase().includes(query) ||
+                                item.usage?.toLowerCase().includes(query) ||
+                                item.title?.toLowerCase().includes(query) ||
+                                item.description?.toLowerCase().includes(query) ||
+                                item.keywords?.toLowerCase().includes(query)
+                            )
+                            .slice(0, 10);
+                        this.selectedIndex = this.searchResults.length > 0 ? 0 : -1;
+                    },
+
+                    selectNext() {
+                        if (this.searchResults.length === 0) return;
+                        this.selectedIndex = (this.selectedIndex + 1) % this.searchResults.length;
+                        this.scrollToSelected();
+                    },
+
+                    selectPrev() {
+                        if (this.searchResults.length === 0) return;
+                        this.selectedIndex = this.selectedIndex <= 0
+                            ? this.searchResults.length - 1
+                            : this.selectedIndex - 1;
+                        this.scrollToSelected();
+                    },
+
+                    scrollToSelected() {
+                        setTimeout(() => {
+                            const el = document.querySelector(`[data-search-index="${this.selectedIndex}"]`);
+                            el?.scrollIntoView({ block: 'nearest' });
+                        }, 10);
+                    },
+
+                    goToSelected() {
+                        if (this.selectedIndex >= 0 && this.searchResults[this.selectedIndex]) {
+                            window.location.href = this.searchResults[this.selectedIndex].url;
+                        }
+                    },
+
+                    openSearch() {
+                        this.searchOpen = true;
+                        this.searchQuery = '';
+                        this.searchResults = [];
+                        this.selectedIndex = -1;
+                        setTimeout(() => {
+                            document.getElementById('search-input')?.focus();
+                        }, 100);
+                    },
+
+                    closeSearch() {
+                        this.searchOpen = false;
+                        this.searchQuery = '';
+                        this.searchResults = [];
+                        this.selectedIndex = -1;
+                    }
+                });
+
+                // Initialize search index
+                Alpine.store('app').initSearch();
+            });
+        </script>
 
         <!-- Alpine.js for interactive components -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -13,10 +126,93 @@
 
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
     </head>
-    <body class="flex min-h-full bg-white dark:bg-slate-900">
+    <body class="flex min-h-full bg-white dark:bg-slate-900" @keydown.window.meta.k.prevent="$store.app.openSearch()" @keydown.window.ctrl.k.prevent="$store.app.openSearch()" @keydown.escape.window="$store.app.closeSearch()">
         <div class="flex w-full flex-col">
             {{ partial:header }}
             {{ template_content }}
         </div>
+
+        <!-- Search Modal -->
+        <div x-show="$store.app.searchOpen" x-cloak class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="search-modal" role="dialog" aria-modal="true">
+            <!-- Backdrop -->
+            <div x-show="$store.app.searchOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-slate-900/40" @click="$store.app.closeSearch()"></div>
+
+            <!-- Modal -->
+            <div class="relative flex min-h-full items-start justify-center p-4 pt-[15vh]">
+                <div x-show="$store.app.searchOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="relative w-full max-w-2xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-slate-900/10 dark:bg-slate-800 dark:ring-slate-700">
+                    <!-- Search input -->
+                    <div class="relative">
+                        <svg class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                        </svg>
+                        <input id="search-input" x-model="$store.app.searchQuery" @input="$store.app.search()" @keydown.down.prevent="$store.app.selectNext()" @keydown.up.prevent="$store.app.selectPrev()" @keydown.enter.prevent="$store.app.goToSelected()" type="text" class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm dark:text-white dark:placeholder:text-slate-500" placeholder="Search functions...">
+                        <div class="pointer-events-none absolute right-4 top-3.5 hidden items-center gap-2 sm:flex">
+                            <kbd class="rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-xs text-slate-400 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-500">&uarr;&darr;</kbd>
+                            <kbd class="rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-xs text-slate-400 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-500">esc</kbd>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div x-show="$store.app.searchResults.length > 0" class="max-h-96 scroll-py-2 overflow-y-auto border-t border-slate-200 dark:border-slate-700">
+                        <ul class="py-2">
+                            <template x-for="(result, index) in $store.app.searchResults" :key="result.url">
+                                <li :data-search-index="index">
+                                    <a :href="result.url" class="block px-4 py-3 transition-colors" :class="$store.app.selectedIndex === index ? 'bg-sky-50 dark:bg-sky-900/30' : 'hover:bg-slate-50 dark:hover:bg-slate-700/50'" @click="$store.app.closeSearch()" @mouseenter="$store.app.selectedIndex = index">
+                                        <div class="flex items-start gap-3">
+                                            <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg" :class="$store.app.selectedIndex === index ? 'bg-sky-100 dark:bg-sky-800/50' : 'bg-slate-100 dark:bg-slate-700'">
+                                                <svg class="h-4 w-4" :class="$store.app.selectedIndex === index ? 'text-sky-600 dark:text-sky-400' : 'text-slate-500 dark:text-slate-400'" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v11.5A2.25 2.25 0 004.25 18h11.5A2.25 2.25 0 0018 15.75V4.25A2.25 2.25 0 0015.75 2H4.25zm4.03 6.28a.75.75 0 00-1.06-1.06L4.97 9.47a.75.75 0 000 1.06l2.25 2.25a.75.75 0 001.06-1.06l-1.72-1.72 1.72-1.72zm3.44-1.06a.75.75 0 10-1.06 1.06l1.72 1.72-1.72 1.72a.75.75 0 101.06 1.06l2.25-2.25a.75.75 0 000-1.06l-2.25-2.25z" clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <div class="min-w-0 flex-auto">
+                                                <p class="font-mono text-sm" :class="$store.app.selectedIndex === index ? 'text-sky-700 dark:text-sky-300' : 'text-slate-900 dark:text-white'" x-text="result.usage || result.name + '()'"></p>
+                                                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400" x-text="result.description"></p>
+                                                <p class="mt-1 text-xs font-medium" :class="$store.app.selectedIndex === index ? 'text-sky-600/70 dark:text-sky-400/70' : 'text-slate-400 dark:text-slate-500'" x-text="result.category"></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+
+                    <!-- Empty state -->
+                    <div x-show="$store.app.searchQuery && $store.app.searchResults.length === 0" class="border-t border-slate-200 px-4 py-8 text-center dark:border-slate-700">
+                        <svg class="mx-auto h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                        </svg>
+                        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">No results found for "<span x-text="$store.app.searchQuery"></span>"</p>
+                    </div>
+
+                    <!-- Initial state -->
+                    <div x-show="!$store.app.searchQuery" class="border-t border-slate-200 px-4 py-8 text-center dark:border-slate-700">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Type to search functions...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- highlight.js syntax highlighting (only for code blocks with language-* class) -->
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/r.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/yaml.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/bash.min.js"></script>
+        <script>
+            // Only highlight code blocks with language-* class (skip landing page hand-crafted blocks)
+            document.querySelectorAll('pre code[class*="language-"]').forEach((el) => {
+                hljs.highlightElement(el);
+
+                // Post-process R code to better highlight function calls
+                if (el.classList.contains('language-r')) {
+                    el.innerHTML = el.innerHTML
+                        // Match package::function( pattern
+                        .replace(/(\w+)(<span[^>]*>::<\/span>)(\w+)(\()/g,
+                            '<span class="text-slate-300">$1</span>$2<span class="text-violet-300">$3</span>$4')
+                        // Match standalone function( pattern (not already in a span)
+                        .replace(/(?<!<span[^>]*>)(?<!<\/span>)(?<!["\w])(\b[a-z_]\w*)(\()/gi,
+                            '<span class="text-violet-300">$1</span>$2');
+                }
+            });
+        </script>
     </body>
 </html>

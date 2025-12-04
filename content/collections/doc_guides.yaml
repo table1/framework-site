@@ -1,0 +1,6 @@
+title: 'Documentation Guides'
+route: '/docs/{slug}'
+sort_dir: asc
+sort_field: position
+template: docs/guide
+layout: layout

@@ -1,5 +1,5 @@
 ---
-id: c3b742ca-7997-4d0f-84ce-9842a247137b
+id: 113c029b-1e36-455c-b0a3-0aaf197a76e8
 blueprint: doc_function
 title: 'Show renv package status'
 name: packages_status
@@ -13,5 +13,5 @@ value: |-
 source_file: R/packages.R
 is_exported: true
 is_common: false
-category: 171a0b3f-4d9a-429d-b38a-59c8882aee66
+category: 80765b72-8ebf-4c19-9760-5876e5973c1e
 ---

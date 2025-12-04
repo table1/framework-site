@@ -1,5 +1,5 @@
 ---
-id: bd063ca0-2ed3-4fb5-8e6d-6c285a38c968
+id: 81dcd23a-af80-4ce7-8b72-96fcc0e44d48
 blueprint: doc_function
 title: 'Disable Specific Git Hook'
 name: git_hooks_disable
@@ -29,5 +29,5 @@ parameters:
     name: verbose
     description: 'Logical; if TRUE (default), show messages'
     position: 3
-category: afbdb383-dead-4998-b2ee-f6e3f0c63115
+category: d7e03087-dcc9-4f26-86aa-5e7491e5e0df
 ---

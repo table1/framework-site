@@ -1,5 +1,5 @@
 ---
-id: ea0b8e71-72f7-4240-b5b4-9040124d86ce
+id: 30689b63-21c2-4106-b7a2-e9391e7d4758
 blueprint: doc_function
 title: 'Snapshot current package library (renv)'
 name: packages_snapshot
@@ -19,5 +19,5 @@ parameters:
     name: prompt
     description: 'Logical. If TRUE, renv prompts before writing the snapshot.'
     position: 1
-category: 171a0b3f-4d9a-429d-b38a-59c8882aee66
+category: 80765b72-8ebf-4c19-9760-5876e5973c1e
 ---

@@ -1,5 +1,5 @@
 ---
-id: 1b5af5b7-3935-4609-9674-311b1fb83c66
+id: 2098ab4d-1b8c-4e21-a299-c6ca9398bd1a
 blueprint: doc_function
 title: 'Install database drivers'
 name: db_drivers_install
@@ -36,5 +36,5 @@ examples:
       db_drivers_install()
     is_dontrun: true
     position: 2
-category: 845368b7-eeb7-445c-8f23-536310005fa3
+category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
 ---

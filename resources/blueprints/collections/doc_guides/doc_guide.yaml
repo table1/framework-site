@@ -1,0 +1,40 @@
+title: 'Documentation Guide'
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          display: Title
+          required: true
+      -
+        handle: section
+        field:
+          type: select
+          display: Section
+          options:
+            getting_started: 'Getting Started'
+            core_concepts: 'Core Concepts'
+            project_types: 'Project Types'
+          required: true
+      -
+        handle: position
+        field:
+          type: integer
+          display: Position
+          default: 0
+      -
+        handle: description
+        field:
+          type: textarea
+          display: Description
+  content:
+    display: Content
+    fields:
+      -
+        handle: content
+        field:
+          type: markdown
+          display: Content

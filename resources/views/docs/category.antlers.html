@@ -10,20 +10,19 @@
     </div>
 
     <!-- Main content -->
-    <div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+    <div class="min-w-0 max-w-none flex-auto px-4 py-16 lg:pr-0 lg:pl-8 xl:px-16">
         <article>
             <header class="mb-9 space-y-1">
                 <p class="font-display text-sm font-medium text-sky-500">
-                    <a href="/docs" class="hover:text-sky-600">Documentation</a>
+                    <a href="/docs" class="hover:text-sky-600">API Reference</a>
                 </p>
                 <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">{{ title }}</h1>
+                {{ if description }}
+                    <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">{{ description }}</p>
+                {{ /if }}
             </header>
 
             <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600">
-
-                {{ if description }}
-                    <p class="lead">{{ description }}</p>
-                {{ /if }}
 
                 <!-- Common Functions -->
                 {{ collection:doc_functions category:contains="{id}" is_common:is="true" sort="name:asc" as="common_funcs" }}
@@ -33,44 +32,102 @@
 
                         <div class="not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                             {{ common_funcs }}
-                            <div class="group relative rounded-xl border border-slate-200 p-4 dark:border-slate-800">
-                                <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
-                                    <a href="/docs/{{ slug }}" class="hover:text-sky-500">
-                                        <span class="absolute -inset-px rounded-xl"></span>
-                                        {{ name }}
-                                    </a>
-                                </h3>
-                                <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ description | truncate:100 }}</p>
+                            <div class="group relative rounded-xl border border-slate-200 p-5 transition-colors hover:border-sky-300 dark:border-slate-800 dark:hover:border-sky-700">
+                                <div class="flex items-start gap-4">
+                                    <div class="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-sky-50 dark:bg-sky-900/30">
+                                        <svg class="h-5 w-5 text-sky-600 dark:text-sky-400" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v11.5A2.25 2.25 0 004.25 18h11.5A2.25 2.25 0 0018 15.75V4.25A2.25 2.25 0 0015.75 2H4.25zm4.03 6.28a.75.75 0 00-1.06-1.06L4.97 9.47a.75.75 0 000 1.06l2.25 2.25a.75.75 0 001.06-1.06l-1.72-1.72 1.72-1.72zm3.44-1.06a.75.75 0 10-1.06 1.06l1.72 1.72-1.72 1.72a.75.75 0 101.06 1.06l2.25-2.25a.75.75 0 000-1.06l-2.25-2.25z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="min-w-0 flex-auto">
+                                        <h3 class="font-mono text-sm font-semibold text-slate-900 dark:text-white">
+                                            <a href="/docs/{{ slug }}" class="hover:text-sky-500">
+                                                <span class="absolute -inset-px rounded-xl"></span>
+                                                {{ name }}()
+                                            </a>
+                                        </h3>
+                                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ description | truncate:100 }}</p>
+                                    </div>
+                                </div>
                             </div>
                             {{ /common_funcs }}
                         </div>
                     {{ /if }}
                 {{ /collection:doc_functions }}
 
-                <!-- All Functions -->
-                <h2 id="all-functions">All Functions</h2>
+                <!-- Other Functions -->
+                {{ collection:doc_functions category:contains="{id}" is_common:isnt="true" sort="name:asc" as="other_funcs" }}
+                    {{ if other_funcs | count > 0 }}
+                        <h2 id="other-functions">Other Functions</h2>
 
-                <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
-                    <table class="min-w-full divide-y divide-slate-700 text-left">
-                        <thead class="bg-slate-800/60">
-                            <tr>
-                                <th scope="col" class="py-3 pl-4 pr-3 text-sm font-semibold text-slate-100">Function</th>
-                                <th scope="col" class="px-3 py-3 text-sm font-semibold text-slate-100">Description</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800">
-                            {{ collection:doc_functions category:contains="{id}" sort="name:asc" }}
-                            <tr class="hover:bg-slate-800/50 transition-colors">
-                                <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm align-top">
-                                    <a href="/docs/{{ slug }}" class="font-medium text-sky-400 hover:text-sky-300">{{ name }}</a>
-                                </td>
-                                <td class="px-3 py-3 text-sm text-slate-300">{{ description | truncate:80 }}</td>
-                            </tr>
-                            {{ /collection:doc_functions }}
-                        </tbody>
-                    </table>
-                </div>
+                        <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
+                            <table class="min-w-full divide-y divide-slate-700 text-left">
+                                <thead class="bg-slate-800/60">
+                                    <tr>
+                                        <th scope="col" class="py-3 pl-4 pr-3 text-sm font-semibold text-slate-100">Function</th>
+                                        <th scope="col" class="px-3 py-3 text-sm font-semibold text-slate-100">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-800">
+                                    {{ other_funcs }}
+                                    <tr class="hover:bg-slate-800/50 transition-colors">
+                                        <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm align-top">
+                                            <a href="/docs/{{ slug }}" class="font-mono font-medium text-sky-400 hover:text-sky-300">{{ name }}()</a>
+                                        </td>
+                                        <td class="px-3 py-3 text-sm text-slate-300">{{ description | truncate:100 }}</td>
+                                    </tr>
+                                    {{ /other_funcs }}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{ /if }}
+                {{ /collection:doc_functions }}
+
+                <!-- All Functions (when no common/other split) -->
+                {{ collection:doc_functions category:contains="{id}" is_common:is="true" as="has_common" }}
+                {{ /collection:doc_functions }}
+                {{ unless has_common | count > 0 }}
+                    <h2 id="all-functions">All Functions</h2>
+
+                    <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
+                        <table class="min-w-full divide-y divide-slate-700 text-left">
+                            <thead class="bg-slate-800/60">
+                                <tr>
+                                    <th scope="col" class="py-3 pl-4 pr-3 text-sm font-semibold text-slate-100">Function</th>
+                                    <th scope="col" class="px-3 py-3 text-sm font-semibold text-slate-100">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                {{ collection:doc_functions category:contains="{id}" sort="name:asc" }}
+                                <tr class="hover:bg-slate-800/50 transition-colors">
+                                    <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm align-top">
+                                        <a href="/docs/{{ slug }}" class="font-mono font-medium text-sky-400 hover:text-sky-300">{{ name }}()</a>
+                                    </td>
+                                    <td class="px-3 py-3 text-sm text-slate-300">{{ description | truncate:100 }}</td>
+                                </tr>
+                                {{ /collection:doc_functions }}
+                            </tbody>
+                        </table>
+                    </div>
+                {{ /unless }}
             </div>
         </article>
+    </div>
+
+    <!-- Right sidebar: On This Page -->
+    <div class="hidden xl:sticky xl:top-[4.75rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
+        <nav aria-labelledby="on-this-page-title" class="w-56">
+            <h2 id="on-this-page-title" class="font-display text-sm font-medium text-slate-900 dark:text-white">On this page</h2>
+            <ol role="list" class="mt-4 space-y-3 text-sm">
+                {{ collection:doc_functions category:contains="{id}" is_common:is="true" as="has_common" }}
+                {{ /collection:doc_functions }}
+                {{ if has_common | count > 0 }}
+                    <li><a href="#common" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Common Functions</a></li>
+                    <li><a href="#other-functions" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Other Functions</a></li>
+                {{ else }}
+                    <li><a href="#all-functions" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">All Functions</a></li>
+                {{ /if }}
+            </ol>
+        </nav>
     </div>
 </div>

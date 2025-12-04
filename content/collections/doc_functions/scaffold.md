@@ -1,5 +1,5 @@
 ---
-id: b8cd719d-e958-4f5d-8a44-ca75c1130ef1
+id: bfc81732-ea74-4407-9993-45bff7ebeacd
 blueprint: doc_function
 title: 'Initialize and load the project environment'
 name: scaffold
@@ -95,5 +95,5 @@ seealso:
     reference: config()
     link_type: function
     url: null
-category: a0f48be8-c23b-41cb-a0cd-3b8e8fdf454f
+category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
 ---

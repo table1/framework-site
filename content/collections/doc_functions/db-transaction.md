@@ -1,5 +1,5 @@
 ---
-id: 91661758-0590-44bb-a037-1c90c2043b34
+id: 58cf94c4-6b30-4f53-a1dd-705b74686f02
 blueprint: doc_function
 title: 'Execute code within a database transaction'
 name: db_transaction
@@ -55,5 +55,5 @@ examples:
       DBI::dbDisconnect(conn)
     is_dontrun: true
     position: 2
-category: 845368b7-eeb7-445c-8f23-536310005fa3
+category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
 ---

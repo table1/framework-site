@@ -1,0 +1,57 @@
+<div class="relative mx-auto flex w-full max-w-8xl flex-auto justify-center sm:px-2 lg:px-8 xl:px-12">
+    <!-- Left sidebar navigation -->
+    <div class="hidden lg:relative lg:block lg:flex-none">
+        <div class="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"></div>
+        <div class="absolute top-16 right-0 bottom-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"></div>
+        <div class="absolute top-28 right-0 bottom-0 hidden w-px bg-slate-800 dark:block"></div>
+        <div class="sticky top-[4.75rem] -ml-0.5 h-[calc(100vh-4.75rem)] w-64 overflow-x-hidden overflow-y-auto py-16 pr-8 pl-0.5 xl:w-72 xl:pr-16">
+            {{ partial:docs-nav }}
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="min-w-0 max-w-none flex-auto px-4 py-16 lg:pr-0 lg:pl-8 xl:px-16">
+        <article>
+            <header class="mb-9 space-y-1">
+                <p class="font-display text-sm font-medium text-sky-500">
+                    {{ if section == "getting_started" }}Getting Started{{ /if }}
+                    {{ if section == "core_concepts" }}Core Concepts{{ /if }}
+                    {{ if section == "project_types" }}Project Types{{ /if }}
+                </p>
+                <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">{{ title }}</h1>
+                {{ if description }}
+                    <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">{{ description }}</p>
+                {{ /if }}
+            </header>
+
+            <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 prose-code:before:content-none prose-code:after:content-none">
+                {{ content | markdown }}
+            </div>
+        </article>
+
+        <!-- Navigation -->
+        <dl class="mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800">
+            <!-- Previous/Next navigation could go here -->
+        </dl>
+    </div>
+
+    <!-- Right sidebar: On This Page -->
+    <div class="hidden xl:sticky xl:top-[4.75rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
+        <nav aria-labelledby="on-this-page-title" class="w-56">
+            <h2 id="on-this-page-title" class="font-display text-sm font-medium text-slate-900 dark:text-white">On this page</h2>
+            <ol role="list" class="mt-4 space-y-3 text-sm" x-data="{ headings: [] }" x-init="
+                headings = [...document.querySelectorAll('article h2, article h3')].map(el => ({
+                    id: el.id,
+                    text: el.textContent,
+                    level: el.tagName === 'H2' ? 2 : 3
+                }))
+            ">
+                <template x-for="heading in headings" :key="heading.id">
+                    <li :class="heading.level === 3 ? 'pl-4' : ''">
+                        <a :href="'#' + heading.id" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300" x-text="heading.text"></a>
+                    </li>
+                </template>
+            </ol>
+        </nav>
+    </div>
+</div>

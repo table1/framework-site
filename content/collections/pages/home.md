@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Framework - Structured Data Science in R
 id: home
 template: home
 blueprint: pages

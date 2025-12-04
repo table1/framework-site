@@ -1,5 +1,5 @@
 ---
-id: 129674ce-abc8-419b-bd66-3b613cbd77d6
+id: 06f3fd78-dd39-4c06-9207-29a8146bb5b3
 blueprint: doc_function
 title: 'Create an R Script from Stub Template'
 name: make_script
@@ -76,5 +76,5 @@ seealso:
     reference: make_notebook()
     link_type: function
     url: null
-category: 534f1815-79f5-4766-988d-9a7a51f651ad
+category: f0a674dc-20ed-41ea-b90d-269d63df7708
 ---

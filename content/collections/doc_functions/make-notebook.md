@@ -1,5 +1,5 @@
 ---
-id: 4d278f1b-7dd9-4c84-9db4-4a2a50825df2
+id: 68ef7492-10f7-4163-90f4-81b1b02938cb
 blueprint: doc_function
 title: 'Create a Notebook or Script from Stub Template'
 name: make_notebook
@@ -130,5 +130,5 @@ seealso:
     reference: make_presentation()
     link_type: function
     url: null
-category: 534f1815-79f5-4766-988d-9a7a51f651ad
+category: f0a674dc-20ed-41ea-b90d-269d63df7708
 ---

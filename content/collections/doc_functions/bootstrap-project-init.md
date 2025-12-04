@@ -1,5 +1,5 @@
 ---
-id: 12367c8f-dc90-4d33-b32a-3c0115f5edf8
+id: 77f5a548-a5fd-4f08-88c3-8d3409ad0948
 blueprint: doc_function
 title: 'Bootstrap project initialization file'
 name: bootstrap_project_init
@@ -29,5 +29,5 @@ examples:
       bootstrap_project_init("docs/init_reference.R")
     is_dontrun: true
     position: 2
-category: d66ecf3f-69b2-4898-b647-7e8e566a6513
+category: 870faeca-4baf-4ecd-bcb7-7d689f13151a
 ---

@@ -1,5 +1,5 @@
 ---
-id: cb416c70-fe07-4af0-a059-aa735a107690
+id: 1e4c53fa-b205-4e9c-b1e9-cf2cf352596e
 blueprint: doc_function
 title: 'Get a cached value'
 name: cache_get
@@ -29,5 +29,5 @@ parameters:
     name: expire_after
     description: 'Optional expiration time in hours (default: from config)'
     position: 3
-category: e40ea0a7-2b4c-4f88-a134-e43393ac193d
+category: 75da3bcf-a6ce-4f58-a0e2-f7eecc55ba2f
 ---

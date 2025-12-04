@@ -10,7 +10,7 @@
     </div>
 
     <!-- Main content -->
-    <div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+    <div class="min-w-0 max-w-none flex-auto px-4 py-16 lg:pr-0 lg:pl-8 xl:px-16">
         <article>
             <header class="mb-9 space-y-1">
                 {{ if category }}
@@ -24,14 +24,12 @@
                 {{ if title && title != name }}
                     <p class="text-lg text-slate-600 dark:text-slate-400">{{ title }}</p>
                 {{ /if }}
+                {{ if description }}
+                    <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">{{ description }}</p>
+                {{ /if }}
             </header>
 
             <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 prose-code:before:content-none prose-code:after:content-none">
-
-                <!-- Description -->
-                {{ if description }}
-                    <p class="lead">{{ description | markdown }}</p>
-                {{ /if }}
 
                 <!-- Usage -->
                 {{ if usage }}
@@ -154,5 +152,38 @@
         <dl class="mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800">
             <!-- Previous/Next would go here -->
         </dl>
+    </div>
+
+    <!-- Right sidebar: On This Page -->
+    <div class="hidden xl:sticky xl:top-[4.75rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.75rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
+        <nav aria-labelledby="on-this-page-title" class="w-56">
+            <h2 id="on-this-page-title" class="font-display text-sm font-medium text-slate-900 dark:text-white">On this page</h2>
+            <ol role="list" class="mt-4 space-y-3 text-sm">
+                {{ if usage }}
+                    <li><a href="#usage" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Usage</a></li>
+                {{ /if }}
+                {{ if parameters | count > 0 }}
+                    <li><a href="#arguments" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Arguments</a></li>
+                {{ /if }}
+                {{ if details }}
+                    <li><a href="#details" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Details</a></li>
+                {{ /if }}
+                {{ if value }}
+                    <li><a href="#value" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Value</a></li>
+                {{ /if }}
+                {{ sections }}
+                    <li><a href="#{{ section_title | slugify }}" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">{{ section_title }}</a></li>
+                {{ /sections }}
+                {{ if examples | count > 0 }}
+                    <li><a href="#examples" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Examples</a></li>
+                {{ /if }}
+                {{ if aliases | count > 0 }}
+                    <li><a href="#aliases" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Aliases</a></li>
+                {{ /if }}
+                {{ if seealso | count > 0 }}
+                    <li><a href="#see-also" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">See Also</a></li>
+                {{ /if }}
+            </ol>
+        </nav>
     </div>
 </div>

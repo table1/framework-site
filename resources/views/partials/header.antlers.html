@@ -1,64 +1,193 @@
-<!-- ALIGNMENT CHECK: Container uses mx-auto max-w-[1440px] px-8 -->
-<!-- LEFT EDGE: Logo aligns with hero headline -->
-<!-- RIGHT EDGE: GitHub icon aligns with hero code block -->
-<header class="sticky top-0 z-50 flex-none bg-white py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none dark:bg-transparent">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
-        <!-- Mobile menu button -->
-        <div class="flex lg:hidden">
-            <button type="button" class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" aria-label="Toggle navigation">
-                <svg viewBox="0 0 10 9" fill="none" stroke-linecap="round" class="w-2.5 stroke-slate-500 dark:stroke-slate-400">
-                    <path d="M.5 1h9M.5 8h9M.5 4.5h9"></path>
-                </svg>
-            </button>
-        </div>
-
-        <!-- Logo - LEFT EDGE ALIGNMENT POINT -->
+<header class="sticky top-0 z-50 flex-none bg-white py-4 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none dark:bg-slate-900/95 dark:backdrop-blur dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/80" x-data="{ featuresOpen: false, examplesOpen: false, mobileMenuOpen: false }">
+    <div class="mx-auto flex max-w-8xl items-center justify-between px-6 sm:px-8 lg:px-12">
+        <!-- Logo -->
         <div class="flex items-center">
-            <a href="/" aria-label="Home page" class="flex items-center gap-4">
-                <img src="/framework-logo.png" alt="Framework" class="h-8 w-8">
+            <a href="/" aria-label="Home page" class="flex items-center gap-3">
+                <img src="/favicon-96x96.png" alt="Framework" class="h-8 w-8">
                 <span class="text-xl font-bold text-slate-900 dark:text-white">Framework</span>
             </a>
         </div>
 
-        <!-- Search - no outer margins -->
-        <div class="hidden md:flex md:flex-1 md:justify-center md:px-8">
-            <button type="button" class="group flex w-80 items-center justify-start rounded-lg py-2.5 pr-3.5 pl-4 text-sm ring-1 ring-slate-200 hover:ring-slate-300 lg:w-96 dark:bg-slate-800/75 dark:ring-inset dark:ring-white/5 dark:hover:bg-slate-700/40 dark:hover:ring-slate-500">
-                <svg aria-hidden="true" viewBox="0 0 20 20" class="h-5 w-5 flex-none fill-slate-400 group-hover:fill-slate-400 dark:fill-slate-500">
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex lg:items-center lg:gap-1">
+            <!-- Features Dropdown -->
+            <div class="relative" @mouseenter="featuresOpen = true" @mouseleave="featuresOpen = false">
+                <button type="button" class="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+                    Features
+                    <svg class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div x-show="featuresOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute left-0 top-full z-50 mt-1 w-64 origin-top-left rounded-xl bg-white p-2 shadow-lg ring-1 ring-slate-900/5 dark:bg-slate-800 dark:ring-white/10" x-cloak>
+                    <a href="/docs/scaffold" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-sky-50 dark:bg-sky-900/30">
+                            <svg class="h-4 w-4 text-sky-600 dark:text-sky-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Project Scaffolding</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Structured project templates</p>
+                        </div>
+                    </a>
+                    <a href="/docs/data-read" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-900/30">
+                            <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Data Management</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Catalog, cache, and track data</p>
+                        </div>
+                    </a>
+                    <a href="/docs/cache" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-amber-50 dark:bg-amber-900/30">
+                            <svg class="h-4 w-4 text-amber-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Smart Caching</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Cache expensive computations</p>
+                        </div>
+                    </a>
+                    <a href="/docs/gui" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-violet-50 dark:bg-violet-900/30">
+                            <svg class="h-4 w-4 text-violet-600 dark:text-violet-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Visual GUI</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Manage projects visually</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Code Examples Dropdown -->
+            <div class="relative" @mouseenter="examplesOpen = true" @mouseleave="examplesOpen = false">
+                <button type="button" class="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+                    Code Examples
+                    <svg class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div x-show="examplesOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute left-0 top-full z-50 mt-1 w-72 origin-top-left rounded-xl bg-white p-2 shadow-lg ring-1 ring-slate-900/5 dark:bg-slate-800 dark:ring-white/10" x-cloak>
+                    <a href="/examples/getting-started" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-sky-50 dark:bg-sky-900/30">
+                            <svg class="h-4 w-4 text-sky-600 dark:text-sky-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Getting Started</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Your first Framework project</p>
+                        </div>
+                    </a>
+                    <a href="/examples/data-workflow" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-900/30">
+                            <svg class="h-4 w-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Data Workflow</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Loading, transforming, caching</p>
+                        </div>
+                    </a>
+                    <a href="/examples/database-queries" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-violet-50 dark:bg-violet-900/30">
+                            <svg class="h-4 w-4 text-violet-600 dark:text-violet-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Database Queries</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">SQLite and PostgreSQL examples</p>
+                        </div>
+                    </a>
+                    <a href="/examples/publishing" class="flex items-start gap-3 rounded-lg px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-rose-50 dark:bg-rose-900/30">
+                            <svg class="h-4 w-4 text-rose-600 dark:text-rose-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 dark:text-white">Publishing Results</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Sharing notebooks and data</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Docs Link -->
+            <a href="/docs" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+                Docs
+            </a>
+
+            <!-- Blog Link -->
+            <a href="/blog" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+                Blog
+            </a>
+        </nav>
+
+        <!-- Right side: Search, Theme, GitHub -->
+        <div class="flex items-center gap-2">
+            <!-- Search Button -->
+            <button type="button" @click="$store.app.openSearch()" class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm text-slate-500 hover:border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:bg-slate-700">
+                <svg aria-hidden="true" viewBox="0 0 20 20" class="h-4 w-4 fill-slate-400">
                     <path d="M16.293 17.707a1 1 0 0 0 1.414-1.414l-1.414 1.414ZM9 14a5 5 0 0 1-5-5H2a7 7 0 0 0 7 7v-2ZM4 9a5 5 0 0 1 5-5V2a7 7 0 0 0-7 7h2Zm5-5a5 5 0 0 1 5 5h2a7 7 0 0 0-7-7v2Zm8.707 12.293-3.757-3.757-1.414 1.414 3.757 3.757 1.414-1.414ZM14 9a4.98 4.98 0 0 1-1.464 3.536l1.414 1.414A6.98 6.98 0 0 0 16 9h-2Zm-1.464 3.536A4.98 4.98 0 0 1 9 14v2a6.98 6.98 0 0 0 4.95-2.05l-1.414-1.414Z"></path>
                 </svg>
-                <span class="ml-2 text-slate-500 dark:text-slate-400">Search docs</span>
-                <kbd class="ml-auto hidden font-medium text-slate-400 md:block dark:text-slate-500">
-                    <kbd class="font-sans">&#8984;</kbd><kbd class="font-sans">K</kbd>
-                </kbd>
+                <span class="hidden sm:inline">Search</span>
+                <kbd class="hidden rounded border border-slate-300 bg-white px-1.5 font-mono text-xs text-slate-400 sm:inline dark:border-slate-600 dark:bg-slate-700">⌘K</kbd>
             </button>
-        </div>
 
-        <!-- Right icons - RIGHT EDGE ALIGNMENT POINT -->
-        <div class="flex items-center gap-6 sm:gap-8">
-            <!-- Mobile search -->
-            <button type="button" class="flex h-6 w-6 items-center justify-center md:hidden" aria-label="Search">
-                <svg aria-hidden="true" viewBox="0 0 20 20" class="h-5 w-5 fill-slate-400">
-                    <path d="M16.293 17.707a1 1 0 0 0 1.414-1.414l-1.414 1.414ZM9 14a5 5 0 0 1-5-5H2a7 7 0 0 0 7 7v-2ZM4 9a5 5 0 0 1 5-5V2a7 7 0 0 0-7 7h2Zm5-5a5 5 0 0 1 5 5h2a7 7 0 0 0-7-7v2Zm8.707 12.293-3.757-3.757-1.414 1.414 3.757 3.757 1.414-1.414ZM14 9a4.98 4.98 0 0 1-1.464 3.536l1.414 1.414A6.98 6.98 0 0 0 16 9h-2Zm-1.464 3.536A4.98 4.98 0 0 1 9 14v2a6.98 6.98 0 0 0 4.95-2.05l-1.414-1.414Z"></path>
+            <!-- Theme Toggle -->
+            <button type="button" @click="$store.app.toggleDarkMode()" class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-300" aria-label="Toggle dark mode">
+                <!-- Sun icon (shown in dark mode) -->
+                <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 hidden dark:block">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+                </svg>
+                <!-- Moon icon (shown in light mode) -->
+                <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 dark:hidden">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                 </svg>
             </button>
 
-            <!-- Theme selector -->
-            <button type="button" class="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5" aria-label="Toggle dark mode">
-                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" class="h-5 w-5 hidden dark:block">
-                    <path d="M12.5 10a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" stroke="currentColor" stroke-width="1.5" class="stroke-white"></path>
-                    <path d="M10 5.5v-1M13.182 6.818l.707-.707M14.5 10h1M13.182 13.182l.707.707M10 15.5v-1M6.11 13.889l.708-.707M4.5 10h1M6.11 6.111l.708.707" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="stroke-white"></path>
-                </svg>
-                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" class="h-5 w-5 dark:hidden">
-                    <path d="M15.224 11.724a5.5 5.5 0 0 1-6.949-6.949 5.5 5.5 0 1 0 6.949 6.949Z" fill="currentColor" class="fill-slate-400"></path>
-                </svg>
-            </button>
-
-            <!-- GitHub link -->
-            <a href="https://github.com/table1/framework" class="group" aria-label="GitHub" target="_blank" rel="noopener">
-                <svg aria-hidden="true" viewBox="0 0 16 16" class="h-6 w-6 fill-slate-700 group-hover:fill-slate-900 dark:fill-slate-400 dark:group-hover:fill-slate-300">
+            <!-- GitHub -->
+            <a href="https://github.com/table1/framework" class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-300" aria-label="GitHub" target="_blank" rel="noopener">
+                <svg aria-hidden="true" viewBox="0 0 16 16" class="h-5 w-5 fill-current">
                     <path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"></path>
                 </svg>
             </a>
+
+            <!-- Mobile menu button -->
+            <button type="button" @click="mobileMenuOpen = !mobileMenuOpen" class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 lg:hidden dark:text-slate-400 dark:hover:bg-slate-800" aria-label="Toggle navigation">
+                <svg x-show="!mobileMenuOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg x-show="mobileMenuOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" x-cloak>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1" class="lg:hidden" x-cloak>
+        <div class="mx-6 mt-4 space-y-1 border-t border-slate-200 pt-4 dark:border-slate-700">
+            <a href="/docs" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Docs</a>
+            <a href="/docs/scaffold" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Project Scaffolding</a>
+            <a href="/docs/data-read" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Data Management</a>
+            <a href="/docs/cache" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Smart Caching</a>
+            <a href="/docs/gui" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Visual GUI</a>
+            <div class="my-2 border-t border-slate-200 dark:border-slate-700"></div>
+            <a href="/examples/getting-started" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Getting Started Example</a>
+            <a href="/examples/data-workflow" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Data Workflow Example</a>
+            <div class="my-2 border-t border-slate-200 dark:border-slate-700"></div>
+            <a href="/blog" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Blog</a>
         </div>
     </div>
 </header>

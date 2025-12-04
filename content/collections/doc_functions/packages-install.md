@@ -1,5 +1,5 @@
 ---
-id: e744c0d3-8498-4134-981b-57ee89096c47
+id: fa87dda3-70e1-4321-92f4-6bfe787c7efe
 blueprint: doc_function
 title: 'Install packages from configuration'
 name: packages_install
@@ -21,5 +21,5 @@ examples:
       packages_install()
     is_dontrun: true
     position: 2
-category: 171a0b3f-4d9a-429d-b38a-59c8882aee66
+category: 80765b72-8ebf-4c19-9760-5876e5973c1e
 ---

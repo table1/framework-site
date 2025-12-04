@@ -1,5 +1,5 @@
 ---
-id: be40b72d-c766-4c39-b3eb-36256a16824e
+id: bff9b9c3-4bcf-4856-9724-41bcdd6d8708
 blueprint: doc_function
 title: 'Update packages from configuration'
 name: packages_update
@@ -29,5 +29,5 @@ examples:
       packages_update(c("dplyr", "ggplot2"))
     is_dontrun: true
     position: 2
-category: 171a0b3f-4d9a-429d-b38a-59c8882aee66
+category: 80765b72-8ebf-4c19-9760-5876e5973c1e
 ---

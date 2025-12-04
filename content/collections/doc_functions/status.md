@@ -1,5 +1,5 @@
 ---
-id: eadf6f34-6715-4a95-b320-4fe224bd036e
+id: 0b75d187-0bd9-44e5-b34a-00d9d5103058
 blueprint: doc_function
 title: 'Show Framework project status'
 name: status
@@ -23,5 +23,5 @@ examples:
     code: status()
     is_dontrun: true
     position: 2
-category: d66ecf3f-69b2-4898-b647-7e8e566a6513
+category: 870faeca-4baf-4ecd-bcb7-7d689f13151a
 ---

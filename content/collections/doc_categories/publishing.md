@@ -1,5 +1,5 @@
 ---
-id: aaca8600-a1f4-4f91-b81d-3d5af48a9c07
+id: 32e516d1-a634-4a8e-a43a-b2ff07b0dfa3
 blueprint: doc_category
 title: Publishing
 name: Publishing

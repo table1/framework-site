@@ -1,5 +1,5 @@
 ---
-id: 8003129b-1a0d-437a-8757-c4f0352af19e
+id: ffec5afc-cba4-46ed-85fa-4d50b78c1b57
 blueprint: doc_function
 title: 'List Git Hook Status'
 name: git_hooks_list
@@ -19,5 +19,5 @@ parameters:
     name: config_file
     description: 'Path to configuration file (default: auto-discover settings.yml or settings.yml)'
     position: 1
-category: afbdb383-dead-4998-b2ee-f6e3f0c63115
+category: d7e03087-dcc9-4f26-86aa-5e7491e5e0df
 ---

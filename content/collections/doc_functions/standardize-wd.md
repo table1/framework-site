@@ -1,5 +1,5 @@
 ---
-id: 018efd7e-dbec-4a80-8207-e9e2ea318226
+id: a0435938-3770-4aa4-a161-1156be623bc3
 blueprint: doc_function
 title: 'Standardize Working Directory for Framework Projects'
 name: standardize_wd
@@ -38,5 +38,5 @@ examples:
       scaffold()
     is_dontrun: true
     position: 2
-category: a0f48be8-c23b-41cb-a0cd-3b8e8fdf454f
+category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
 ---

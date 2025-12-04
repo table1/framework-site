@@ -1,5 +1,5 @@
 ---
-id: 6a6a8b7c-495a-43ec-a831-738a2a9f3a8d
+id: 4d1dae2f-b97b-4043-bf8b-720742ead9e6
 blueprint: doc_function
 title: 'Remove a cached value'
 name: cache_forget
@@ -21,5 +21,5 @@ parameters:
     name: file
     description: 'Optional file path of the cache (default: `cache/{name}.rds`)'
     position: 2
-category: e40ea0a7-2b4c-4f88-a134-e43393ac193d
+category: 75da3bcf-a6ce-4f58-a0e2-f7eecc55ba2f
 ---

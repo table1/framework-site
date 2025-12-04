@@ -64,6 +64,80 @@ pre code {
   @apply text-sm leading-relaxed;
 }
 
+/* highlight.js custom theme - matches landing page style */
+.prose pre {
+  background-color: #0f172a !important; /* slate-900 */
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.prose pre code,
+.prose pre code.hljs {
+  @apply text-slate-300 text-sm leading-relaxed;
+  background: transparent !important;
+  padding: 0;
+}
+
+/* Remove all backgrounds from highlighted spans */
+.prose pre code span,
+.hljs span {
+  background: transparent !important;
+}
+
+/* highlight.js token colors matching landing page */
+.hljs-comment {
+  color: #64748b; /* slate-500 */
+}
+
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal {
+  color: #7dd3fc; /* sky-300 */
+}
+
+.hljs-title,
+.hljs-title.function_,
+.hljs-function .hljs-title {
+  color: #c4b5fd; /* violet-300 */
+}
+
+.hljs-string {
+  color: #6ee7b7; /* emerald-300 */
+}
+
+.hljs-number,
+.hljs-params,
+.hljs-variable,
+.hljs-template-variable {
+  color: #fcd34d; /* amber-300 */
+}
+
+.hljs-attr,
+.hljs-attribute {
+  color: #7dd3fc; /* sky-300 */
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #6ee7b7; /* emerald-300 */
+}
+
+.hljs-meta,
+.hljs-selector-tag {
+  color: #7dd3fc; /* sky-300 */
+}
+
+/* Code element styling in prose */
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  @apply rounded bg-slate-800 px-1.5 py-0.5 text-sm text-sky-300 font-normal;
+}
+
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before,
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::after {
+  content: none;
+}
+
 /* Font display class */
 .font-display {
   font-family: Inter, system-ui, sans-serif;

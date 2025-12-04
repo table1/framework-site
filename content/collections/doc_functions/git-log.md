@@ -1,5 +1,5 @@
 ---
-id: 35ee3eb4-d834-4d55-80c7-06fbef092e12
+id: 71602522-3cde-4d48-98fc-84419d74c049
 blueprint: doc_function
 title: 'Show Commit Log'
 name: git_log
@@ -33,5 +33,5 @@ examples:
       git_log(oneline = FALSE)  # Full format
     is_dontrun: true
     position: 2
-category: afbdb383-dead-4998-b2ee-f6e3f0c63115
+category: d7e03087-dcc9-4f26-86aa-5e7491e5e0df
 ---

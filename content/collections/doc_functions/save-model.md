@@ -1,5 +1,5 @@
 ---
-id: 923f43dd-83d8-4a13-a2de-828b25163ba0
+id: ec1cd5ea-f3e1-4592-aadc-4d1a0b8903a2
 blueprint: doc_function
 title: 'Save a model to the outputs directory'
 name: save_model
@@ -55,5 +55,5 @@ examples:
       save_model(model, "mpg_regression", format = "qs")
     is_dontrun: true
     position: 2
-category: 2a2d9843-1bf8-4510-927c-9ab627e08514
+category: 77f23995-6378-4031-9ac1-df3d881b5697
 ---

@@ -65,6 +65,67 @@ data <span class="text-sky-300">|&gt;</span> <span class="text-violet-300">glimp
     </div>
 </div>
 
+<!-- Quick Start & Resources -->
+<div class="border-t border-slate-200 bg-slate-50 py-16 dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <!-- Quick Start -->
+            <div>
+                <h2 class="font-display text-2xl tracking-tight text-slate-900 dark:text-white">Quick start</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Getting started is easy.</p>
+                <div class="group relative mt-6 rounded-2xl bg-slate-900 p-4 shadow-lg" x-data="{ copied: false, copyCode() { const text = this.$refs.quickstartCode.textContent; const textarea = document.createElement('textarea'); textarea.value = text; textarea.style.position = 'fixed'; textarea.style.opacity = '0'; document.body.appendChild(textarea); textarea.select(); document.execCommand('copy'); document.body.removeChild(textarea); this.copied = true; setTimeout(() => this.copied = false, 2000); } }">
+                    <button
+                        @click="copyCode()"
+                        class="absolute top-3 right-3 flex items-center gap-1.5 rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-400 opacity-0 transition hover:bg-slate-700 hover:text-slate-300 group-hover:opacity-100"
+                        :class="{ 'text-emerald-400 hover:text-emerald-400': copied }"
+                    >
+                        <svg x-show="!copied" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                        </svg>
+                        <svg x-show="copied" x-cloak class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                        <span x-text="copied ? 'Copied!' : 'Copy'"></span>
+                    </button>
+                    <pre class="overflow-x-auto text-sm"><code x-ref="quickstartCode" class="text-slate-300">remotes::<span class="text-violet-300">install_github</span>(<span class="text-emerald-300">"table1/framework"</span>)
+framework::<span class="text-violet-300">setup</span>()        <span class="text-slate-500"># Configure via GUI</span>
+framework::<span class="text-violet-300">new_project</span>()  <span class="text-slate-500"># Create and start working</span></code></pre>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <h2 class="font-display text-2xl tracking-tight text-slate-900 dark:text-white">Resources</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Everything you need to get started.</p>
+                <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <a href="/docs" class="group relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-sky-500">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500/10">
+                            <svg class="h-5 w-5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-slate-900 dark:text-white">Documentation</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Full API reference</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/table1/framework" target="_blank" rel="noopener" class="group relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-sky-500">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-500/10">
+                            <svg class="h-5 w-5 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-slate-900 dark:text-white">GitHub</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Source & issues</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Features Bento Grid -->
 <div class="bg-white py-16 dark:bg-slate-900">
     <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
@@ -143,7 +204,7 @@ model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">glm<
     activeTab: 'scaffold',
     init() {
         const hash = window.location.hash.slice(1);
-        const validTabs = ['scaffold', 'types', 'catalog', 'integrity', 'packages', 'database', 'renv', 'publish', 'notebooks'];
+        const validTabs = ['scaffold', 'types', 'catalog', 'integrity', 'notebooks', 'packages', 'database', 'renv', 'publish', 'caching', 'ai', 'security'];
         if (hash && validTabs.includes(hash)) {
             this.activeTab = hash;
         }
@@ -178,6 +239,10 @@ model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">glm<
                             <svg :class="activeTab === 'integrity' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" /></svg>
                             <span class="whitespace-nowrap">Data Integrity</span>
                         </button>
+                        <button @click="activeTab = 'notebooks'" :class="activeTab === 'notebooks' ? 'border-sky-500 bg-white text-slate-900 dark:bg-slate-800 dark:text-white' : 'border-transparent text-slate-600 hover:bg-white/50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'" class="flex items-center gap-3 border-b-2 px-5 py-4 text-left text-sm font-medium transition lg:border-b lg:border-b-slate-200 lg:border-l-2 dark:lg:border-b-slate-700">
+                            <svg :class="activeTab === 'notebooks' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9Z" /></svg>
+                            <span class="whitespace-nowrap">Notebooks</span>
+                        </button>
                         <button @click="activeTab = 'packages'" :class="activeTab === 'packages' ? 'border-sky-500 bg-white text-slate-900 dark:bg-slate-800 dark:text-white' : 'border-transparent text-slate-600 hover:bg-white/50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'" class="flex items-center gap-3 border-b-2 px-5 py-4 text-left text-sm font-medium transition lg:border-b lg:border-b-slate-200 lg:border-l-2 dark:lg:border-b-slate-700">
                             <svg :class="activeTab === 'packages' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
                             <span class="whitespace-nowrap">Packages</span>
@@ -194,9 +259,17 @@ model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">glm<
                             <svg :class="activeTab === 'publish' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75Z" /></svg>
                             <span class="whitespace-nowrap">Publishing</span>
                         </button>
-                        <button @click="activeTab = 'notebooks'" :class="activeTab === 'notebooks' ? 'border-sky-500 bg-white text-slate-900 dark:bg-slate-800 dark:text-white' : 'border-transparent text-slate-600 hover:bg-white/50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'" class="flex items-center gap-3 border-b-2 px-5 py-4 text-left text-sm font-medium transition lg:border-b lg:border-b-slate-200 lg:border-l-2 dark:lg:border-b-slate-700">
-                            <svg :class="activeTab === 'notebooks' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9Z" /></svg>
-                            <span class="whitespace-nowrap">Notebooks</span>
+                        <button @click="activeTab = 'caching'" :class="activeTab === 'caching' ? 'border-sky-500 bg-white text-slate-900 dark:bg-slate-800 dark:text-white' : 'border-transparent text-slate-600 hover:bg-white/50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'" class="flex items-center gap-3 border-b-2 px-5 py-4 text-left text-sm font-medium transition lg:border-b lg:border-b-slate-200 lg:border-l-2 dark:lg:border-b-slate-700">
+                            <svg :class="activeTab === 'caching' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>
+                            <span class="whitespace-nowrap">Caching</span>
+                        </button>
+                        <button @click="activeTab = 'ai'" :class="activeTab === 'ai' ? 'border-sky-500 bg-white text-slate-900 dark:bg-slate-800 dark:text-white' : 'border-transparent text-slate-600 hover:bg-white/50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'" class="flex items-center gap-3 border-b-2 px-5 py-4 text-left text-sm font-medium transition lg:border-b lg:border-b-slate-200 lg:border-l-2 dark:lg:border-b-slate-700">
+                            <svg :class="activeTab === 'ai' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" /></svg>
+                            <span class="whitespace-nowrap">AI Agents</span>
+                        </button>
+                        <button @click="activeTab = 'security'" :class="activeTab === 'security' ? 'border-sky-500 bg-white text-slate-900 dark:bg-slate-800 dark:text-white' : 'border-transparent text-slate-600 hover:bg-white/50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'" class="flex items-center gap-3 border-b-2 px-5 py-4 text-left text-sm font-medium transition lg:border-b lg:border-b-slate-200 lg:border-l-2 dark:lg:border-b-slate-700">
+                            <svg :class="activeTab === 'security' ? 'text-sky-500' : 'text-slate-400 dark:text-slate-500'" class="h-5 w-5 shrink-0 transition" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" /></svg>
+                            <span class="whitespace-nowrap">Security</span>
                         </button>
                     </nav>
                 </div>
@@ -207,7 +280,7 @@ model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">glm<
                         <!-- Project Setup -->
                         <div x-show="activeTab === 'scaffold'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
                             <p class="mb-4 text-slate-600 dark:text-slate-400">We've all been there. One package becomes four, a simple utility library outgrows itself, and suddenly every notebook starts with 30 lines of boilerplate.</p>
-                            <p class="mb-6 text-slate-600 dark:text-slate-400">Framework gives you conventions and helpers to keep your project organized and follow best practices without working too hard. Define packages in settings/packages.yml, split functions across files, and track data integrity.</p>
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">Framework gives you conventions and helpers to keep your project organized and follow best practices without working too hard. Define packages in settings.yml, split functions across files, and track data integrity.</p>
                             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div>
                                     <div class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Before</div>
@@ -235,12 +308,12 @@ hash <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">diges
                                 <div>
                                     <div class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">With Framework</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Load packages from settings/packages.yml</span>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Load packages from settings.yml</span>
 <span class="text-slate-500"># Automatically source files in functions/</span>
 <span class="text-sky-300">library</span>(framework)
 <span class="text-violet-300">scaffold</span>()
 
-<span class="text-slate-500"># Data catalog stored in settings/data.yml</span>
+<span class="text-slate-500"># Data catalog stored in settings.yml</span>
 <span class="text-slate-500"># Get warned or abort if data changes</span>
 df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.survey"</span>)</code></pre>
                                     </div>
@@ -268,7 +341,8 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
 ├── inputs/
 │   ├── raw/
 │   ├── intermediate/
-│   └── final/
+│   ├── final/
+│   └── reference/
 ├── notebooks/
 ├── scripts/
 ├── functions/
@@ -277,7 +351,8 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
 ├── inputs/
 │   ├── raw/
 │   ├── intermediate/
-│   └── final/
+│   ├── final/
+│   └── reference/
 ├── outputs/
 │   ├── tables/
 │   ├── figures/
@@ -308,11 +383,13 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
 │   ├── private/
 │   │   ├── raw/
 │   │   ├── intermediate/
-│   │   └── final/
+│   │   ├── final/
+│   │   └── reference/
 │   └── public/
 │       ├── raw/
 │       ├── intermediate/
-│       └── final/
+│       ├── final/
+│       └── reference/
 ├── notebooks/
 ├── scripts/
 ├── functions/
@@ -322,11 +399,13 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
 │   ├── private/
 │   │   ├── raw/
 │   │   ├── intermediate/
-│   │   └── final/
+│   │   ├── final/
+│   │   └── reference/
 │   └── public/
 │       ├── raw/
 │       ├── intermediate/
-│       └── final/
+│       ├── final/
+│       └── reference/
 ├── outputs/
 │   ├── private/
 │   │   ├── tables/
@@ -406,22 +485,23 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
 
                         <!-- Data Catalog -->
                         <div x-show="activeTab === 'catalog'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" style="display: none;">
-                            <p class="mb-6 text-slate-600 dark:text-slate-400">Define your data sources once in settings/data.yml. Framework tracks file paths and metadata. No more guessing which file is current or where it lives.</p>
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">Define your data sources once in settings.yml. Framework tracks file paths and metadata. No more guessing which file is current or where it lives.</p>
                             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div>
-                                    <div class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">settings/data.yml</div>
+                                    <div class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml (data section)</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Use nested YAML:</span>
-<span class="text-sky-300">inputs</span>:
-  <span class="text-sky-300">raw</span>:
-    <span class="text-sky-300">survey</span>:
-      <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/survey.csv</span>
-      <span class="text-violet-300">description</span>: <span class="text-emerald-300">Patient responses</span>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">data</span>:
+  <span class="text-slate-500"># Use nested YAML:</span>
+  <span class="text-sky-300">inputs</span>:
+    <span class="text-sky-300">raw</span>:
+      <span class="text-sky-300">survey</span>:
+        <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/survey.csv</span>
+        <span class="text-violet-300">description</span>: <span class="text-emerald-300">Patient responses</span>
 
-<span class="text-slate-500"># Or use dot notation:</span>
-<span class="text-sky-300">inputs.raw.demographics</span>:
-  <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/demographics.rds</span>
-  <span class="text-violet-300">locked</span>: <span class="text-emerald-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
+  <span class="text-slate-500"># Or use dot notation:</span>
+  <span class="text-sky-300">inputs.raw.demographics</span>:
+    <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/demographics.rds</span>
+    <span class="text-violet-300">locked</span>: <span class="text-emerald-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
@@ -446,11 +526,12 @@ survey <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">dat
                             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div class="space-y-4">
                                     <div>
-                                        <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings/data.yml</div>
+                                        <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml (data section)</div>
                                         <div class="rounded-lg bg-slate-900 p-4">
-                                            <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">inputs.raw.demographics</span>:
-  <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/demographics.rds</span>
-  <span class="text-violet-300">locked</span>: <span class="text-emerald-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
+                                            <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">data</span>:
+  <span class="text-sky-300">inputs.raw.demographics</span>:
+    <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/demographics.rds</span>
+    <span class="text-violet-300">locked</span>: <span class="text-emerald-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
                                         </div>
                                     </div>
                                     <div>
@@ -580,11 +661,11 @@ DBI::<span class="text-violet-300">dbDisconnect</span>(con)</code></pre>
 
                         <!-- Easy Renv -->
                         <div x-show="activeTab === 'renv'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" style="display: none;">
-                            <p class="mb-6 text-slate-600 dark:text-slate-400">Enable renv with one command. Pin versions in settings.yml. Framework handles initialization, syncing, and silences the nagging warnings.</p>
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">No more renv headaches. Enable with one command, pin versions in settings/packages.yml, and Framework handles the rest. It suppresses the constant nag messages, manages init/snapshot/restore, and keeps your lockfile in sync.</p>
 
                             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div>
-                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml</div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings/packages.yml</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">packages</span>:
   <span class="text-slate-300">-</span> <span class="text-violet-300">name</span>: <span class="text-emerald-300">dplyr</span>
@@ -611,79 +692,230 @@ DBI::<span class="text-violet-300">dbDisconnect</span>(con)</code></pre>
 <span class="text-violet-300">scaffold</span>()
 
 <span class="text-slate-500"># Lock current state</span>
-<span class="text-violet-300">renv_snapshot</span>()
+<span class="text-violet-300">packages_snapshot</span>()
 
 <span class="text-slate-500"># Restore on another machine</span>
-<span class="text-violet-300">renv_restore</span>()</code></pre>
+<span class="text-violet-300">packages_restore</span>()</code></pre>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/50">
-                                <p class="text-sm text-slate-600 dark:text-slate-400"><span class="font-medium text-slate-900 dark:text-white">No more renv headaches.</span> Framework suppresses the constant nag messages, handles the init/snapshot/restore dance, and keeps your lockfile in sync with settings.yml.</p>
                             </div>
                         </div>
 
                         <!-- S3 Publishing -->
                         <div x-show="activeTab === 'publish'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" style="display: none;">
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">Framework integrates seamlessly with S3 and S3-compatible object storage for sharing notebooks. Configure credentials globally once, then easily add them to each project. Share your work with peers in one command.</p>
+
                             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div>
-                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Before</div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings/connections.yml</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Render notebook</span>
-quarto::<span class="text-violet-300">quarto_render</span>(<span class="text-emerald-300">"analysis.qmd"</span>)
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">s3</span>:
+  <span class="text-sky-300">public_docs</span>:
+    <span class="text-violet-300">driver</span>: <span class="text-emerald-300">s3</span>
+    <span class="text-violet-300">bucket</span>: <span class="text-emerald-300">env("S3_BUCKET")</span>
+    <span class="text-violet-300">region</span>: <span class="text-emerald-300">env("S3_REGION")</span>
+    <span class="text-violet-300">prefix</span>: <span class="text-emerald-300">notebooks/</span>
 
-<span class="text-slate-500"># Upload to S3 manually</span>
-aws.s3::<span class="text-violet-300">put_object</span>(
-  file <span class="text-sky-300">=</span> <span class="text-emerald-300">"analysis.html"</span>,
-  bucket <span class="text-sky-300">=</span> <span class="text-emerald-300">"my-bucket"</span>,
-  <span class="text-slate-500"># ... more config ...</span>
+<span class="text-sky-300">options</span>:
+  <span class="text-violet-300">default_s3_connection</span>: <span class="text-emerald-300">public_docs</span></code></pre>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
+                                    <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Render and publish in one step</span>
+<span class="text-violet-300">publish_notebook</span>(<span class="text-emerald-300">"analysis.qmd"</span>)
+
+<span class="text-slate-500"># Or publish to a specific connection</span>
+<span class="text-violet-300">publish_notebook</span>(
+  <span class="text-emerald-300">"analysis.qmd"</span>,
+  connection <span class="text-sky-300">=</span> <span class="text-emerald-300">"public_docs"</span>
 )</code></pre>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-sky-600 dark:text-sky-400">With Framework</div>
-                                    <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># One command does it all</span>
-<span class="text-violet-300">publish_notebook</span>(
-  <span class="text-emerald-300">"analysis.qmd"</span>,
-  connection <span class="text-sky-300">=</span> <span class="text-emerald-300">"s3"</span>
-)
+                            </div>
 
-<span class="text-slate-500"># Renders and uploads</span>
-<span class="text-slate-500"># AWS, R2, MinIO supported</span></code></pre>
-                                    </div>
-                                </div>
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">AWS S3</span>
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">Cloudflare R2</span>
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">MinIO</span>
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">DigitalOcean Spaces</span>
                             </div>
                         </div>
 
                         <!-- Notebooks -->
                         <div x-show="activeTab === 'notebooks'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" style="display: none;">
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">Configure Quarto rendering once in settings. No more fiddling with code folding, embed_resources, or output paths. Templates can be customized globally so <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs dark:bg-slate-800">make_notebook()</code> spins up your preferred boilerplate instantly.</p>
+
                             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div>
-                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Before</div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml (quarto section)</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Create new file manually</span>
-<span class="text-slate-500"># Copy/paste YAML header</span>
-<span class="text-slate-500"># Add setup chunk</span>
-<span class="text-slate-500"># Remember scaffold() call</span>
-<span class="text-slate-500"># Hope the path is right...</span>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">quarto</span>:
+  <span class="text-sky-300">html</span>:
+    <span class="text-violet-300">embed_resources</span>: <span class="text-amber-300">true</span>
+    <span class="text-violet-300">toc</span>: <span class="text-amber-300">true</span>
+    <span class="text-violet-300">code_fold</span>: <span class="text-amber-300">true</span>
+    <span class="text-violet-300">theme</span>: <span class="text-emerald-300">cosmo</span>
 
-<span class="text-slate-500"># 5 minutes later...</span>
-<span class="text-slate-500"># finally ready to code</span></code></pre>
+<span class="text-sky-300">render_dirs</span>:
+  <span class="text-violet-300">notebooks</span>: <span class="text-emerald-300">outputs/notebooks</span>
+  <span class="text-violet-300">docs</span>: <span class="text-emerald-300">outputs/docs</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-sky-600 dark:text-sky-400">With Framework</div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-violet-300">make_notebook</span>(<span class="text-emerald-300">"analysis"</span>)
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Create from your template</span>
+<span class="text-violet-300">make_notebook</span>(<span class="text-emerald-300">"analysis"</span>)
+<span class="text-slate-500"># → notebooks/analysis.qmd</span>
 
-<span class="text-slate-500"># Creates notebooks/analysis.qmd</span>
-<span class="text-slate-500"># With YAML header</span>
-<span class="text-slate-500"># Setup chunk included</span>
-<span class="text-slate-500"># Ready to code immediately</span></code></pre>
+<span class="text-slate-500"># Create a script</span>
+<span class="text-violet-300">make_script</span>(<span class="text-emerald-300">"etl"</span>)
+<span class="text-slate-500"># → scripts/etl.R</span>
+
+<span class="text-slate-500"># Renders go to predictable places</span>
+<span class="text-slate-500"># → outputs/notebooks/analysis.html</span></code></pre>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/50">
+                                <p class="text-sm text-slate-600 dark:text-slate-400"><span class="font-medium text-slate-900 dark:text-white">Custom templates.</span> Run <code class="rounded bg-slate-200 px-1 py-0.5 text-xs dark:bg-slate-700">stubs_publish()</code> to copy stubs to your project's <code class="rounded bg-slate-200 px-1 py-0.5 text-xs dark:bg-slate-700">stubs/</code> directory, then edit them. <code class="rounded bg-slate-200 px-1 py-0.5 text-xs dark:bg-slate-700">make_notebook()</code> and <code class="rounded bg-slate-200 px-1 py-0.5 text-xs dark:bg-slate-700">make_script()</code> use your custom stubs automatically.</p>
+                            </div>
+                        </div>
+
+                        <!-- Caching -->
+                        <div x-show="activeTab === 'caching'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" style="display: none;">
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">Stop re-running expensive computations. Framework's caching system stores results with automatic expiration and hash verification. Cache anything from API responses to model outputs, and let Framework handle invalidation.</p>
+
+                            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                <div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Cache expensive operations</div>
+                                    <div class="rounded-lg bg-slate-900 p-4">
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Fetch from cache or compute</span>
+result <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">cache_remember</span>(<span class="text-emerald-300">"api_response"</span>, {
+  <span class="text-violet-300">httr2::request</span>(url) <span class="text-sky-300">|&gt;</span>
+    <span class="text-violet-300">req_perform</span>() <span class="text-sky-300">|&gt;</span>
+    <span class="text-violet-300">resp_body_json</span>()
+}, expire <span class="text-sky-300">=</span> <span class="text-emerald-300">"1 hour"</span>)
+
+<span class="text-slate-500"># Cache model training results</span>
+model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">cache_remember</span>(<span class="text-emerald-300">"trained_model"</span>, {
+  <span class="text-violet-300">train_model</span>(data)
+}, expire <span class="text-sky-300">=</span> <span class="text-emerald-300">"7 days"</span>)</code></pre>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Cache management</div>
+                                    <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># List all caches with expiry times</span>
+<span class="text-violet-300">cache_list</span>()
+
+<span class="text-slate-500"># Read from cache (NULL if missing)</span>
+<span class="text-violet-300">cache_get</span>(<span class="text-emerald-300">"api_response"</span>)
+
+<span class="text-slate-500"># Write directly to cache</span>
+<span class="text-violet-300">cache</span>(<span class="text-emerald-300">"my_data"</span>, processed_df)
+
+<span class="text-slate-500"># Clear specific cache</span>
+<span class="text-violet-300">cache_forget</span>(<span class="text-emerald-300">"stale_data"</span>)
+
+<span class="text-slate-500"># Clear all caches</span>
+<span class="text-violet-300">cache_flush</span>()</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">Automatic expiration</span>
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">Hash verification</span>
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">Tracked in framework.db</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Agents -->
+                        <div x-show="activeTab === 'ai'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" style="display: none;">
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">AI coding assistants work best with context. Framework sets up context files to guide LLMs about your project structure, conventions, and data locations. Pick your canonical file, and git hooks copy it to the others on commit.</p>
+
+                            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                <div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml</div>
+                                    <div class="rounded-lg bg-slate-900 p-4">
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">ai</span>:
+  <span class="text-slate-500"># Edit this one, others sync on commit</span>
+  <span class="text-violet-300">canonical_file</span>: <span class="text-emerald-300">CLAUDE.md</span>
+
+<span class="text-sky-300">git</span>:
+  <span class="text-sky-300">hooks</span>:
+    <span class="text-violet-300">ai_sync</span>: <span class="text-amber-300">true</span></code></pre>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Git hooks for sync</div>
+                                    <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Install git hooks</span>
+<span class="text-violet-300">git_hooks_install</span>()
+
+<span class="text-slate-500"># On commit:</span>
+<span class="text-slate-500"># 1. Reads CLAUDE.md (canonical)</span>
+<span class="text-slate-500"># 2. Copies to AGENTS.md, COPILOT.md</span>
+<span class="text-slate-500"># 3. All files stay in sync</span>
+
+<span class="text-slate-500"># Edit once, commit, done.</span></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800/50">
+                                <p class="text-sm text-slate-600 dark:text-slate-400"><span class="font-medium text-slate-900 dark:text-white">One source of truth.</span> Edit your canonical file (e.g., <code class="rounded bg-slate-200 px-1 py-0.5 text-xs dark:bg-slate-700">CLAUDE.md</code>), and Framework's git hooks copy it to the others on commit. No more keeping multiple context files in sync manually.</p>
+                            </div>
+                        </div>
+
+                        <!-- Security -->
+                        <div x-show="activeTab === 'security'" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" style="display: none;">
+                            <p class="mb-6 text-slate-600 dark:text-slate-400">No more googling "R gitignore file". Framework generates gitignores custom-crafted for each project type, with your directory settings dynamically included. Sensitive data directories are automatically excluded.</p>
+
+                            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                <div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Auto-generated .gitignore</div>
+                                    <div class="rounded-lg bg-slate-900 p-4">
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Framework-generated .gitignore</span>
+
+<span class="text-slate-500"># Private data directories</span>
+<span class="text-sky-300">inputs/raw/</span>
+<span class="text-sky-300">inputs/intermediate/</span>
+<span class="text-sky-300">outputs/private/</span>
+
+<span class="text-slate-500"># Environment secrets</span>
+<span class="text-sky-300">.env</span>
+<span class="text-sky-300">.env.local</span>
+
+<span class="text-slate-500"># R artifacts</span>
+<span class="text-sky-300">.Rhistory</span>
+<span class="text-sky-300">.RData</span>
+<span class="text-sky-300">*.Rproj.user/</span></code></pre>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Security audit</div>
+                                    <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Check for accidental exposure</span>
+<span class="text-violet-300">git_security_audit</span>()
+
+<span class="text-slate-500"># Returns warnings for:</span>
+<span class="text-slate-500"># - Tracked files in private dirs</span>
+<span class="text-slate-500"># - .env files in history</span>
+<span class="text-slate-500"># - Credentials in config</span>
+<span class="text-slate-500"># - Large data files committed</span></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">Project-type aware</span>
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">Dynamic directories</span>
+                                <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">Security auditing</span>
                             </div>
                         </div>
                     </div>
@@ -799,74 +1031,6 @@ aws.s3::<span class="text-violet-300">put_object</span>(
                 </div>
                 <h3 class="mt-4 font-display text-lg font-medium text-slate-900 dark:text-white">Git Ready</h3>
                 <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Smart <code class="text-xs">.gitignore</code> templates protect sensitive data. Clear separation of public and private outputs. Pre-commit hooks available.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Quick Links & Install -->
-<div class="border-t border-slate-200 bg-slate-50 py-16 dark:border-slate-800 dark:bg-slate-900">
-    <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-            <!-- Quick Start -->
-            <div>
-                <h2 class="font-display text-2xl tracking-tight text-slate-900 dark:text-white">Quick start</h2>
-                <p class="mt-4 text-slate-600 dark:text-slate-400">Get up and running in under a minute.</p>
-                <div class="group relative mt-6 rounded-2xl bg-slate-900 p-4 shadow-lg" x-data="{ copied: false, copyCode() { const text = this.$refs.quickstartCode.textContent; const textarea = document.createElement('textarea'); textarea.value = text; textarea.style.position = 'fixed'; textarea.style.opacity = '0'; document.body.appendChild(textarea); textarea.select(); document.execCommand('copy'); document.body.removeChild(textarea); this.copied = true; setTimeout(() => this.copied = false, 2000); } }">
-                    <button
-                        @click="copyCode()"
-                        class="absolute top-3 right-3 flex items-center gap-1.5 rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-400 opacity-0 transition hover:bg-slate-700 hover:text-slate-300 group-hover:opacity-100"
-                        :class="{ 'text-emerald-400 hover:text-emerald-400': copied }"
-                    >
-                        <svg x-show="!copied" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
-                        </svg>
-                        <svg x-show="copied" x-cloak class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                        <span x-text="copied ? 'Copied!' : 'Copy'"></span>
-                    </button>
-                    <pre class="overflow-x-auto text-sm"><code x-ref="quickstartCode" class="text-slate-300"><span class="text-slate-500"># Install Framework</span>
-remotes::<span class="text-violet-300">install_github</span>(<span class="text-emerald-300">"table1/framework"</span>)
-
-<span class="text-slate-500"># Create a new project</span>
-<span class="text-sky-300">library</span>(framework)
-<span class="text-violet-300">init</span>()
-
-<span class="text-slate-500"># Start working</span>
-<span class="text-violet-300">scaffold</span>()
-<span class="text-violet-300">make_notebook</span>(<span class="text-emerald-300">"analysis"</span>)</code></pre>
-                </div>
-            </div>
-
-            <!-- Links -->
-            <div>
-                <h2 class="font-display text-2xl tracking-tight text-slate-900 dark:text-white">Resources</h2>
-                <p class="mt-4 text-slate-600 dark:text-slate-400">Everything you need to get started.</p>
-                <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <a href="/docs" class="group relative flex items-center gap-4 rounded-xl border border-slate-200 p-4 transition hover:border-sky-500 dark:border-slate-800 dark:hover:border-sky-500">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500/10">
-                            <svg class="h-5 w-5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-medium text-slate-900 dark:text-white">Documentation</p>
-                            <p class="text-sm text-slate-500 dark:text-slate-400">Full API reference</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com/table1/framework" target="_blank" rel="noopener" class="group relative flex items-center gap-4 rounded-xl border border-slate-200 p-4 transition hover:border-sky-500 dark:border-slate-800 dark:hover:border-sky-500">
-                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-500/10">
-                            <svg class="h-5 w-5 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-medium text-slate-900 dark:text-white">GitHub</p>
-                            <p class="text-sm text-slate-500 dark:text-slate-400">Source & issues</p>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </div>

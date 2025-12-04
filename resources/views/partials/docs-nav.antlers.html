@@ -1,20 +1,83 @@
 <nav class="text-base lg:text-sm">
     <ul role="list" class="space-y-9">
-        {{ collection:doc_categories sort="position:asc" }}
+        <!-- Getting Started -->
         <li>
-            <h2 class="font-display font-medium text-slate-900 dark:text-white">{{ title }}</h2>
+            <h2 class="font-display font-medium text-slate-900 dark:text-white">Getting Started</h2>
             <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
-                {{ collection:doc_functions category:contains="{id}" sort="name:asc" }}
+                {{ collection:doc_guides section:is="getting_started" sort="position:asc" }}
                 <li class="relative">
                     <a href="/docs/{{ slug }}"
                        class="block w-full pl-3.5 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full
                        {{ if {segment_2} == {slug} }}font-semibold text-sky-500 before:bg-sky-500{{ else }}text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300{{ /if }}">
-                        {{ name }}
+                        {{ title }}
                     </a>
                 </li>
-                {{ /collection:doc_functions }}
+                {{ /collection:doc_guides }}
             </ul>
         </li>
-        {{ /collection:doc_categories }}
+
+        <!-- Core Concepts -->
+        <li>
+            <h2 class="font-display font-medium text-slate-900 dark:text-white">Core Concepts</h2>
+            <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
+                {{ collection:doc_guides section:is="core_concepts" sort="position:asc" }}
+                <li class="relative">
+                    <a href="/docs/{{ slug }}"
+                       class="block w-full pl-3.5 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full
+                       {{ if {segment_2} == {slug} }}font-semibold text-sky-500 before:bg-sky-500{{ else }}text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300{{ /if }}">
+                        {{ title }}
+                    </a>
+                </li>
+                {{ /collection:doc_guides }}
+            </ul>
+        </li>
+
+        <!-- Project Types -->
+        <li>
+            <h2 class="font-display font-medium text-slate-900 dark:text-white">Project Types</h2>
+            <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
+                {{ collection:doc_guides section:is="project_types" sort="position:asc" }}
+                <li class="relative">
+                    <a href="/docs/{{ slug }}"
+                       class="block w-full pl-3.5 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full
+                       {{ if {segment_2} == {slug} }}font-semibold text-sky-500 before:bg-sky-500{{ else }}text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300{{ /if }}">
+                        {{ title }}
+                    </a>
+                </li>
+                {{ /collection:doc_guides }}
+            </ul>
+        </li>
+
+        <!-- API Reference (existing categories) -->
+        <li>
+            <h2 class="font-display font-medium text-slate-900 dark:text-white">API Reference</h2>
+            <ul role="list" class="mt-2 space-y-6 border-l-2 border-slate-100 lg:mt-4 lg:border-slate-200 dark:border-slate-800">
+                {{ collection:doc_categories sort="position:asc" }}
+                <li>
+                    <a href="/docs/{{ slug }}"
+                       class="block w-full pl-3.5 font-medium before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full relative
+                       {{ if {segment_2} == {slug} }}text-sky-500 before:bg-sky-500{{ else }}text-slate-600 before:hidden before:bg-slate-300 hover:text-slate-800 hover:before:block dark:text-slate-300 dark:before:bg-slate-700 dark:hover:text-white{{ /if }}">
+                        {{ title }}
+                    </a>
+                    <!-- Common functions for this category (collapsed by default) -->
+                    {{ collection:doc_functions category:contains="{id}" is_common:is="true" sort="name:asc" limit="5" as="common" }}
+                        {{ if common | count > 0 }}
+                        <ul role="list" class="mt-2 space-y-2 pl-3.5">
+                            {{ common }}
+                            <li class="relative">
+                                <a href="/docs/{{ slug }}"
+                                   class="block text-sm before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1 before:w-1 before:-translate-y-1/2 before:rounded-full
+                                   {{ if {segment_2} == {slug} }}font-semibold text-sky-500 before:bg-sky-500{{ else }}text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300{{ /if }}">
+                                    {{ name }}
+                                </a>
+                            </li>
+                            {{ /common }}
+                        </ul>
+                        {{ /if }}
+                    {{ /collection:doc_functions }}
+                </li>
+                {{ /collection:doc_categories }}
+            </ul>
+        </li>
     </ul>
 </nav>

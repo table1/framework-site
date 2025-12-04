@@ -1,5 +1,5 @@
 ---
-id: c25bc999-0c55-4a40-a8b9-cb1e044e0052
+id: 4af3be6a-7b75-445c-bf9a-acbe69f3244f
 blueprint: doc_function
 title: 'Get Path to Stub Templates Directory'
 name: stubs_path
@@ -35,5 +35,5 @@ examples:
       stubs_path("user")
     is_dontrun: true
     position: 2
-category: 534f1815-79f5-4766-988d-9a7a51f651ad
+category: f0a674dc-20ed-41ea-b90d-269d63df7708
 ---

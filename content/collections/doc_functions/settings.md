@@ -1,5 +1,5 @@
 ---
-id: c5943003-561f-4199-bc0f-1d744896bcab
+id: 0364a233-f4e3-441c-ac00-8ca60b3c4b98
 blueprint: doc_function
 title: 'Get settings value by dot-notation key'
 name: settings
@@ -64,5 +64,5 @@ examples:
       settings("missing_key", default = "fallback")
     is_dontrun: true
     position: 2
-category: a0f48be8-c23b-41cb-a0cd-3b8e8fdf454f
+category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
 ---

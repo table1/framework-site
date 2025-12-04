@@ -1,5 +1,5 @@
 ---
-id: ed3813c8-adcf-48b1-9ed6-b402a2b3f91d
+id: ca6908fe-de88-4d2a-930b-9308e9646906
 blueprint: doc_function
 title: 'Uninstall Git Pre-commit Hook'
 name: git_hooks_uninstall
@@ -19,5 +19,5 @@ parameters:
     name: verbose
     description: 'Logical; if TRUE (default), show messages'
     position: 1
-category: afbdb383-dead-4998-b2ee-f6e3f0c63115
+category: d7e03087-dcc9-4f26-86aa-5e7491e5e0df
 ---

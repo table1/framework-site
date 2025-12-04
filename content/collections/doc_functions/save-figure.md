@@ -1,5 +1,5 @@
 ---
-id: 5ef1b3df-82ce-4a29-8d33-3bccfb07e66a
+id: 1dd047fc-b242-449e-8cbe-a56d14716595
 blueprint: doc_function
 title: 'Save a figure to the outputs directory'
 name: save_figure
@@ -83,5 +83,5 @@ examples:
       save_figure(p, "summary_plot", public = TRUE)
     is_dontrun: true
     position: 2
-category: 2a2d9843-1bf8-4510-927c-9ab627e08514
+category: 77f23995-6378-4031-9ac1-df3d881b5697
 ---

@@ -1,5 +1,5 @@
 ---
-id: 188857e0-f12b-4e4e-bb3d-3a3fb9065441
+id: c503d78b-8034-41ff-afea-6b26fb9be3e2
 blueprint: doc_function
 title: 'Execute a database statement'
 name: db_execute
@@ -35,5 +35,5 @@ examples:
     code: 'rows <- db_execute("DELETE FROM cache WHERE expired = TRUE", "my_db")'
     is_dontrun: true
     position: 2
-category: 845368b7-eeb7-445c-8f23-536310005fa3
+category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
 ---
