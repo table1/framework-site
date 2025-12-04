@@ -1,5 +1,5 @@
 ---
-id: e7d70d18-577f-4ec3-a019-bf45cbf1389e
+id: c845e81d-78af-4173-8971-8b083634050c
 blueprint: doc_function
 title: 'Add an existing file to the data catalog'
 name: data_add
@@ -70,5 +70,5 @@ examples:
       # Name will be derived as "inputs.intermediate.cleaned_data"
     is_dontrun: true
     position: 2
-category: 1623c7a9-b777-4d53-a3a5-e6030eae8435
+category: 40c9c329-549a-4d17-8eb7-67b81580d7b8
 ---

@@ -1,5 +1,5 @@
 ---
-id: 8dd8823e-c9f9-4616-b57e-fcd21ea6741c
+id: 7e48a113-e164-478d-a1e5-321bf86f6967
 blueprint: doc_function
 title: 'List published files in S3'
 name: publish_list
@@ -45,5 +45,5 @@ examples:
       publish_list(connection = "s3_backup")
     is_dontrun: true
     position: 2
-category: 8c73a0da-9bb6-469b-b9f5-2c3ef469a0e8
+category: fa39312c-45c6-4862-a3b7-f2b9ef062cdc
 ---

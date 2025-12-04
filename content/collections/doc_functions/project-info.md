@@ -1,5 +1,5 @@
 ---
-id: d3250ee7-305b-4e53-8ee8-2a9f62f4eaf6
+id: 61d90e23-2b80-49cc-b8af-888f61941998
 blueprint: doc_function
 title: 'Display project structure information'
 name: project_info
@@ -30,5 +30,5 @@ examples:
       project_info(verbose = TRUE)
     is_dontrun: true
     position: 2
-category: 23e39ab1-5e54-43c8-ba60-467fc1dc22c3
+category: 0eca8382-a9c5-4abb-b323-4f53e31a6d05
 ---

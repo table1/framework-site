@@ -1,5 +1,5 @@
 ---
-id: c8eb48f9-a0c8-4c27-97f4-7ef83d06990c
+id: f0445799-bf39-480f-ae55-2e656375cf5c
 blueprint: doc_function
 title: 'Save data using dot notation or file path'
 name: data_save
@@ -55,5 +55,5 @@ parameters:
     name: force
     description: "If TRUE, creates missing directories. If FALSE (default), errors if directory doesn't exist."
     position: 6
-category: 1623c7a9-b777-4d53-a3a5-e6030eae8435
+category: 40c9c329-549a-4d17-8eb7-67b81580d7b8
 ---

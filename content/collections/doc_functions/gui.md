@@ -1,5 +1,5 @@
 ---
-id: 9a7fc8d3-c555-4309-8ca9-67e321c23af1
+id: 08439209-62a7-4203-b5f0-b0429c0982ec
 blueprint: doc_function
 title: 'Launch Framework GUI'
 name: gui
@@ -35,5 +35,5 @@ examples:
       framework::gui(port = 8888)
     is_dontrun: true
     position: 2
-category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
+category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
 ---

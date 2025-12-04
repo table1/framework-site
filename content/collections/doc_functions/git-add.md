@@ -1,5 +1,5 @@
 ---
-id: 8db40297-bc11-4890-b807-bfdb50750e49
+id: 304667e3-08b8-4c24-858b-8a5ce8446af7
 blueprint: doc_function
 title: 'Stage Files for Commit'
 name: git_add
@@ -28,5 +28,5 @@ examples:
       git_add(c("R/foo.R", "R/bar.R"))
     is_dontrun: true
     position: 2
-category: 2b186ac4-d03b-466a-8735-2753eaeec217
+category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
 ---

@@ -1,5 +1,5 @@
 ---
-id: 9f04c483-7f16-472c-9531-4a6396005be7
+id: 70148573-08ae-40f9-8ef3-3b93e009002e
 blueprint: doc_function
 title: 'Clear R environment'
 name: env_clear
@@ -30,5 +30,5 @@ examples:
       env_clear(keep = c("config", "data"))
     is_dontrun: true
     position: 2
-category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
+category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
 ---

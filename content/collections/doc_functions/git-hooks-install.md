@@ -1,5 +1,5 @@
 ---
-id: 22599db1-2f02-4276-a401-2a3965461dca
+id: 023e6c2a-7279-4333-82e6-7f8978412726
 blueprint: doc_function
 title: 'Install Git Pre-commit Hook'
 name: git_hooks_install
@@ -48,5 +48,5 @@ examples:
       git_hooks_install(force = TRUE)
     is_dontrun: true
     position: 2
-category: 2b186ac4-d03b-466a-8735-2753eaeec217
+category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
 ---

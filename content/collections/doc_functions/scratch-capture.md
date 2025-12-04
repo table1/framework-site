@@ -1,5 +1,5 @@
 ---
-id: 24abbe81-df16-421d-a458-2ee4127450e1
+id: b00b4f5f-4504-408a-aafb-b1a6f593dbc5
 blueprint: doc_function
 title: 'Capture and Save Data to File'
 name: scratch_capture
@@ -59,5 +59,5 @@ examples:
       scratch_capture(list(a = 1, b = 2), to = "rds")
     is_dontrun: false
     position: 1
-category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
+category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
 ---

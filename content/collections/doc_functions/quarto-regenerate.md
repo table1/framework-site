@@ -1,5 +1,5 @@
 ---
-id: d3587a85-0aae-4909-b544-8c6d1325f3ee
+id: d7783665-567d-4024-9796-ec187dcd7584
 blueprint: doc_function
 title: 'Regenerate Quarto Configurations'
 name: quarto_regenerate
@@ -24,5 +24,5 @@ parameters:
     name: backup
     description: 'Logical. If TRUE, backs up existing files before overwriting. Default TRUE.'
     position: 2
-category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
+category: b517b2b4-400e-45b0-b341-974f612409b2
 ---

@@ -1,5 +1,5 @@
 ---
-id: f85cbaf3-b857-46c8-aa9e-475fac6e475d
+id: d185050c-6569-4cfe-bfac-f3e803bbd68b
 blueprint: doc_function
 title: 'Summarize R environment'
 name: env_summary
@@ -19,5 +19,5 @@ examples:
     code: env_summary()
     is_dontrun: true
     position: 2
-category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
+category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
 ---

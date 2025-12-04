@@ -1,5 +1,5 @@
 ---
-id: 57d3f83d-5ed6-4783-b89e-1fb694844ff0
+id: 568296fd-3985-494c-8cef-f1376fa318ed
 blueprint: doc_function
 title: 'Get a database connection'
 name: db_connect
@@ -32,5 +32,5 @@ examples:
       DBI::dbDisconnect(conn)
     is_dontrun: true
     position: 2
-category: 89e6f685-3b2d-4027-a6ed-86242ff32485
+category: f96cabbe-df7e-4d15-9d8c-0ae8f8423dc4
 ---

@@ -1,7 +1,7 @@
 ---
-id: 921b1e31-a47d-4b8d-92ba-38990e3d7ebe
+id: dc9142c3-bca4-43fc-a7da-40d11d4554ba
 blueprint: doc_category
-title: Ai
+title: AI
 name: AI
 description: 'AI assistant integration'
 position: 11

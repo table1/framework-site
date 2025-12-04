@@ -1,5 +1,5 @@
 ---
-id: 0177ddf0-7e6e-4eb3-8f29-da83f2fb8af3
+id: 1c94004e-f450-41ab-bc1a-e48ebe6ad7ec
 blueprint: doc_function
 title: 'Create a new Framework project from GUI configuration'
 name: project_create
@@ -91,5 +91,5 @@ parameters:
     name: render_dirs
     description: 'Named list of render directory paths for Quarto outputs'
     position: 12
-category: 23e39ab1-5e54-43c8-ba60-467fc1dc22c3
+category: 0eca8382-a9c5-4abb-b323-4f53e31a6d05
 ---

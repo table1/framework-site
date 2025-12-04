@@ -1,5 +1,5 @@
 ---
-id: 633638cb-d496-4d3a-9831-817b5d465f20
+id: 87d14ee5-057f-4247-999e-b4906345f921
 blueprint: doc_function
 title: 'Generate AI Context File'
 name: ai_generate_context
@@ -51,5 +51,5 @@ examples:
       content <- ai_generate_context(project_type = "project_sensitive")
     is_dontrun: true
     position: 2
-category: 921b1e31-a47d-4b8d-92ba-38990e3d7ebe
+category: dc9142c3-bca4-43fc-a7da-40d11d4554ba
 ---

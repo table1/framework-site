@@ -1,5 +1,5 @@
 ---
-id: 37be2fe3-70ec-4c78-8533-a0ca372259ea
+id: 32492d19-066a-4a67-a6c6-07b0aa832002
 blueprint: doc_function
 title: 'Sync AI Assistant Context Files'
 name: ai_sync_context
@@ -53,5 +53,5 @@ examples:
       ai_sync_context(verbose = FALSE)
     is_dontrun: true
     position: 2
-category: 921b1e31-a47d-4b8d-92ba-38990e3d7ebe
+category: dc9142c3-bca4-43fc-a7da-40d11d4554ba
 ---

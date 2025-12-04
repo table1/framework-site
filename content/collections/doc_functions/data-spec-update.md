@@ -1,5 +1,5 @@
 ---
-id: 3d3ae6ad-e0d5-42d7-81ca-4194c0704c05
+id: c5ced3f6-7d23-4609-81bd-36c7127e23e6
 blueprint: doc_function
 title: 'Update data spec in the correct YAML file'
 name: data_spec_update
@@ -41,5 +41,5 @@ examples:
       ))
     is_dontrun: true
     position: 2
-category: 1623c7a9-b777-4d53-a3a5-e6030eae8435
+category: 40c9c329-549a-4d17-8eb7-67b81580d7b8
 ---

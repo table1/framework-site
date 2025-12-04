@@ -1,5 +1,5 @@
 ---
-id: 5fd48a54-d09d-4632-838d-db2abf971cf6
+id: e8c536a1-f46c-421b-9f83-498c0160226e
 blueprint: doc_function
 title: 'Save a table to the outputs directory'
 name: save_table
@@ -58,5 +58,5 @@ examples:
       save_table(summary_stats, "summary", public = TRUE)
     is_dontrun: true
     position: 2
-category: 99c51be3-d67c-4f23-8aa1-d4e917d2c39b
+category: ecad8af3-1d69-426c-bff5-e6fd71e2cdf8
 ---

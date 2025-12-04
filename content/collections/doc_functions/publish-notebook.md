@@ -1,5 +1,5 @@
 ---
-id: 36bdb78f-9a20-4d1f-bd6b-e362d6465e4d
+id: 5b843929-1732-45b8-9df5-0e858aaf9528
 blueprint: doc_function
 title: 'Publish a Quarto notebook to S3'
 name: publish_notebook
@@ -76,5 +76,5 @@ examples:
       publish_notebook("notebooks/analysis.qmd", self_contained = FALSE)
     is_dontrun: true
     position: 2
-category: 8c73a0da-9bb6-469b-b9f5-2c3ef469a0e8
+category: fa39312c-45c6-4862-a3b7-f2b9ef062cdc
 ---

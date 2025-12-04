@@ -1,5 +1,5 @@
 ---
-id: c25d000f-adf7-44b1-a45b-ff69f59b6a82
+id: 2f11bcfb-38f4-4a94-a60c-0b320eecbbaf
 blueprint: doc_function
 title: 'Clean up the scratch directory by deleting all files'
 name: scratch_clean
@@ -10,5 +10,5 @@ usage: scratch_clean()
 source_file: R/scratch.R
 is_exported: true
 is_common: false
-category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
+category: 6564d14d-7fe9-4bea-97a2-6329bf4eaad6
 ---

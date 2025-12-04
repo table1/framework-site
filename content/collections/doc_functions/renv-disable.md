@@ -1,5 +1,5 @@
 ---
-id: 02f820a8-2bb0-4b40-ac1e-a2c1b3dbafcd
+id: f75cb378-726d-4857-bdcc-8862d125ef3c
 blueprint: doc_function
 title: 'Disable renv for this project'
 name: renv_disable
@@ -25,5 +25,5 @@ examples:
     code: renv_disable()
     is_dontrun: true
     position: 2
-category: ff16a347-5648-4e33-8abd-bee402853878
+category: 4e3d8e4d-7d2e-4b09-8cd7-1c4b4797d52d
 ---

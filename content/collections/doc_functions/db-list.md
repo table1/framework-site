@@ -1,5 +1,5 @@
 ---
-id: 64f969db-ce89-4c04-9ee5-47605e19439e
+id: ddda902f-ca7e-4833-9c95-034c5ae3e630
 blueprint: doc_function
 title: 'List all database connections from configuration'
 name: db_list
@@ -21,5 +21,5 @@ examples:
       db_list()
     is_dontrun: true
     position: 2
-category: 89e6f685-3b2d-4027-a6ed-86242ff32485
+category: f96cabbe-df7e-4d15-9d8c-0ae8f8423dc4
 ---

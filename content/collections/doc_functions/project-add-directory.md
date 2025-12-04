@@ -1,5 +1,5 @@
 ---
-id: 66f31e20-47ae-476e-9f21-fb10dbb537bc
+id: 93075093-9bc2-4001-a894-8266e5c6398c
 blueprint: doc_function
 title: 'Add custom directories to an existing project'
 name: project_add_directory

@@ -310,6 +310,10 @@ class ImportFrameworkDocs extends Command
     protected function formatCategoryTitle(string $name): string
     {
         // Convert snake_case to Title Case
-        return Str::title(str_replace('_', ' ', $name));
+        $title = Str::title(str_replace('_', ' ', $name));
+
+        // Preserve acronyms
+        $acronyms = ['Ai' => 'AI', 'Api' => 'API', 'Db' => 'DB', 'Sql' => 'SQL', 'Csv' => 'CSV'];
+        return str_replace(array_keys($acronyms), array_values($acronyms), $title);
     }
 }

@@ -1,5 +1,5 @@
 ---
-id: 6d70ba73-76f4-48bc-bfac-c998f416265f
+id: 7eb56ceb-6b2f-4fde-8c1d-2ee4f04e51d9
 blueprint: doc_function
 title: 'Restore packages from renv.lock'
 name: packages_restore
@@ -19,5 +19,5 @@ parameters:
     name: prompt
     description: 'Logical. If TRUE, renv prompts before restoring.'
     position: 1
-category: ff16a347-5648-4e33-8abd-bee402853878
+category: 4e3d8e4d-7d2e-4b09-8cd7-1c4b4797d52d
 ---

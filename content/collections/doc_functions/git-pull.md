@@ -1,5 +1,5 @@
 ---
-id: aa96786e-5828-4f9b-8636-e0cf52f54b89
+id: ea7ad2f8-48a8-4246-8131-f97bdf0f3cb8
 blueprint: doc_function
 title: 'Pull from Remote'
 name: git_pull
@@ -32,5 +32,5 @@ examples:
       git_pull(remote = "origin", branch = "main")
     is_dontrun: true
     position: 2
-category: 2b186ac4-d03b-466a-8735-2753eaeec217
+category: 3007585c-499c-4b6d-a55a-6661cb2a18f4
 ---
