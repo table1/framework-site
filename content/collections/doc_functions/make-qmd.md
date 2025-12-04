@@ -1,5 +1,5 @@
 ---
-id: 99f88428-54e3-49c6-99a9-2d82bddcaf4a
+id: 8a8309a2-49cc-4db6-b248-553f5fcfe637
 blueprint: doc_function
 title: 'Create a Quarto Notebook'
 name: make_qmd
@@ -42,8 +42,10 @@ examples:
     code: |-
       # Create notebooks/analysis.qmd
       make_qmd("analysis")
+
       # Use custom stub
       make_qmd("report", stub = "minimal")
+
       # Create in specific directory
       make_qmd("explore", dir = "work")
     is_dontrun: true
@@ -59,5 +61,5 @@ seealso:
     reference: make_rmd()
     link_type: function
     url: null
-category: f0a674dc-20ed-41ea-b90d-269d63df7708
+category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
 ---

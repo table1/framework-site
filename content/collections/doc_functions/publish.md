@@ -1,5 +1,5 @@
 ---
-id: 5e82ee40-139a-4069-bdc2-c8c18da3f378
+id: 797c4388-e126-49de-82cf-d1ddc43d6431
 blueprint: doc_function
 title: 'Publishing Functions'
 name: publish
@@ -46,14 +46,17 @@ examples:
     code: |-
       # Upload a single file
       publish("outputs/report.html")
+
       # -> https://bucket.s3.region.amazonaws.com/prefix/report.html
       # Upload with custom destination
       publish("outputs/report.html", dest = "reports/q4-2024.html")
+
       # Upload a directory
       publish("outputs/charts/", dest = "reports/charts/")
+
       # Use specific connection
       publish("data.csv", connection = "s3_backup")
     is_dontrun: true
     position: 2
-category: 32e516d1-a634-4a8e-a43a-b2ff07b0dfa3
+category: 8c73a0da-9bb6-469b-b9f5-2c3ef469a0e8
 ---

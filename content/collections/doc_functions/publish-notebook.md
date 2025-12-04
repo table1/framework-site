@@ -1,5 +1,5 @@
 ---
-id: db785a4a-3449-4430-b66d-925272b6d555
+id: 36bdb78f-9a20-4d1f-bd6b-e362d6465e4d
 blueprint: doc_function
 title: 'Publish a Quarto notebook to S3'
 name: publish_notebook
@@ -68,11 +68,13 @@ examples:
       # With static_hosting: true -> returns /analysis/
       # With static_hosting: false -> returns /analysis.html
       publish_notebook("notebooks/analysis.qmd")
+
       # Publish to specific location
       publish_notebook("notebooks/analysis.qmd", dest = "reports/2024/q4")
+
       # Publish non-self-contained (only with static_hosting: true)
       publish_notebook("notebooks/analysis.qmd", self_contained = FALSE)
     is_dontrun: true
     position: 2
-category: 32e516d1-a634-4a8e-a43a-b2ff07b0dfa3
+category: 8c73a0da-9bb6-469b-b9f5-2c3ef469a0e8
 ---

@@ -1,5 +1,5 @@
 ---
-id: 58cf94c4-6b30-4f53-a1dd-705b74686f02
+id: 63da2e7c-ee16-4461-9730-9baae3242500
 blueprint: doc_function
 title: 'Execute code within a database transaction'
 name: db_transaction
@@ -38,11 +38,13 @@ examples:
     type: example
     code: |-
       conn <- db_connect("postgres")
+
       # Basic transaction
       db_transaction(conn, {
         DBI::dbExecute(conn, "INSERT INTO users (name, age) VALUES ('Alice', 30)")
         DBI::dbExecute(conn, "INSERT INTO users (name, age) VALUES ('Bob', 25)")
       })
+
       # Transaction with error handling - auto-rollback on error
       tryCatch({
         db_transaction(conn, {
@@ -55,5 +57,5 @@ examples:
       DBI::dbDisconnect(conn)
     is_dontrun: true
     position: 2
-category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
+category: 89e6f685-3b2d-4027-a6ed-86242ff32485
 ---

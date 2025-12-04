@@ -1,5 +1,5 @@
 ---
-id: 192d5046-3066-4ef1-ae0c-a625f8105105
+id: 9f04c483-7f16-472c-9531-4a6396005be7
 blueprint: doc_function
 title: 'Clear R environment'
 name: env_clear
@@ -25,9 +25,10 @@ examples:
     code: |-
       # Clean everything
       env_clear()
+
       # Keep specific objects
       env_clear(keep = c("config", "data"))
     is_dontrun: true
     position: 2
-category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
+category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
 ---

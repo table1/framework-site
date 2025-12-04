@@ -1,5 +1,5 @@
 ---
-id: bfc81732-ea74-4407-9993-45bff7ebeacd
+id: 0fb53bd9-39cd-4eda-a140-584e2b2a03cf
 blueprint: doc_function
 title: 'Initialize and load the project environment'
 name: scaffold
@@ -45,6 +45,7 @@ examples:
       # At the top of every notebook or script:
       library(framework)
       scaffold()
+
       # Now you can use your configured packages and functions
       # Access settings via the config object:
       config("directories.notebooks")
@@ -95,5 +96,5 @@ seealso:
     reference: config()
     link_type: function
     url: null
-category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
+category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
 ---

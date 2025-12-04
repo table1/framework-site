@@ -1,5 +1,5 @@
 ---
-id: 75da3bcf-a6ce-4f58-a0e2-f7eecc55ba2f
+id: 080fe262-8af4-4651-8f2e-9c2c582f2651
 blueprint: doc_category
 title: Caching
 name: Caching

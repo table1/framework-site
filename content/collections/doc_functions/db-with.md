@@ -1,5 +1,5 @@
 ---
-id: 27e9e70f-0395-4e2c-877f-50df635eba85
+id: a0ed8c9f-f148-4872-9d4b-9975bc049706
 blueprint: doc_function
 title: 'Execute code with a managed database connection'
 name: db_with
@@ -32,11 +32,13 @@ examples:
       users <- db_with("my_db", {
         DBI::dbGetQuery(conn, "SELECT * FROM users WHERE active = TRUE")
       })
+
       # Multiple operations with same connection
       result <- db_with("my_db", {
         DBI::dbExecute(conn, "INSERT INTO users (name) VALUES ('Alice')")
         DBI::dbGetQuery(conn, "SELECT * FROM users")
       })
+
       # Connection closes even on error
       tryCatch(
         db_with("my_db", {
@@ -46,5 +48,5 @@ examples:
       )
     is_dontrun: true
     position: 2
-category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
+category: 89e6f685-3b2d-4027-a6ed-86242ff32485
 ---

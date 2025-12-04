@@ -1,5 +1,5 @@
 ---
-id: fc640133-635e-4bea-b993-3d85ea709f91
+id: 05868464-7934-4737-a396-5c6314989ab4
 blueprint: doc_function
 title: 'Security audit for Framework projects'
 name: git_security_audit
@@ -76,13 +76,16 @@ examples:
       audit <- git_security_audit()
       print(audit$summary)
       View(audit$findings$orphaned_files)
+
       # Quick scan without git history
       audit <- git_security_audit(check_git_history = FALSE)
+
       # Verbose with limited git history
       audit <- git_security_audit(history_depth = 100, verbose = TRUE)
+
       # Auto-fix mode (updates .gitignore)
       audit <- git_security_audit(auto_fix = TRUE)
     is_dontrun: true
     position: 2
-category: d7e03087-dcc9-4f26-86aa-5e7491e5e0df
+category: 2b186ac4-d03b-466a-8735-2753eaeec217
 ---

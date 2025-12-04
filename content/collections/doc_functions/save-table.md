@@ -1,5 +1,5 @@
 ---
-id: e180402f-f957-4631-9299-a00302061542
+id: 5fd48a54-d09d-4632-838d-db2abf971cf6
 blueprint: doc_function
 title: 'Save a table to the outputs directory'
 name: save_table
@@ -50,11 +50,13 @@ examples:
     code: |-
       # Save a simple table
       save_table(my_results, "regression_results")
+
       # Save as Excel
       save_table(my_results, "regression_results", format = "xlsx")
+
       # Save to public directory (for sensitive projects)
       save_table(summary_stats, "summary", public = TRUE)
     is_dontrun: true
     position: 2
-category: 77f23995-6378-4031-9ac1-df3d881b5697
+category: 99c51be3-d67c-4f23-8aa1-d4e917d2c39b
 ---

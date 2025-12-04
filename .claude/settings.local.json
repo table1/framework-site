@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php artisan statamic:stache:clear:*)",
+      "Bash(php artisan:*)",
+      "Bash(php artisan view:clear:*)",
+      "Read(//Users/erikwestlund/Library/Application Support/CleanShot/media/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

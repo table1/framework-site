@@ -1,5 +1,5 @@
 ---
-id: b4f0e4c5-0d2e-4e02-a01c-283c963b56d9
+id: d841136e-fe27-4be6-afd8-1775c528bf86
 blueprint: doc_function
 title: 'Get data specification from config'
 name: data_spec_get
@@ -33,9 +33,10 @@ examples:
     code: |-
       # Get spec from dot notation
       spec <- data_spec_get("source.private.my_data")
+
       # Get spec from file path
       spec <- data_spec_get("data/public/example.csv")
     is_dontrun: true
     position: 2
-category: 92619a88-7705-41b4-ad68-1cd847136481
+category: 1623c7a9-b777-4d53-a3a5-e6030eae8435
 ---

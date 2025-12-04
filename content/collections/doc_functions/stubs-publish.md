@@ -1,5 +1,5 @@
 ---
-id: fc0edce6-1ad4-4eeb-8932-46211e3a4993
+id: 8bf4542c-9cb3-43a1-800d-9ec6b4cd1b8d
 blueprint: doc_function
 title: 'Publish Stub Templates for Customization'
 name: stubs_publish
@@ -61,10 +61,13 @@ examples:
     code: |-
       # Publish all stubs
       stubs_publish()
+
       # Publish only notebook stubs
       stubs_publish("notebooks")
+
       # Publish specific stub
       stubs_publish(stubs = "default")
+
       # Overwrite existing stubs
       stubs_publish(overwrite = TRUE)
     is_dontrun: true
@@ -90,5 +93,5 @@ seealso:
     reference: stubs_path()
     link_type: function
     url: null
-category: f0a674dc-20ed-41ea-b90d-269d63df7708
+category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
 ---

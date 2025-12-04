@@ -52,26 +52,26 @@
         <li>
             <h2 class="font-display font-medium text-slate-900 dark:text-white">API Reference</h2>
             <ul role="list" class="mt-2 space-y-6 border-l-2 border-slate-100 lg:mt-4 lg:border-slate-200 dark:border-slate-800">
-                {{ collection:doc_categories sort="position:asc" }}
+                {{ collection:doc_categories sort="title:asc" }}
                 <li>
                     <a href="/docs/{{ slug }}"
                        class="block w-full pl-3.5 font-medium before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full relative
                        {{ if {segment_2} == {slug} }}text-sky-500 before:bg-sky-500{{ else }}text-slate-600 before:hidden before:bg-slate-300 hover:text-slate-800 hover:before:block dark:text-slate-300 dark:before:bg-slate-700 dark:hover:text-white{{ /if }}">
                         {{ title }}
                     </a>
-                    <!-- Common functions for this category (collapsed by default) -->
-                    {{ collection:doc_functions category:contains="{id}" is_common:is="true" sort="name:asc" limit="5" as="common" }}
-                        {{ if common | count > 0 }}
+                    <!-- All functions for this category -->
+                    {{ collection:doc_functions category:contains="{id}" sort="name:asc" as="functions" }}
+                        {{ if functions }}
                         <ul role="list" class="mt-2 space-y-2 pl-3.5">
-                            {{ common }}
+                            {{ functions }}
                             <li class="relative">
                                 <a href="/docs/{{ slug }}"
-                                   class="block text-sm before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1 before:w-1 before:-translate-y-1/2 before:rounded-full
+                                   class="block text-sm before:pointer-events-none before:absolute before:top-1/2 before:-left-[1.125rem] before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full
                                    {{ if {segment_2} == {slug} }}font-semibold text-sky-500 before:bg-sky-500{{ else }}text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300{{ /if }}">
                                     {{ name }}
                                 </a>
                             </li>
-                            {{ /common }}
+                            {{ /functions }}
                         </ul>
                         {{ /if }}
                     {{ /collection:doc_functions }}

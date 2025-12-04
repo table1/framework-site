@@ -1,5 +1,5 @@
 ---
-id: 51c08803-1f2d-45c1-9f5c-8618162cbc2f
+id: 765468a3-c314-4275-8b97-c1b155f742d9
 blueprint: doc_function
 title: 'List all packages from configuration'
 name: packages_list
@@ -21,5 +21,5 @@ examples:
       packages_list()
     is_dontrun: true
     position: 2
-category: 80765b72-8ebf-4c19-9760-5876e5973c1e
+category: ff16a347-5648-4e33-8abd-bee402853878
 ---

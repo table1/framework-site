@@ -1,5 +1,5 @@
 ---
-id: 59cc2cc0-e86c-4e04-9399-fe22babf1888
+id: f149d41a-66a4-4717-becb-5ad81996afc0
 blueprint: doc_function
 title: 'List Available Stubs'
 name: stubs_list
@@ -25,11 +25,13 @@ examples:
     code: |-
       # List all stubs
       stubs_list()
+
       # List only Quarto stubs
       stubs_list("quarto")
+
       # List only script stubs
       stubs_list("script")
     is_dontrun: true
     position: 2
-category: f0a674dc-20ed-41ea-b90d-269d63df7708
+category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
 ---

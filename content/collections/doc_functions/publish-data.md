@@ -1,5 +1,5 @@
 ---
-id: a50c5eba-299a-4f9f-9c6c-ba55abf791c8
+id: 632ce652-769e-48bf-8922-ee1fef648559
 blueprint: doc_function
 title: 'Publish data to S3'
 name: publish_data
@@ -47,11 +47,13 @@ examples:
     code: |-
       # Publish a data frame
       publish_data(my_df, "datasets/customers.csv")
+
       # Publish as RDS
       publish_data(my_df, "datasets/customers.rds", format = "rds")
+
       # Publish existing file
       publish_data("outputs/model.rds", "models/v2/model.rds")
     is_dontrun: true
     position: 2
-category: 32e516d1-a634-4a8e-a43a-b2ff07b0dfa3
+category: 8c73a0da-9bb6-469b-b9f5-2c3ef469a0e8
 ---

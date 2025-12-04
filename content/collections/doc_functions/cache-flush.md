@@ -1,5 +1,5 @@
 ---
-id: 0c557da4-8119-49e6-a9a6-216489c1e2d6
+id: 327e0332-ed4c-4c1a-a468-f26f9f0496d2
 blueprint: doc_function
 title: 'Clear all cached values'
 name: cache_flush
@@ -10,5 +10,5 @@ usage: cache_flush()
 source_file: R/cache_delete.R
 is_exported: true
 is_common: false
-category: 75da3bcf-a6ce-4f58-a0e2-f7eecc55ba2f
+category: 080fe262-8af4-4651-8f2e-9c2c582f2651
 ---

@@ -1,5 +1,5 @@
 ---
-id: 85f29de4-fdfc-46ec-a95f-16c7feab7bf3
+id: 57d3f83d-5ed6-4783-b89e-1fb694844ff0
 blueprint: doc_function
 title: 'Get a database connection'
 name: db_connect
@@ -25,11 +25,12 @@ examples:
     code: |-
       # Preferred: use db_query() which auto-disconnects
       users <- db_query("SELECT * FROM users", "postgres")
+
       # Manual connection management (remember to disconnect!)
       conn <- db_connect("postgres")
       DBI::dbListTables(conn)
       DBI::dbDisconnect(conn)
     is_dontrun: true
     position: 2
-category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
+category: 89e6f685-3b2d-4027-a6ed-86242ff32485
 ---

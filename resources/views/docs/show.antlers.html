@@ -22,14 +22,16 @@
                 {{ /if }}
                 <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">{{ name }}</h1>
                 {{ if title && title != name }}
-                    <p class="text-lg text-slate-600 dark:text-slate-400">{{ title }}</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-500">{{ title }}</p>
                 {{ /if }}
-                {{ if description }}
+                {{ if description && (description | trim) != (title | trim) }}
                     <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">{{ description }}</p>
                 {{ /if }}
             </header>
 
-            <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 prose-code:before:content-none prose-code:after:content-none">
+            <hr class="my-8 border-slate-200 dark:border-slate-800">
+
+            <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 prose-code:before:content-none prose-code:after:content-none prose-h2:mt-12">
 
                 <!-- Usage -->
                 {{ if usage }}
@@ -38,23 +40,23 @@
                 {{ /if }}
 
                 <!-- Parameters -->
-                {{ if parameters | count > 0 }}
+                {{ if parameters }}
                     <h2 id="arguments">Arguments</h2>
-                    <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
-                        <table class="min-w-full divide-y divide-slate-700 text-left">
-                            <thead class="bg-slate-800/60">
+                    <div class="not-prose my-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
+                        <table class="min-w-full divide-y divide-slate-200 text-left dark:divide-slate-700">
+                            <thead class="bg-slate-50 dark:bg-slate-800/50">
                                 <tr>
-                                    <th scope="col" class="py-2 pl-4 pr-3 text-sm font-semibold text-slate-100">Argument</th>
-                                    <th scope="col" class="px-3 py-2 text-sm font-semibold text-slate-100">Description</th>
+                                    <th scope="col" class="py-2.5 pl-4 pr-3 text-sm font-semibold text-slate-700 dark:text-slate-200">Argument</th>
+                                    <th scope="col" class="px-3 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200">Description</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800">
+                            <tbody class="divide-y divide-slate-200 bg-white dark:divide-slate-700 dark:bg-slate-900">
                                 {{ parameters }}
-                                <tr>
-                                    <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm align-top">
-                                        <code class="rounded bg-slate-800 px-1.5 py-0.5 text-sm text-sky-400">{{ name }}</code>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                                    <td class="whitespace-nowrap py-2.5 pl-4 pr-3 text-sm align-top">
+                                        <code class="rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-sm font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">{{ name }}</code>
                                     </td>
-                                    <td class="px-3 py-2 text-sm text-slate-300">{{ description | markdown }}</td>
+                                    <td class="px-3 py-2.5 text-sm text-slate-600 dark:text-slate-400">{{ description | markdown }}</td>
                                 </tr>
                                 {{ /parameters }}
                             </tbody>
@@ -70,28 +72,29 @@
 
                 <!-- Value / Return -->
                 {{ if value }}
-                    <h2 id="value">Value</h2>
+                    <h2 id="returns">Returns</h2>
                     {{ value | markdown }}
                 {{ /if }}
 
                 <!-- Additional Sections -->
-                {{ sections }}
-                    <h2 id="{{ section_title | slugify }}">{{ section_title }}</h2>
-                    {{ content | markdown }}
-
-                    {{ subsections }}
-                        <h3 id="{{ subsection_title | slugify }}">{{ subsection_title }}</h3>
+                {{ if sections }}
+                    {{ sections }}
+                        <h2 id="{{ section_title | slugify }}">{{ section_title }}</h2>
                         {{ content | markdown }}
-                    {{ /subsections }}
-                {{ /sections }}
+
+                        {{ if subsections }}
+                            {{ subsections }}
+                                <h3 id="{{ subsection_title | slugify }}">{{ subsection_title }}</h3>
+                                {{ content | markdown }}
+                            {{ /subsections }}
+                        {{ /if }}
+                    {{ /sections }}
+                {{ /if }}
 
                 <!-- Examples -->
-                {{ if examples | count > 0 }}
+                {{ if examples }}
                     <h2 id="examples">Examples</h2>
                     {{ examples }}
-                        {{ if is_dontrun }}
-                            <p class="text-xs text-slate-500 italic mb-1">Example (not run):</p>
-                        {{ /if }}
                         <pre><code class="language-r">{{ code }}</code></pre>
                     {{ /examples }}
                 {{ /if }}
@@ -111,7 +114,7 @@
                 {{ /if }}
 
                 <!-- Aliases -->
-                {{ if aliases | count > 0 }}
+                {{ if aliases }}
                     <h2 id="aliases">Aliases</h2>
                     <p>This function is also available as:</p>
                     <ul>
@@ -122,7 +125,7 @@
                 {{ /if }}
 
                 <!-- See Also -->
-                {{ if seealso | count > 0 }}
+                {{ if seealso }}
                     <h2 id="see-also">See Also</h2>
                     <ul>
                         {{ seealso }}
@@ -139,19 +142,15 @@
 
                 <!-- Source -->
                 {{ if source_file }}
-                    <div class="mt-12 border-t border-slate-200 pt-4 dark:border-slate-800">
-                        <p class="text-xs text-slate-500 dark:text-slate-400">
-                            Source: <code class="text-xs">{{ source_file }}</code>
+                    <div class="mt-16 border-t border-slate-200 pt-6 dark:border-slate-800">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">
+                            Source: <a href="https://github.com/table1/framework/blob/main/{{ source_file }}" target="_blank" rel="noopener" class="font-mono text-sky-600 hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300">{{ source_file }}</a>
                         </p>
                     </div>
                 {{ /if }}
             </div>
         </article>
 
-        <!-- Navigation -->
-        <dl class="mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800">
-            <!-- Previous/Next would go here -->
-        </dl>
     </div>
 
     <!-- Right sidebar: On This Page -->
@@ -162,25 +161,27 @@
                 {{ if usage }}
                     <li><a href="#usage" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Usage</a></li>
                 {{ /if }}
-                {{ if parameters | count > 0 }}
+                {{ if parameters }}
                     <li><a href="#arguments" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Arguments</a></li>
                 {{ /if }}
                 {{ if details }}
                     <li><a href="#details" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Details</a></li>
                 {{ /if }}
                 {{ if value }}
-                    <li><a href="#value" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Value</a></li>
+                    <li><a href="#returns" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Returns</a></li>
                 {{ /if }}
-                {{ sections }}
-                    <li><a href="#{{ section_title | slugify }}" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">{{ section_title }}</a></li>
-                {{ /sections }}
-                {{ if examples | count > 0 }}
+                {{ if sections }}
+                    {{ sections }}
+                        <li><a href="#{{ section_title | slugify }}" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">{{ section_title }}</a></li>
+                    {{ /sections }}
+                {{ /if }}
+                {{ if examples }}
                     <li><a href="#examples" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Examples</a></li>
                 {{ /if }}
-                {{ if aliases | count > 0 }}
+                {{ if aliases }}
                     <li><a href="#aliases" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">Aliases</a></li>
                 {{ /if }}
-                {{ if seealso | count > 0 }}
+                {{ if seealso }}
                     <li><a href="#see-also" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300">See Also</a></li>
                 {{ /if }}
             </ol>

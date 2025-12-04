@@ -1,5 +1,5 @@
 ---
-id: 97bca9e6-b20a-4284-8ef1-6633c92a7ecf
+id: 5ac447e3-4a33-495e-aef8-0c81320d54d5
 blueprint: doc_function
 title: 'Export Package Documentation to Database'
 name: docs_export
@@ -70,10 +70,13 @@ examples:
     code: |-
       # Export to default location (exported functions only)
       docs_export()
+
       # Export to custom location
       docs_export("inst/gui/docs.db")
+
       # Include internal/private functions too
       docs_export("all_docs.db", include_internal = TRUE)
+
       # Query the exported docs
       con <- DBI::dbConnect(RSQLite::SQLite(), "docs.db")
       DBI::dbGetQuery(con, "SELECT name, title FROM functions WHERE name LIKE 'data_%'")

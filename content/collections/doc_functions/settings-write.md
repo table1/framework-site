@@ -1,5 +1,5 @@
 ---
-id: 6e0e14f8-5207-4ae4-bf3b-760c8996a636
+id: edd3c4b8-4d96-439b-b872-ecce963c325d
 blueprint: doc_function
 title: 'Write project settings'
 name: settings_write
@@ -26,5 +26,5 @@ parameters:
     name: section
     description: 'Optional section to update (e.g. "data")'
     position: 3
-category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
+category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
 ---

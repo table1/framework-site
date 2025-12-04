@@ -1,5 +1,5 @@
 ---
-id: 241e71c8-9a25-46e9-89c8-7f913634a257
+id: fc6ddbd8-0373-483b-97b8-0d42e33e8466
 blueprint: doc_function
 title: 'Remember a value (get from cache or compute and store)'
 name: cache_remember
@@ -56,11 +56,12 @@ examples:
       result <- cache_remember("my_analysis", {
         expensive_computation()
       })
+
       # Force refresh when data changes
       result <- cache_remember("analysis", {
         run_analysis()
       }, refresh = file.mtime("data.csv") > cache_time)
     is_dontrun: true
     position: 2
-category: 75da3bcf-a6ce-4f58-a0e2-f7eecc55ba2f
+category: 080fe262-8af4-4651-8f2e-9c2c582f2651
 ---

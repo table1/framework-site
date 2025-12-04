@@ -1,5 +1,5 @@
 ---
-id: 37b38a7c-5be7-4ca1-9e99-575137ce6330
+id: 3f89b276-4f96-45ab-86b7-6d4ba2651dec
 blueprint: doc_function
 title: 'Publish a directory to S3'
 name: publish_dir
@@ -54,11 +54,13 @@ examples:
     code: |-
       # Upload entire directory
       publish_dir("outputs/dashboard/")
+
       # Upload to specific location
       publish_dir("outputs/dashboard/", dest = "dashboards/v2/")
+
       # Upload only HTML files
       publish_dir("outputs/", pattern = "\\.html$")
     is_dontrun: true
     position: 2
-category: 32e516d1-a634-4a8e-a43a-b2ff07b0dfa3
+category: 8c73a0da-9bb6-469b-b9f5-2c3ef469a0e8
 ---

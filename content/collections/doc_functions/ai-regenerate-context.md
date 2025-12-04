@@ -1,5 +1,5 @@
 ---
-id: c7f20a64-c0c8-40a5-a33c-665da8a642d8
+id: 27206103-c470-42fa-b401-19fc07dd8204
 blueprint: doc_function
 title: 'Regenerate Dynamic Sections in AI Context File'
 name: ai_regenerate_context
@@ -37,9 +37,10 @@ examples:
     code: |-
       # Regenerate all dynamic sections
       ai_regenerate_context()
+
       # Regenerate only packages section
       ai_regenerate_context(sections = "packages")
     is_dontrun: true
     position: 2
-category: d1cbf36b-fe7a-4e1a-91e7-0bd90f55262d
+category: 921b1e31-a47d-4b8d-92ba-38990e3d7ebe
 ---

@@ -1,5 +1,5 @@
 ---
-id: cdf2d27a-f5c9-4733-aab2-a7da59429f23
+id: e7d70d18-577f-4ec3-a019-bf45cbf1389e
 blueprint: doc_function
 title: 'Add an existing file to the data catalog'
 name: data_add
@@ -60,12 +60,15 @@ examples:
     code: |-
       # Add a downloaded CSV file to the catalog
       data_add("inputs/raw/survey_results.csv", name = "inputs.raw.survey_results")
+
       # Now you can read it with dot notation
       data_read("inputs.raw.survey_results")
+
       # Add with auto-generated name
       data_add("inputs/intermediate/cleaned_data.rds")
+
       # Name will be derived as "inputs.intermediate.cleaned_data"
     is_dontrun: true
     position: 2
-category: 92619a88-7705-41b4-ad68-1cd847136481
+category: 1623c7a9-b777-4d53-a3a5-e6030eae8435
 ---

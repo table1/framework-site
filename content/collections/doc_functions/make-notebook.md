@@ -1,5 +1,5 @@
 ---
-id: 68ef7492-10f7-4163-90f4-81b1b02938cb
+id: 5949dc7a-a254-4069-9e79-1574116042ab
 blueprint: doc_function
 title: 'Create a Notebook or Script from Stub Template'
 name: make_notebook
@@ -94,14 +94,19 @@ examples:
     code: |-
       # Create notebooks/1-init.qmd (defaults to Quarto)
       make_notebook("1-init")
+
       # Create notebooks/analysis.Rmd (RMarkdown, extension-based)
       make_notebook("analysis.Rmd")
+
       # Explicit type parameter
       make_notebook("report", type = "rmarkdown")
+
       # Use custom stub template
       make_notebook("report", stub = "minimal")
+
       # Create in specific directory
       make_notebook("explore", dir = "work")
+
       # Convenient aliases (recommended for explicit types)
       make_qmd("analysis")       # Always creates .qmd
       make_rmd("report")         # Always creates .Rmd
@@ -130,5 +135,5 @@ seealso:
     reference: make_presentation()
     link_type: function
     url: null
-category: f0a674dc-20ed-41ea-b90d-269d63df7708
+category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
 ---

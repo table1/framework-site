@@ -1,5 +1,5 @@
 ---
-id: 1bda1e3b-9a73-4792-abe3-5d184b812a86
+id: 1edbb6a6-3445-40a0-9cf9-0132129c1bf1
 blueprint: doc_function
 title: 'View data with enhanced browser-based interface'
 name: view_detail
@@ -45,12 +45,15 @@ examples:
     code: |-
       # View a data frame with interactive table
       view_detail(mtcars)
+
       # View with custom title
       view_detail(iris, title = "Iris Dataset")
+
       # View a plot
       library(ggplot2)
       p <- ggplot(mtcars, aes(mpg, hp)) + geom_point()
       view_detail(p)
+
       # View a list
       view_detail(list(a = 1, b = 2, c = list(d = 3)))
     is_dontrun: true
@@ -61,5 +64,5 @@ seealso:
     reference: view_create
     link_type: function
     url: null
-category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
+category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
 ---

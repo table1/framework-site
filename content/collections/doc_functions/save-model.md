@@ -1,5 +1,5 @@
 ---
-id: ec1cd5ea-f3e1-4592-aadc-4d1a0b8903a2
+id: 5b606d94-263c-4a52-bac2-6db5c475a772
 blueprint: doc_function
 title: 'Save a model to the outputs directory'
 name: save_model
@@ -51,9 +51,10 @@ examples:
       # Fit and save a model
       model <- lm(mpg ~ hp + wt, data = mtcars)
       save_model(model, "mpg_regression")
+
       # Save with qs for faster serialization
       save_model(model, "mpg_regression", format = "qs")
     is_dontrun: true
     position: 2
-category: 77f23995-6378-4031-9ac1-df3d881b5697
+category: 99c51be3-d67c-4f23-8aa1-d4e917d2c39b
 ---

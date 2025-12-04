@@ -1,5 +1,5 @@
 ---
-id: a1526c09-f4dd-4088-9fc4-87f7eb0aac07
+id: 7f5ba795-ad75-4b68-bd36-35c952b89a24
 blueprint: doc_function
 title: 'Create an enhanced view of R objects in the browser'
 name: view_create
@@ -37,13 +37,15 @@ examples:
     code: |-
       # View a data frame with interactive table
       view_create(mtcars)
+
       # View a plot
       library(ggplot2)
       p <- ggplot(mtcars, aes(mpg, hp)) + geom_point()
       view_create(p, title = "MPG vs HP")
+
       # View a list with YAML and R structure tabs
       view_create(list(a = 1, b = 2, c = list(d = 3)))
     is_dontrun: true
     position: 2
-category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
+category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
 ---

@@ -1,5 +1,5 @@
 ---
-id: 0364a233-f4e3-441c-ac00-8ca60b3c4b98
+id: 2d1920fa-a69c-452e-99dc-117b2898ec9c
 blueprint: doc_function
 title: 'Get settings value by dot-notation key'
 name: settings
@@ -52,17 +52,21 @@ examples:
     code: |-
       # Get notebook directory (checks both locations)
       settings("notebooks")
+
       # Get explicit nested setting
       settings("directories.notebooks")
       settings("connections.db.host")
+
       # Get entire section
       settings("directories")  # Returns all directory settings
       settings("connections")  # Returns all connection settings
+
       # View entire settings
       settings()  # Returns full configuration
+
       # With default value
       settings("missing_key", default = "fallback")
     is_dontrun: true
     position: 2
-category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
+category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
 ---

@@ -14,8 +14,6 @@
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="manifest" href="/site.webmanifest">
 
-        <!-- highlight.js for syntax highlighting (custom theme in site.css) -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/base16/tomorrow-night.min.css">
 
         <!-- Prevent flash of wrong theme -->
         <script>
@@ -192,27 +190,58 @@
             </div>
         </div>
 
-        <!-- highlight.js syntax highlighting (only for code blocks with language-* class) -->
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/r.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/yaml.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/bash.min.js"></script>
-        <script>
-            // Only highlight code blocks with language-* class (skip landing page hand-crafted blocks)
-            document.querySelectorAll('pre code[class*="language-"]').forEach((el) => {
-                hljs.highlightElement(el);
+        <!-- Shiki syntax highlighting with custom Framework theme -->
+        <script type="module">
+            import { codeToHtml } from 'https://esm.sh/shiki@1.0.0';
 
-                // Post-process R code to better highlight function calls
-                if (el.classList.contains('language-r')) {
-                    el.innerHTML = el.innerHTML
-                        // Match package::function( pattern
-                        .replace(/(\w+)(<span[^>]*>::<\/span>)(\w+)(\()/g,
-                            '<span class="text-slate-300">$1</span>$2<span class="text-violet-300">$3</span>$4')
-                        // Match standalone function( pattern (not already in a span)
-                        .replace(/(?<!<span[^>]*>)(?<!<\/span>)(?<!["\w])(\b[a-z_]\w*)(\()/gi,
-                            '<span class="text-violet-300">$1</span>$2');
+            // Custom theme matching landing page colors
+            const frameworkTheme = {
+                name: 'framework-dark',
+                bg: '#10172A',
+                fg: '#cbd5e1',
+                settings: [
+                    { scope: ['comment', 'punctuation.definition.comment'], settings: { foreground: '#64748b' } },
+                    { scope: ['string', 'string.quoted'], settings: { foreground: '#4DB9FA' } },
+                    { scope: ['constant.numeric', 'constant.language.boolean'], settings: { foreground: '#fcd34d' } },
+                    { scope: ['constant.language'], settings: { foreground: '#fcd34d' } },
+                    { scope: ['keyword', 'keyword.control', 'keyword.operator'], settings: { foreground: '#7dd3fc' } },
+                    { scope: ['storage.type', 'support.type'], settings: { foreground: '#7dd3fc' } },
+                    { scope: ['entity.name.function', 'support.function', 'meta.function-call'], settings: { foreground: '#c4b5fd' } },
+                    { scope: ['variable.function'], settings: { foreground: '#c4b5fd' } },
+                    { scope: ['variable', 'variable.other'], settings: { foreground: '#cbd5e1' } },
+                    { scope: ['entity.name.namespace', 'support.class'], settings: { foreground: '#cbd5e1' } },
+                    { scope: ['punctuation'], settings: { foreground: '#cbd5e1' } },
+                    { scope: ['operator'], settings: { foreground: '#cbd5e1' } },
+                ]
+            };
+
+            const codeBlocks = document.querySelectorAll('pre code[class*="language-"]');
+
+            for (const el of codeBlocks) {
+                const lang = el.className.match(/language-(\w+)/)?.[1] || 'text';
+                const code = el.textContent;
+
+                try {
+                    const html = await codeToHtml(code, {
+                        lang: lang,
+                        theme: frameworkTheme
+                    });
+
+                    // Replace the pre element with shiki's output
+                    const temp = document.createElement('div');
+                    temp.innerHTML = html;
+                    const shikiPre = temp.querySelector('pre');
+                    if (shikiPre) {
+                        shikiPre.className = el.parentElement.className;
+                        shikiPre.style.background = '#10172A';
+                        shikiPre.style.padding = '1rem';
+                        shikiPre.style.borderRadius = '0.5rem';
+                        el.parentElement.replaceWith(shikiPre);
+                    }
+                } catch (e) {
+                    console.warn('Shiki failed for', lang, e);
                 }
-            });
+            }
         </script>
     </body>
 </html>

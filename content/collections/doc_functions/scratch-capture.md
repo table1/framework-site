@@ -1,5 +1,5 @@
 ---
-id: d6481dfe-8cb6-4ff5-8911-1bc132479a61
+id: 24abbe81-df16-421d-a458-2ee4127450e1
 blueprint: doc_function
 title: 'Capture and Save Data to File'
 name: scratch_capture
@@ -51,11 +51,13 @@ examples:
     code: |-
       # Save a character vector as text
       scratch_capture(c("hello", "world"))
+
       # Save a data frame as TSV
       scratch_capture(mtcars)
+
       # Save an R object as RDS
       scratch_capture(list(a = 1, b = 2), to = "rds")
     is_dontrun: false
     position: 1
-category: d1d943e0-ea7c-4207-824b-aeaefb4cc4e3
+category: 37b04846-d7c5-4ef8-a426-f515e6675f1a
 ---

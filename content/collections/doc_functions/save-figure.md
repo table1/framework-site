@@ -1,5 +1,5 @@
 ---
-id: 1dd047fc-b242-449e-8cbe-a56d14716595
+id: 997c1555-f3b7-466a-ae93-1fb1afa418be
 blueprint: doc_function
 title: 'Save a figure to the outputs directory'
 name: save_figure
@@ -77,11 +77,13 @@ examples:
       # Save a ggplot
       p <- ggplot(mtcars, aes(mpg, hp)) + geom_point()
       save_figure(p, "mpg_vs_hp")
+
       # Save as PDF for publication
       save_figure(p, "mpg_vs_hp", format = "pdf", width = 10, height = 8)
+
       # Save to public directory
       save_figure(p, "summary_plot", public = TRUE)
     is_dontrun: true
     position: 2
-category: 77f23995-6378-4031-9ac1-df3d881b5697
+category: 99c51be3-d67c-4f23-8aa1-d4e917d2c39b
 ---

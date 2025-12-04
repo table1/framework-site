@@ -1,5 +1,5 @@
 ---
-id: 3d4289ff-98a3-4a85-9b26-6ce029c05745
+id: 99b7960f-be6b-4392-a5d3-f1e7f358692c
 blueprint: doc_function
 title: 'Cache a value'
 name: cache
@@ -34,5 +34,5 @@ parameters:
     name: expire_after
     description: 'Optional expiration time in hours (default: from config)'
     position: 4
-category: 75da3bcf-a6ce-4f58-a0e2-f7eecc55ba2f
+category: 080fe262-8af4-4651-8f2e-9c2c582f2651
 ---

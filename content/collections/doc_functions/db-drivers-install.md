@@ -1,5 +1,5 @@
 ---
-id: 2098ab4d-1b8c-4e21-a299-c6ca9398bd1a
+id: e8f2746a-5758-4e0a-a259-c42c74e266d6
 blueprint: doc_function
 title: 'Install database drivers'
 name: db_drivers_install
@@ -32,9 +32,10 @@ examples:
     code: |-
       # Install specific drivers
       db_drivers_install(c("postgres", "mysql"))
+
       # Interactive mode
       db_drivers_install()
     is_dontrun: true
     position: 2
-category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
+category: 89e6f685-3b2d-4027-a6ed-86242ff32485
 ---

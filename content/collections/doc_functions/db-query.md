@@ -1,5 +1,5 @@
 ---
-id: ca2660dc-d313-48e4-a2cd-14a942349557
+id: f9e64054-9c3b-49ed-b4ec-72ab09291790
 blueprint: doc_function
 title: 'Get data from a database query'
 name: db_query
@@ -35,5 +35,5 @@ examples:
     code: 'users <- db_query("SELECT * FROM users", "my_db")'
     is_dontrun: true
     position: 2
-category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
+category: 89e6f685-3b2d-4027-a6ed-86242ff32485
 ---

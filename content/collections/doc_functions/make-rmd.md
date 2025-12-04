@@ -1,5 +1,5 @@
 ---
-id: f2cd230a-f5b7-45d5-b35e-4fea3c2719a5
+id: 929ab7b7-acd3-456f-a553-e517c339a9b9
 blueprint: doc_function
 title: 'Create an RMarkdown Notebook'
 name: make_rmd
@@ -42,8 +42,10 @@ examples:
     code: |-
       # Create notebooks/analysis.Rmd
       make_rmd("analysis")
+
       # Use custom stub
       make_rmd("report", stub = "minimal")
+
       # Create in specific directory
       make_rmd("explore", dir = "work")
     is_dontrun: true
@@ -59,5 +61,5 @@ seealso:
     reference: make_qmd()
     link_type: function
     url: null
-category: f0a674dc-20ed-41ea-b90d-269d63df7708
+category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
 ---

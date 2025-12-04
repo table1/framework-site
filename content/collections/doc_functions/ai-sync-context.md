@@ -1,5 +1,5 @@
 ---
-id: 8708e112-137d-45f8-bc54-05c82252c4bf
+id: 37be2fe3-70ec-4c78-8533-a0ca372259ea
 blueprint: doc_function
 title: 'Sync AI Assistant Context Files'
 name: ai_sync_context
@@ -45,11 +45,13 @@ examples:
     code: |-
       # Sync AI context files
       ai_sync_context()
+
       # Force sync even if targets are newer
       ai_sync_context(force = TRUE)
+
       # Silent sync (for git hooks)
       ai_sync_context(verbose = FALSE)
     is_dontrun: true
     position: 2
-category: d1cbf36b-fe7a-4e1a-91e7-0bd90f55262d
+category: 921b1e31-a47d-4b8d-92ba-38990e3d7ebe
 ---

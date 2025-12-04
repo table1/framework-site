@@ -198,13 +198,41 @@ class ImportFrameworkDocs extends Command
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
             $examples[] = [
                 'type' => 'example',
-                'code' => $row['code'],
+                'code' => $this->formatExampleCode($row['code']),
                 'is_dontrun' => (bool) $row['is_dontrun'],
                 'position' => $row['position'] ?? 0,
             ];
         }
 
         return $examples;
+    }
+
+    /**
+     * Format example code to add breathing room before comments
+     */
+    protected function formatExampleCode(string $code): string
+    {
+        $lines = explode("\n", $code);
+        $formatted = [];
+        $prevLineWasCode = false;
+
+        foreach ($lines as $line) {
+            $trimmed = trim($line);
+            $isComment = str_starts_with($trimmed, '#');
+            $isEmpty = $trimmed === '';
+
+            // Add blank line before comment if previous line was code
+            if ($isComment && $prevLineWasCode) {
+                $formatted[] = '';
+            }
+
+            $formatted[] = $line;
+
+            // Track if this line was code (not empty, not comment)
+            $prevLineWasCode = !$isEmpty && !$isComment;
+        }
+
+        return implode("\n", $formatted);
     }
 
     protected function getSections(int $functionId): array

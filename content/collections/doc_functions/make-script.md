@@ -1,5 +1,5 @@
 ---
-id: 06f3fd78-dd39-4c06-9207-29a8146bb5b3
+id: 0b8acac2-ce21-4b0f-9817-b4fdc1d0e82e
 blueprint: doc_function
 title: 'Create an R Script from Stub Template'
 name: make_script
@@ -64,8 +64,10 @@ examples:
       # Create script (extension optional)
       make_script("process-data")
       make_script("process-data.R")
+
       # Use custom stub
       make_script("etl-pipeline", stub = "etl")
+
       # Create in specific directory
       make_script("analysis", dir = "analysis/")
     is_dontrun: true
@@ -76,5 +78,5 @@ seealso:
     reference: make_notebook()
     link_type: function
     url: null
-category: f0a674dc-20ed-41ea-b90d-269d63df7708
+category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
 ---

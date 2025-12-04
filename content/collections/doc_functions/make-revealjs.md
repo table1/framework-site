@@ -1,5 +1,5 @@
 ---
-id: 2c3437a4-310f-47d7-b652-c27073aa68d0
+id: 523eb5fb-c5f4-4c3d-94ab-f398920c7949
 blueprint: doc_function
 title: 'Create a Reveal.js Presentation'
 name: make_revealjs
@@ -37,6 +37,7 @@ examples:
     code: |-
       # Create notebooks/slides.qmd with reveal.js format
       make_revealjs("slides")
+
       # Create in specific directory
       make_revealjs("presentation", dir = "presentations")
     is_dontrun: true
@@ -57,5 +58,5 @@ seealso:
     reference: make_presentation()
     link_type: function
     url: null
-category: f0a674dc-20ed-41ea-b90d-269d63df7708
+category: 861b5e0d-bc2d-4fe0-aec1-2e64ee3db54a
 ---

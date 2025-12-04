@@ -1,5 +1,5 @@
 ---
-id: bba951a5-62f1-435b-9b94-c6a173670258
+id: e94fcdbf-afc8-4e53-b5ad-8694343cddb8
 blueprint: doc_function
 title: 'Check if database drivers are installed'
 name: db_drivers_status
@@ -29,9 +29,10 @@ examples:
     code: |-
       # Check all drivers
       db_drivers_status()
+
       # Quiet mode (no messages)
       db_drivers_status(quiet = TRUE)
     is_dontrun: true
     position: 2
-category: f4ce9350-d9b3-4ffa-aa5f-a5c44db07272
+category: 89e6f685-3b2d-4027-a6ed-86242ff32485
 ---
