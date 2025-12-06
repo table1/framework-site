@@ -1,0 +1,26 @@
+title: 'Documentation Example'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+          -
+            handle: description
+            field:
+              type: textarea
+          -
+            handle: position
+            field:
+              type: integer
+              default: 0
+          -
+            handle: content
+            field:
+              type: markdown
+              display: Content

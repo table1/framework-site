@@ -7,28 +7,34 @@ description: 'Connecting to databases and running queries'
 ---
 ## Overview
 
-Framework provides a unified interface for connecting to databases, managing connection pools, and executing queries safely.
+Framework provides a unified interface for connecting to databases and executing queries. Define connections in `settings.yml` and Framework handles the rest.
 
 ## Configuring Connections
 
-Define database connections in `config.yml`:
+Define database connections in `settings.yml`:
 
 ```yaml
 connections:
   analytics:
     driver: postgres
-    host: ${DB_HOST}
+    host: env("DB_HOST")
     port: 5432
-    dbname: analytics
-    user: ${DB_USER}
-    password: ${DB_PASSWORD}
+    database: analytics
+    user: env("DB_USER")
+    password: env("DB_PASSWORD")
+
+  warehouse:
+    driver: duckdb
+    database: data/warehouse.duckdb
 
   local:
     driver: sqlite
-    dbname: data/local.db
+    database: data/local.db
 ```
 
-Store sensitive credentials in `.env`:
+The `env()` syntax reads values from environment variables, keeping credentials out of your config files.
+
+Store sensitive values in `.env`:
 
 ```bash
 # .env (gitignored)
@@ -39,68 +45,56 @@ DB_PASSWORD=secret
 
 ## Running Queries
 
-### Simple Queries
+### Get Data
 
 ```r
-# Get data from a query
-users <- query_get("SELECT * FROM users WHERE active = true",
-                   connection = "analytics")
+# Query and return results
+users <- db_query("SELECT * FROM users WHERE active = true", "analytics")
+```
 
+### Execute Statements
+
+```r
 # Execute without returning data
-query_execute("UPDATE stats SET last_run = NOW()",
-              connection = "analytics")
+db_execute("UPDATE stats SET last_run = NOW()", "analytics")
 ```
 
-### Parameterized Queries
+### Manual Connections
 
-Safely pass parameters to prevent SQL injection:
+For direct DBI access:
 
 ```r
-# Safe parameterized query
-user <- query_get(
-  "SELECT * FROM users WHERE id = $1",
-  params = list(user_id),
-  connection = "analytics"
-)
+# Get a connection (remember to disconnect!)
+conn <- db_connect("analytics")
+DBI::dbListTables(conn)
+DBI::dbDisconnect(conn)
 ```
 
-## Connection Management
-
-### Manual Connection
-
-```r
-# Get a connection object
-con <- connection_get("analytics")
-
-# Use it directly
-result <- DBI::dbGetQuery(con, "SELECT 1")
-
-# Connections are pooled - no need to close manually
-```
-
-### Connection Pooling
-
-Framework uses connection pooling by default for better performance. Connections are reused across queries instead of opening new ones.
-
-Configure pool settings:
-
-```yaml
-connections:
-  analytics:
-    driver: postgres
-    host: localhost
-    pool_size: 5
-    idle_timeout: 60
-```
+Prefer `db_query()` and `db_execute()` which handle connections automatically.
 
 ## Supported Databases
 
 | Driver | Package | Use Case |
 |--------|---------|----------|
-| `postgres` | RPostgres | PostgreSQL databases |
+| `postgres` / `postgresql` | RPostgres | PostgreSQL databases |
 | `sqlite` | RSQLite | Local SQLite files |
-| `mysql` | RMariaDB | MySQL/MariaDB |
-| `sqlserver` | odbc | SQL Server |
+| `duckdb` | duckdb | Analytical workloads, Parquet files |
+| `mysql` / `mariadb` | RMariaDB | MySQL/MariaDB |
+| `sqlserver` / `mssql` | odbc | SQL Server |
+
+### DuckDB Configuration
+
+DuckDB supports additional options:
+
+```yaml
+connections:
+  warehouse:
+    driver: duckdb
+    database: data/warehouse.duckdb
+    read_only: false
+    memory_limit: "4GB"
+    threads: 4
+```
 
 ## The Framework Database
 
@@ -108,10 +102,7 @@ Every project includes a local SQLite database (`framework.db`) for internal tra
 
 ```r
 # Query Framework's internal database
-cache_entries <- query_get(
-  "SELECT * FROM cache",
-  connection = "framework"
-)
+cache_entries <- db_query("SELECT * FROM cache", "framework")
 ```
 
 This tracks:
@@ -119,21 +110,30 @@ This tracks:
 - Cache metadata
 - Results registry
 
+## Listing Connections
+
+View all configured connections:
+
+```r
+db_list()
+# Shows connection names, drivers, hosts, and databases
+```
+
 ## Best Practices
 
-### 1. Use Environment Variables
+### Use env() for Credentials
 
 Never hardcode credentials:
 
 ```yaml
 # Good
-password: ${DB_PASSWORD}
+password: env("DB_PASSWORD")
 
 # Never do this
 password: "my_secret_password"
 ```
 
-### 2. Name Connections Clearly
+### Name Connections Clearly
 
 ```yaml
 connections:
@@ -143,17 +143,10 @@ connections:
     ...
 ```
 
-### 3. Use Appropriate Timeouts
+---
 
-```yaml
-connections:
-  slow_warehouse:
-    driver: postgres
-    statement_timeout: 300  # 5 minutes for slow queries
-```
+<div style="display: flex; justify-content: space-between">
 
-## Next Steps
+[← Caching](/docs/caching)
 
-- Explore [query_get](/docs/query-get) reference
-- Learn about [data management](/docs/data-management)
-- See [caching](/docs/caching) query results
+</div>

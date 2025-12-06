@@ -1,0 +1,6 @@
+title: 'Documentation Examples'
+route: '/docs/examples/{slug}'
+sort_dir: asc
+sort_field: position
+template: docs/example
+layout: layout

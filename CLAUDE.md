@@ -12,6 +12,11 @@ This file provides guidance to Claude Code when working with code in this reposi
 - Static-capable deployment ready
 - Dark mode support with Tailwind CSS v4
 
+## Writing Style
+
+- Use `:` instead of `—` (em dash) in documentation lists and descriptions
+- Example: `**Basics**: projects directory` not `**Basics** — projects directory`
+
 ## Tech Stack
 
 | Layer | Technology |

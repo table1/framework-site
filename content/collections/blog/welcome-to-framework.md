@@ -9,7 +9,7 @@ tags:
   - announcement
   - getting-started
 ---
-We're excited to introduce **Framework** — a comprehensive data management and project scaffolding system designed for reproducible data analysis workflows in R.
+We're excited to introduce **Framework**: a comprehensive data management and project scaffolding system designed for reproducible data analysis workflows in R.
 
 ## Why Framework?
 

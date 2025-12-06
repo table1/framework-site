@@ -3,23 +3,20 @@ id: installation
 title: Installation
 section: getting_started
 position: 1
-description: 'How to install Framework and its dependencies'
+description: 'How to install Framework'
 ---
 ## Requirements
 
 Framework requires:
 - **R** version 4.1 or higher
-- **RStudio** (recommended) or any R IDE
+- Any R IDE — Framework supports [Positron](https://positron.posit.co/) (we built Framework with it!), [VS Code](https://code.visualstudio.com/), and [RStudio](https://posit.co/products/open-source/rstudio/)
 
 ## Install from GitHub
 
-The easiest way to install Framework is from GitHub using the `remotes` package:
+Framework is currently only available via GitHub. Install using the `remotes` package:
 
 ```r
-# Install remotes if needed
 install.packages("remotes")
-
-# Install Framework
 remotes::install_github("erikwestlund/framework")
 ```
 
@@ -34,25 +31,6 @@ packageVersion("framework")
 
 You should see the version number displayed.
 
-## Optional Dependencies
-
-Framework has some optional dependencies for enhanced functionality:
-
-### For Encryption Support
-```r
-install.packages("sodium")
-```
-
-### For Enhanced Graphics
-```r
-install.packages("httpgd")
-```
-
-### For Interactive Data Tables
-```r
-install.packages("DT")
-```
-
 ## Updating Framework
 
 To update to the latest version:
@@ -61,6 +39,10 @@ To update to the latest version:
 remotes::install_github("erikwestlund/framework")
 ```
 
-## Next Steps
+---
 
-Once installed, you're ready to [create your first project](/docs/quick-start).
+<div style="display: flex; justify-content: flex-end">
+
+[Setup →](/docs/setup)
+
+</div>

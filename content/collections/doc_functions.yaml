@@ -1,5 +1,5 @@
 title: 'Documentation Functions'
-route: '/docs/{slug}'
+route: '/docs/api/{slug}'
 sort_dir: asc
 sort_field: title
 template: docs/show

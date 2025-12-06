@@ -1,5 +1,5 @@
 title: 'Documentation Categories'
-route: '/docs/{slug}'
+route: '/docs/api/{slug}'
 sort_dir: asc
 sort_field: position
 template: docs/category

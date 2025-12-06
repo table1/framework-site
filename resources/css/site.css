@@ -98,7 +98,7 @@ pre code {
 .hljs-title,
 .hljs-title.function_,
 .hljs-function .hljs-title {
-  color: #c4b5fd; /* violet-300 */
+  color: #7dd3fc; /* sky-300 */
 }
 
 .hljs-string {
@@ -120,7 +120,7 @@ pre code {
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: #6ee7b7; /* emerald-300 */
+  color: #7dd3fc; /* sky-300 */
 }
 
 .hljs-meta,
@@ -130,7 +130,11 @@ pre code {
 
 /* Code element styling in prose */
 .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
-  @apply rounded bg-slate-800 px-1.5 py-0.5 text-sm text-sky-300 font-normal;
+  @apply rounded bg-slate-100 px-1.5 py-0.5 text-sm text-slate-700 font-medium;
+}
+
+.dark .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  @apply bg-slate-800 text-sky-300 font-normal;
 }
 
 .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before,
@@ -141,4 +145,30 @@ pre code {
 /* Font display class */
 .font-display {
   font-family: Inter, system-ui, sans-serif;
+}
+
+/* Screenshot styling in prose */
+.prose img {
+  @apply rounded-lg border border-slate-200 shadow-xl bg-white relative;
+}
+
+.dark .prose img {
+  @apply border-slate-700;
+}
+
+/* Fade overlay on screenshot container */
+.prose p:has(> img) {
+  @apply relative;
+}
+
+.prose p:has(> img)::after {
+  content: '';
+  @apply absolute bottom-0 left-0 right-0 h-16 pointer-events-none;
+  margin: 0 1px 1px 1px;
+  border-radius: 0 0 0.4rem 0.4rem;
+  background: linear-gradient(to bottom, transparent 0%, white 100%);
+}
+
+.dark .prose p:has(> img)::after {
+  background: linear-gradient(to bottom, transparent 0%, rgb(15, 23, 42) 100%);
 }

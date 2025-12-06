@@ -16,17 +16,15 @@ details: |-
   5. **Installs packages** - Any missing packages from the `packages` list
   6. **Loads packages** - Attaches all configured packages
   7. **Sources functions** - Loads all `.R` files from `functions/` directory
-  8. **Creates config object** - Makes `config` available in global environment
 
   After `scaffold()` completes, you have access to:
   - All packages listed in settings.yml
   - All functions from your `functions/` directory
-  - The `config` object for accessing settings via `config("key")`
   - Database connections configured in your project
 usage: 'scaffold(config_file = NULL)'
 value: |-
 
-  Invisibly returns NULL. The main effects are side effects: loading packages, sourcing functions, and creating the `config` object.
+  Invisibly returns NULL. The main effects are side effects: loading packages and sourcing functions.
 source_file: R/scaffold.R
 is_exported: true
 is_common: true
@@ -47,9 +45,9 @@ examples:
       scaffold()
 
       # Now you can use your configured packages and functions
-      # Access settings via the config object:
-      config("directories.notebooks")
-      config("seed")
+      # Access settings via the settings object:
+      settings("directories.notebooks")
+      settings("seed")
     is_dontrun: true
     position: 2
 sections:
@@ -61,7 +59,7 @@ sections:
 
       When called without arguments, `scaffold()` searches for a Framework project by:
       - Looking for settings.yml or config.yml in current and parent directories
-      - Checking for .Rproj files with nearby settings
+      - Checking for .Rproj or .code-workspace files with nearby settings
       - Recognizing common Framework subdirectories (notebooks/, scripts/, etc.)
 
       This means you can call `scaffold()` from any subdirectory within your project.
@@ -93,7 +91,7 @@ seealso:
     url: null
   -
     type: reference
-    reference: config()
+    reference: settings()
     link_type: function
     url: null
 category: 7dcd3a24-b128-4b06-b2dc-05b0479c2bd3

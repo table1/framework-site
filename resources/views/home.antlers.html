@@ -37,7 +37,7 @@
                             </svg>
                             <!-- Tab -->
                             <div class="mt-4 flex space-x-2 text-xs">
-                                <div class="flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300">
+                                <div class="flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-emerald-300">
                                     <div class="flex items-center rounded-full bg-slate-800 px-2.5">analysis.qmd</div>
                                 </div>
                             </div>
@@ -48,14 +48,14 @@
                                 </div>
                                 <pre class="flex overflow-x-auto pb-6"><code class="px-4 text-slate-50"><span class="text-slate-500"># Set up your environment</span>
 <span class="text-sky-300">library</span>(framework)
-<span class="text-violet-300">scaffold</span>()
+<span class="text-sky-300">scaffold</span>()
 
 <span class="text-slate-500"># Read in your data</span>
-data <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.survey"</span>)
-data <span class="text-sky-300">|&gt;</span> <span class="text-violet-300">glimpse</span>()
+data <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.survey"</span>)
+data <span class="text-emerald-300">|&gt;</span> <span class="text-sky-300">glimpse</span>()
 
 <span class="text-slate-500"># Publish for the world</span>
-<span class="text-violet-300">publish_notebook</span>(<span class="text-emerald-300">"analysis.qmd"</span>, connection <span class="text-sky-300">=</span> <span class="text-emerald-300">"s3"</span>)</code></pre>
+<span class="text-sky-300">publish_notebook</span>(<span class="text-emerald-300">"analysis.qmd"</span>, connection <span class="text-emerald-300">=</span> <span class="text-emerald-300">"s3"</span>)</code></pre>
                             </div>
                         </div>
                     </div>
@@ -87,9 +87,9 @@ data <span class="text-sky-300">|&gt;</span> <span class="text-violet-300">glimp
                         </svg>
                         <span x-text="copied ? 'Copied!' : 'Copy'"></span>
                     </button>
-                    <pre class="overflow-x-auto text-sm"><code x-ref="quickstartCode" class="text-slate-300">remotes::<span class="text-violet-300">install_github</span>(<span class="text-emerald-300">"table1/framework"</span>)
-framework::<span class="text-violet-300">setup</span>()        <span class="text-slate-500"># Configure via GUI</span>
-framework::<span class="text-violet-300">new_project</span>()  <span class="text-slate-500"># Create and start working</span></code></pre>
+                    <pre class="overflow-x-auto text-sm"><code x-ref="quickstartCode" class="text-slate-300">remotes::<span class="text-sky-300">install_github</span>(<span class="text-emerald-300">"table1/framework"</span>)
+framework::<span class="text-sky-300">setup</span>()        <span class="text-slate-500"># Configure via GUI</span>
+framework::<span class="text-sky-300">new_project</span>()  <span class="text-slate-500"># Create and start working</span></code></pre>
                 </div>
             </div>
 
@@ -159,15 +159,15 @@ framework::<span class="text-violet-300">new_project</span>()  <span class="text
                         <div class="p-6">
                             <div class="rounded-lg bg-slate-900 p-4">
                                 <pre class="text-sm leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">library</span>(framework)
-<span class="text-violet-300">scaffold</span>()
+<span class="text-sky-300">scaffold</span>()
 
 <span class="text-slate-500"># Query your database</span>
-con <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">connection_get</span>(<span class="text-emerald-300">"clinic_db"</span>)
-patients <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">query_get</span>(<span class="text-emerald-300">"SELECT * FROM patients"</span>, con)
+con <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">connection_get</span>(<span class="text-emerald-300">"clinic_db"</span>)
+patients <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">query_get</span>(<span class="text-emerald-300">"SELECT * FROM patients"</span>, con)
 
 <span class="text-slate-500"># Fit and save your model</span>
-model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">glm</span>(outcome <span class="text-sky-300">~</span> age <span class="text-sky-300">+</span> treatment, data <span class="text-sky-300">=</span> patients)
-<span class="text-violet-300">save_model</span>(<span class="text-emerald-300">"outcome_model"</span>, model)</code></pre>
+model <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">glm</span>(outcome <span class="text-emerald-300">~</span> age <span class="text-emerald-300">+</span> treatment, data <span class="text-emerald-300">=</span> patients)
+<span class="text-sky-300">save_model</span>(<span class="text-emerald-300">"outcome_model"</span>, model)</code></pre>
                             </div>
                         </div>
                         <div class="border-t border-slate-200 p-6 dark:border-slate-700">
@@ -291,17 +291,17 @@ model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">glm<
 <span class="text-sky-300">library</span>(digest)
 
 <span class="text-slate-500"># Set up paths</span>
-data_dir <span class="text-sky-300">&lt;-</span> <span class="text-emerald-300">"~/project/data"</span>
-out_dir <span class="text-sky-300">&lt;-</span> <span class="text-emerald-300">"~/project/output"</span>
+data_dir <span class="text-emerald-300">&lt;-</span> <span class="text-emerald-300">"~/project/data"</span>
+out_dir <span class="text-emerald-300">&lt;-</span> <span class="text-emerald-300">"~/project/output"</span>
 
 <span class="text-slate-500"># Source helper functions</span>
-<span class="text-violet-300">source</span>(<span class="text-emerald-300">"functions/helpers.R"</span>)
-<span class="text-violet-300">source</span>(<span class="text-emerald-300">"functions/utils.R"</span>)
-<span class="text-violet-300">source</span>(<span class="text-emerald-300">"functions/plots.R"</span>)
+<span class="text-sky-300">source</span>(<span class="text-emerald-300">"functions/helpers.R"</span>)
+<span class="text-sky-300">source</span>(<span class="text-emerald-300">"functions/utils.R"</span>)
+<span class="text-sky-300">source</span>(<span class="text-emerald-300">"functions/plots.R"</span>)
 
 <span class="text-slate-500"># Load and verify data</span>
-df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">read_csv</span>(<span class="text-emerald-300">"data/raw/survey.csv"</span>)
-hash <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">digest</span>(df, algo <span class="text-sky-300">=</span> <span class="text-emerald-300">"md5"</span>)
+df <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">read_csv</span>(<span class="text-emerald-300">"data/raw/survey.csv"</span>)
+hash <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">digest</span>(df, algo <span class="text-emerald-300">=</span> <span class="text-emerald-300">"md5"</span>)
 <span class="text-slate-500"># TODO: check if hash changed?</span></code></pre>
                                     </div>
                                 </div>
@@ -311,11 +311,11 @@ hash <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">diges
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Load packages from settings.yml</span>
 <span class="text-slate-500"># Automatically source files in functions/</span>
 <span class="text-sky-300">library</span>(framework)
-<span class="text-violet-300">scaffold</span>()
+<span class="text-sky-300">scaffold</span>()
 
 <span class="text-slate-500"># Data catalog stored in settings.yml</span>
 <span class="text-slate-500"># Get warned or abort if data changes</span>
-df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.survey"</span>)</code></pre>
+df <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.survey"</span>)</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -490,31 +490,31 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
                                 <div>
                                     <div class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml (data section)</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">data</span>:
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">data</span>:
   <span class="text-slate-500"># Use nested YAML:</span>
-  <span class="text-sky-300">inputs</span>:
-    <span class="text-sky-300">raw</span>:
-      <span class="text-sky-300">survey</span>:
-        <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/survey.csv</span>
-        <span class="text-violet-300">description</span>: <span class="text-emerald-300">Patient responses</span>
+  <span class="text-emerald-300">inputs</span>:
+    <span class="text-emerald-300">raw</span>:
+      <span class="text-emerald-300">survey</span>:
+        <span class="text-sky-300">path</span>: <span class="text-sky-300">inputs/raw/survey.csv</span>
+        <span class="text-sky-300">description</span>: <span class="text-sky-300">Patient responses</span>
 
   <span class="text-slate-500"># Or use dot notation:</span>
-  <span class="text-sky-300">inputs.raw.demographics</span>:
-    <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/demographics.rds</span>
-    <span class="text-violet-300">locked</span>: <span class="text-emerald-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
+  <span class="text-emerald-300">inputs.raw.demographics</span>:
+    <span class="text-sky-300">path</span>: <span class="text-sky-300">inputs/raw/demographics.rds</span>
+    <span class="text-sky-300">locked</span>: <span class="text-sky-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Read by catalog name</span>
-survey <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.survey"</span>)
+survey <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">data_read</span>(<span class=""text-emerald-300">"inputs.raw.survey"</span>)
 
 <span class="text-slate-500"># List all available data</span>
-<span class="text-violet-300">data_list</span>()
+<span class="text-sky-300">data_list</span>()
 
 <span class="text-slate-500"># Save to catalog location</span>
-<span class="text-violet-300">data_save</span>(<span class="text-emerald-300">"inputs.final.analysis_ready"</span>, df)</code></pre>
+<span class="text-sky-300">data_save</span>(<span class=""text-emerald-300">"inputs.final.analysis_ready"</span>, df)</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -528,10 +528,10 @@ survey <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">dat
                                     <div>
                                         <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml (data section)</div>
                                         <div class="rounded-lg bg-slate-900 p-4">
-                                            <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">data</span>:
-  <span class="text-sky-300">inputs.raw.demographics</span>:
-    <span class="text-violet-300">path</span>: <span class="text-emerald-300">inputs/raw/demographics.rds</span>
-    <span class="text-violet-300">locked</span>: <span class="text-emerald-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
+                                            <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">data</span>:
+  <span class="text-emerald-300">inputs.raw.demographics</span>:
+    <span class="text-sky-300">path</span>: <span class="text-sky-300">inputs/raw/demographics.rds</span>
+    <span class="text-sky-300">locked</span>: <span class="text-sky-300">true</span>  <span class="text-slate-500"># abort if changed</span></code></pre>
                                         </div>
                                     </div>
                                     <div>
@@ -547,15 +547,15 @@ survey <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">dat
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Hash checked on every read</span>
-df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.demographics"</span>)
+df <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">data_read</span>(<span class=""text-emerald-300">"inputs.raw.demographics"</span>)
 
 <span class="text-slate-500"># If file changed since last read:</span>
 <span class="text-slate-500"># - Warning by default</span>
 <span class="text-slate-500"># - Abort if locked: true</span>
 
 <span class="text-slate-500"># Or lock inline:</span>
-df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_read</span>(<span class="text-emerald-300">"inputs.raw.survey"</span>,
-                locked <span class="text-sky-300">=</span> <span class="text-amber-300">TRUE</span>)</code></pre>
+df <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">data_read</span>(<span class=""text-emerald-300">"inputs.raw.survey"</span>,
+                locked <span class="text-emerald-300">=</span> <span class="text-amber-300">TRUE</span>)</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -568,13 +568,13 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">packages</span>:
-  <span class="text-slate-300">-</span> <span class="text-violet-300">name</span>: <span class="text-emerald-300">dplyr</span>
-    <span class="text-violet-300">auto_attach</span>: <span class="text-amber-300">true</span>
-  <span class="text-slate-300">-</span> <span class="text-violet-300">name</span>: <span class="text-emerald-300">ggplot2</span>
-    <span class="text-violet-300">auto_attach</span>: <span class="text-amber-300">true</span>
-  <span class="text-slate-300">-</span> <span class="text-violet-300">name</span>: <span class="text-emerald-300">readr</span>
-    <span class="text-violet-300">auto_attach</span>: <span class="text-amber-300">false</span></code></pre>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">packages</span>:
+  <span class="text-slate-300">-</span> <span class="text-sky-300">name</span>: <span class="text-sky-300">dplyr</span>
+    <span class="text-sky-300">auto_attach</span>: <span class="text-amber-300">true</span>
+  <span class="text-slate-300">-</span> <span class="text-sky-300">name</span>: <span class="text-sky-300">ggplot2</span>
+    <span class="text-sky-300">auto_attach</span>: <span class="text-amber-300">true</span>
+  <span class="text-slate-300">-</span> <span class="text-sky-300">name</span>: <span class="text-sky-300">readr</span>
+    <span class="text-sky-300">auto_attach</span>: <span class="text-amber-300">false</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
@@ -583,13 +583,13 @@ df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">data_re
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Checks all packages are installed</span>
 <span class="text-slate-500"># Installs missing packages</span>
 <span class="text-slate-500"># Calls library() on those auto-attached</span>
-framework::<span class="text-violet-300">scaffold</span>()
+framework::<span class="text-sky-300">scaffold</span>()
 
 <span class="text-slate-500"># Use auto-attached directly</span>
-df <span class="text-sky-300">|&gt;</span> <span class="text-violet-300">filter</span>(x <span class="text-sky-300">&gt;</span> <span class="text-amber-300">5</span>)
+df <span class="text-emerald-300">|&gt;</span> <span class="text-sky-300">filter</span>(x <span class="text-emerald-300">&gt;</span> <span class="text-amber-300">5</span>)
 
 <span class="text-slate-500"># Use non-attached with namespace</span>
-df <span class="text-sky-300">&lt;-</span> readr::<span class="text-violet-300">read_csv</span>(<span class="text-emerald-300">"data.csv"</span>)</code></pre>
+df <span class="text-emerald-300">&lt;-</span> readr::<span class="text-sky-300">read_csv</span>(<span class=""text-emerald-300">"data.csv"</span>)</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -609,42 +609,42 @@ df <span class="text-sky-300">&lt;-</span> readr::<span class="text-violet-300">
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings/connections.yml</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">connections</span>:
-  <span class="text-sky-300">framework</span>:
-    <span class="text-violet-300">driver</span>: <span class="text-emerald-300">sqlite</span>
-    <span class="text-violet-300">database</span>: <span class="text-emerald-300">framework.db</span>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">connections</span>:
+  <span class="text-emerald-300">framework</span>:
+    <span class="text-sky-300">driver</span>: <span class="text-sky-300">sqlite</span>
+    <span class="text-sky-300">database</span>: <span class="text-sky-300">framework.db</span>
 
-  <span class="text-sky-300">patient_db</span>:
-    <span class="text-violet-300">driver</span>: <span class="text-emerald-300">postgresql</span>
-    <span class="text-violet-300">host</span>: <span class="text-emerald-300">env("DB_HOST")</span>
-    <span class="text-violet-300">port</span>: <span class="text-amber-300">5432</span>
-    <span class="text-violet-300">database</span>: <span class="text-emerald-300">env("DB_NAME")</span>
-    <span class="text-violet-300">user</span>: <span class="text-emerald-300">env("DB_USER")</span>
-    <span class="text-violet-300">password</span>: <span class="text-emerald-300">env("DB_PASS")</span>
+  <span class="text-emerald-300">patient_db</span>:
+    <span class="text-sky-300">driver</span>: <span class="text-sky-300">postgresql</span>
+    <span class="text-sky-300">host</span>: <span class="text-sky-300">env("DB_HOST")</span>
+    <span class="text-sky-300">port</span>: <span class="text-amber-300">5432</span>
+    <span class="text-sky-300">database</span>: <span class="text-sky-300">env("DB_NAME")</span>
+    <span class="text-sky-300">user</span>: <span class="text-sky-300">env("DB_USER")</span>
+    <span class="text-sky-300">password</span>: <span class="text-sky-300">env("DB_PASS")</span>
 
-<span class="text-sky-300">options</span>:
-  <span class="text-violet-300">default_connection</span>: <span class="text-emerald-300">patient_db</span></code></pre>
+<span class="text-emerald-300">options</span>:
+  <span class="text-sky-300">default_connection</span>: <span class="text-sky-300">patient_db</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Query with auto-disconnect</span>
-df <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">db_query</span>(
-  <span class="text-emerald-300">"SELECT * FROM patients"</span>,
-  <span class="text-emerald-300">"patient_db"</span>
+df <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">db_query</span>(
+  <span class=""text-emerald-300">"SELECT * FROM patients"</span>,
+  <span class=""text-emerald-300">"patient_db"</span>
 )
 
 <span class="text-slate-500"># Execute statements</span>
-<span class="text-violet-300">db_execute</span>(
-  <span class="text-emerald-300">"DELETE FROM cache WHERE expired"</span>,
-  <span class="text-emerald-300">"patient_db"</span>
+<span class="text-sky-300">db_execute</span>(
+  <span class=""text-emerald-300">"DELETE FROM cache WHERE expired"</span>,
+  <span class=""text-emerald-300">"patient_db"</span>
 )
 
 <span class="text-slate-500"># Manual connection if needed</span>
-con <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">db_connect</span>(<span class="text-emerald-300">"patient_db"</span>)
-DBI::<span class="text-violet-300">dbListTables</span>(con)
-DBI::<span class="text-violet-300">dbDisconnect</span>(con)</code></pre>
+con <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">db_connect</span>(<span class=""text-emerald-300">"patient_db"</span>)
+DBI::<span class="text-sky-300">dbListTables</span>(con)
+DBI::<span class="text-sky-300">dbDisconnect</span>(con)</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -667,35 +667,35 @@ DBI::<span class="text-violet-300">dbDisconnect</span>(con)</code></pre>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings/packages.yml</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">packages</span>:
-  <span class="text-slate-300">-</span> <span class="text-violet-300">name</span>: <span class="text-emerald-300">dplyr</span>
-    <span class="text-violet-300">version</span>: <span class="text-emerald-300">"1.1.4"</span>
-    <span class="text-violet-300">auto_attach</span>: <span class="text-amber-300">true</span>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">packages</span>:
+  <span class="text-slate-300">-</span> <span class="text-sky-300">name</span>: <span class="text-sky-300">dplyr</span>
+    <span class="text-sky-300">version</span>: <span class=""text-emerald-300">"1.1.4"</span>
+    <span class="text-sky-300">auto_attach</span>: <span class="text-amber-300">true</span>
 
-  <span class="text-slate-300">-</span> <span class="text-violet-300">name</span>: <span class="text-emerald-300">ggplot2</span>
-    <span class="text-violet-300">version</span>: <span class="text-emerald-300">"3.5.0"</span>
-    <span class="text-violet-300">auto_attach</span>: <span class="text-amber-300">true</span>
+  <span class="text-slate-300">-</span> <span class="text-sky-300">name</span>: <span class="text-sky-300">ggplot2</span>
+    <span class="text-sky-300">version</span>: <span class=""text-emerald-300">"3.5.0"</span>
+    <span class="text-sky-300">auto_attach</span>: <span class="text-amber-300">true</span>
 
-  <span class="text-slate-300">-</span> <span class="text-violet-300">name</span>: <span class="text-emerald-300">tidyverse/tidyr</span>
-    <span class="text-violet-300">ref</span>: <span class="text-emerald-300">"main"</span>  <span class="text-slate-500"># GitHub</span>
-    <span class="text-violet-300">auto_attach</span>: <span class="text-amber-300">false</span></code></pre>
+  <span class="text-slate-300">-</span> <span class="text-sky-300">name</span>: <span class="text-sky-300">tidyverse/tidyr</span>
+    <span class="text-sky-300">ref</span>: <span class=""text-emerald-300">"main"</span>  <span class="text-slate-500"># GitHub</span>
+    <span class="text-sky-300">auto_attach</span>: <span class="text-amber-300">false</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Enable renv (once per project)</span>
-<span class="text-violet-300">renv_enable</span>()
+<span class="text-sky-300">renv_enable</span>()
 
 <span class="text-slate-500"># scaffold() installs pinned versions</span>
 <span class="text-slate-500"># and attaches packages automatically</span>
-<span class="text-violet-300">scaffold</span>()
+<span class="text-sky-300">scaffold</span>()
 
 <span class="text-slate-500"># Lock current state</span>
-<span class="text-violet-300">packages_snapshot</span>()
+<span class="text-sky-300">packages_snapshot</span>()
 
 <span class="text-slate-500"># Restore on another machine</span>
-<span class="text-violet-300">packages_restore</span>()</code></pre>
+<span class="text-sky-300">packages_restore</span>()</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -709,27 +709,27 @@ DBI::<span class="text-violet-300">dbDisconnect</span>(con)</code></pre>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings/connections.yml</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">s3</span>:
-  <span class="text-sky-300">public_docs</span>:
-    <span class="text-violet-300">driver</span>: <span class="text-emerald-300">s3</span>
-    <span class="text-violet-300">bucket</span>: <span class="text-emerald-300">env("S3_BUCKET")</span>
-    <span class="text-violet-300">region</span>: <span class="text-emerald-300">env("S3_REGION")</span>
-    <span class="text-violet-300">prefix</span>: <span class="text-emerald-300">notebooks/</span>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">s3</span>:
+  <span class="text-emerald-300">public_docs</span>:
+    <span class="text-sky-300">driver</span>: <span class="text-sky-300">s3</span>
+    <span class="text-sky-300">bucket</span>: <span class="text-sky-300">env("S3_BUCKET")</span>
+    <span class="text-sky-300">region</span>: <span class="text-sky-300">env("S3_REGION")</span>
+    <span class="text-sky-300">prefix</span>: <span class="text-sky-300">notebooks/</span>
 
-<span class="text-sky-300">options</span>:
-  <span class="text-violet-300">default_s3_connection</span>: <span class="text-emerald-300">public_docs</span></code></pre>
+<span class="text-emerald-300">options</span>:
+  <span class="text-sky-300">default_s3_connection</span>: <span class="text-sky-300">public_docs</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Render and publish in one step</span>
-<span class="text-violet-300">publish_notebook</span>(<span class="text-emerald-300">"analysis.qmd"</span>)
+<span class="text-sky-300">publish_notebook</span>(<span class=""text-emerald-300">"analysis.qmd"</span>)
 
 <span class="text-slate-500"># Or publish to a specific connection</span>
-<span class="text-violet-300">publish_notebook</span>(
-  <span class="text-emerald-300">"analysis.qmd"</span>,
-  connection <span class="text-sky-300">=</span> <span class="text-emerald-300">"public_docs"</span>
+<span class="text-sky-300">publish_notebook</span>(
+  <span class=""text-emerald-300">"analysis.qmd"</span>,
+  connection <span class="text-emerald-300">=</span> <span class=""text-emerald-300">"public_docs"</span>
 )</code></pre>
                                     </div>
                                 </div>
@@ -751,27 +751,27 @@ DBI::<span class="text-violet-300">dbDisconnect</span>(con)</code></pre>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml (quarto section)</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">quarto</span>:
-  <span class="text-sky-300">html</span>:
-    <span class="text-violet-300">embed_resources</span>: <span class="text-amber-300">true</span>
-    <span class="text-violet-300">toc</span>: <span class="text-amber-300">true</span>
-    <span class="text-violet-300">code_fold</span>: <span class="text-amber-300">true</span>
-    <span class="text-violet-300">theme</span>: <span class="text-emerald-300">cosmo</span>
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">quarto</span>:
+  <span class="text-emerald-300">html</span>:
+    <span class="text-sky-300">embed_resources</span>: <span class="text-amber-300">true</span>
+    <span class="text-sky-300">toc</span>: <span class="text-amber-300">true</span>
+    <span class="text-sky-300">code_fold</span>: <span class="text-amber-300">true</span>
+    <span class="text-sky-300">theme</span>: <span class="text-sky-300">cosmo</span>
 
-<span class="text-sky-300">render_dirs</span>:
-  <span class="text-violet-300">notebooks</span>: <span class="text-emerald-300">outputs/notebooks</span>
-  <span class="text-violet-300">docs</span>: <span class="text-emerald-300">outputs/docs</span></code></pre>
+<span class="text-emerald-300">render_dirs</span>:
+  <span class="text-sky-300">notebooks</span>: <span class="text-sky-300">outputs/notebooks</span>
+  <span class="text-sky-300">docs</span>: <span class="text-sky-300">outputs/docs</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Usage</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Create from your template</span>
-<span class="text-violet-300">make_notebook</span>(<span class="text-emerald-300">"analysis"</span>)
+<span class="text-sky-300">make_notebook</span>(<span class=""text-emerald-300">"analysis"</span>)
 <span class="text-slate-500"># → notebooks/analysis.qmd</span>
 
 <span class="text-slate-500"># Create a script</span>
-<span class="text-violet-300">make_script</span>(<span class="text-emerald-300">"etl"</span>)
+<span class="text-sky-300">make_script</span>(<span class=""text-emerald-300">"etl"</span>)
 <span class="text-slate-500"># → scripts/etl.R</span>
 
 <span class="text-slate-500"># Renders go to predictable places</span>
@@ -794,35 +794,35 @@ DBI::<span class="text-violet-300">dbDisconnect</span>(con)</code></pre>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Cache expensive operations</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Fetch from cache or compute</span>
-result <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">cache_remember</span>(<span class="text-emerald-300">"api_response"</span>, {
-  <span class="text-violet-300">httr2::request</span>(url) <span class="text-sky-300">|&gt;</span>
-    <span class="text-violet-300">req_perform</span>() <span class="text-sky-300">|&gt;</span>
-    <span class="text-violet-300">resp_body_json</span>()
-}, expire <span class="text-sky-300">=</span> <span class="text-emerald-300">"1 hour"</span>)
+result <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">cache_remember</span>(<span class=""text-emerald-300">"api_response"</span>, {
+  <span class="text-sky-300">httr2::request</span>(url) <span class="text-emerald-300">|&gt;</span>
+    <span class="text-sky-300">req_perform</span>() <span class="text-emerald-300">|&gt;</span>
+    <span class="text-sky-300">resp_body_json</span>()
+}, expire <span class="text-emerald-300">=</span> <span class=""text-emerald-300">"1 hour"</span>)
 
 <span class="text-slate-500"># Cache model training results</span>
-model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">cache_remember</span>(<span class="text-emerald-300">"trained_model"</span>, {
-  <span class="text-violet-300">train_model</span>(data)
-}, expire <span class="text-sky-300">=</span> <span class="text-emerald-300">"7 days"</span>)</code></pre>
+model <span class="text-emerald-300">&lt;-</span> <span class="text-sky-300">cache_remember</span>(<span class=""text-emerald-300">"trained_model"</span>, {
+  <span class="text-sky-300">train_model</span>(data)
+}, expire <span class="text-emerald-300">=</span> <span class=""text-emerald-300">"7 days"</span>)</code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Cache management</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># List all caches with expiry times</span>
-<span class="text-violet-300">cache_list</span>()
+<span class="text-sky-300">cache_list</span>()
 
 <span class="text-slate-500"># Read from cache (NULL if missing)</span>
-<span class="text-violet-300">cache_get</span>(<span class="text-emerald-300">"api_response"</span>)
+<span class="text-sky-300">cache_get</span>(<span class=""text-emerald-300">"api_response"</span>)
 
 <span class="text-slate-500"># Write directly to cache</span>
-<span class="text-violet-300">cache</span>(<span class="text-emerald-300">"my_data"</span>, processed_df)
+<span class="text-sky-300">cache</span>(<span class=""text-emerald-300">"my_data"</span>, processed_df)
 
 <span class="text-slate-500"># Clear specific cache</span>
-<span class="text-violet-300">cache_forget</span>(<span class="text-emerald-300">"stale_data"</span>)
+<span class="text-sky-300">cache_forget</span>(<span class=""text-emerald-300">"stale_data"</span>)
 
 <span class="text-slate-500"># Clear all caches</span>
-<span class="text-violet-300">cache_flush</span>()</code></pre>
+<span class="text-sky-300">cache_flush</span>()</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -842,20 +842,20 @@ model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">cach
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">settings.yml</div>
                                     <div class="rounded-lg bg-slate-900 p-4">
-                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-sky-300">ai</span>:
+                                        <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-emerald-300">ai</span>:
   <span class="text-slate-500"># Edit this one, others sync on commit</span>
-  <span class="text-violet-300">canonical_file</span>: <span class="text-emerald-300">CLAUDE.md</span>
+  <span class="text-sky-300">canonical_file</span>: <span class="text-sky-300">CLAUDE.md</span>
 
-<span class="text-sky-300">git</span>:
-  <span class="text-sky-300">hooks</span>:
-    <span class="text-violet-300">ai_sync</span>: <span class="text-amber-300">true</span></code></pre>
+<span class="text-emerald-300">git</span>:
+  <span class="text-emerald-300">hooks</span>:
+    <span class="text-sky-300">ai_sync</span>: <span class="text-amber-300">true</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Git hooks for sync</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Install git hooks</span>
-<span class="text-violet-300">git_hooks_install</span>()
+<span class="text-sky-300">git_hooks_install</span>()
 
 <span class="text-slate-500"># On commit:</span>
 <span class="text-slate-500"># 1. Reads CLAUDE.md (canonical)</span>
@@ -883,25 +883,25 @@ model <span class="text-sky-300">&lt;-</span> <span class="text-violet-300">cach
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Framework-generated .gitignore</span>
 
 <span class="text-slate-500"># Private data directories</span>
-<span class="text-sky-300">inputs/raw/</span>
-<span class="text-sky-300">inputs/intermediate/</span>
-<span class="text-sky-300">outputs/private/</span>
+<span class="text-emerald-300">inputs/raw/</span>
+<span class="text-emerald-300">inputs/intermediate/</span>
+<span class="text-emerald-300">outputs/private/</span>
 
 <span class="text-slate-500"># Environment secrets</span>
-<span class="text-sky-300">.env</span>
-<span class="text-sky-300">.env.local</span>
+<span class="text-emerald-300">.env</span>
+<span class="text-emerald-300">.env.local</span>
 
 <span class="text-slate-500"># R artifacts</span>
-<span class="text-sky-300">.Rhistory</span>
-<span class="text-sky-300">.RData</span>
-<span class="text-sky-300">*.Rproj.user/</span></code></pre>
+<span class="text-emerald-300">.Rhistory</span>
+<span class="text-emerald-300">.RData</span>
+<span class="text-emerald-300">*.Rproj.user/</span></code></pre>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Security audit</div>
                                     <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-sky-500/20">
                                         <pre class="overflow-x-auto text-xs leading-relaxed"><code class="text-slate-300"><span class="text-slate-500"># Check for accidental exposure</span>
-<span class="text-violet-300">git_security_audit</span>()
+<span class="text-sky-300">git_security_audit</span>()
 
 <span class="text-slate-500"># Returns warnings for:</span>
 <span class="text-slate-500"># - Tracked files in private dirs</span>

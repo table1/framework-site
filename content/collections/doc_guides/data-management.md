@@ -2,16 +2,16 @@
 id: data-management
 title: Data Management
 section: core_concepts
-position: 10
+position: 3
 description: 'Managing data files with the declarative data catalog'
 ---
 ## Overview
 
-Framework provides a declarative approach to data management. Instead of hardcoding file paths throughout your code, you define a data catalog in your configuration and reference data by logical names.
+Framework provides a declarative approach to data management. Instead of hardcoding file paths throughout your code, you define a data catalog in `settings.yml` and reference data using dot notation like `inputs.raw.sales`. Framework resolves paths, selects the correct reader, and tracks file integrity automatically.
 
 ## The Data Catalog
 
-Define your data sources in `config.yml`:
+Define your data sources in `settings.yml` using dot notation keys:
 
 ```yaml
 data:
@@ -55,6 +55,44 @@ merged <- sales %>%
 data_save(merged, "inputs.final.merged")
 ```
 
+## Data Integrity
+
+Framework automatically tracks data integrity using file hashes. When you read or save data, Framework computes a SHA-256 hash of the file and stores it in the project database.
+
+**How it works:**
+
+1. On first read, Framework records the file's hash
+2. On subsequent reads, it compares the current hash against the stored hash
+3. If the hashes differ, Framework warns you that the file has changed
+
+**Locked data:** Mark critical files as `locked: true` in your catalog. If a locked file changes, Framework will error instead of warning—preventing accidental use of corrupted or modified source data.
+
+```yaml
+data:
+  inputs.raw.survey:
+    path: inputs/raw/survey_results.csv
+    type: csv
+    locked: true  # Error if file changes unexpectedly
+```
+
+## Supported Formats
+
+Framework supports these data formats:
+
+| Type | Extensions | Reader | Package |
+|------|------------|--------|---------|
+| `csv` | .csv | `readr::read_delim()` | readr |
+| `tsv` | .tsv, .txt, .dat | `readr::read_delim()` | readr |
+| `rds` | .rds | `readRDS()` | base R |
+| `excel` | .xlsx, .xls | `readxl::read_excel()` | readxl |
+| `stata` | .dta | `haven::read_dta()` | haven |
+| `spss` | .sav, .zsav | `haven::read_sav()` | haven |
+| `spss_por` | .por | `haven::read_por()` | haven |
+| `sas` | .sas7bdat, .sas7bcat | `haven::read_sas()` | haven |
+| `sas_xpt` | .xpt | `haven::read_xpt()` | haven |
+
+For Stata, SPSS, and SAS files, Framework strips variable labels and formats by default for cleaner data frames. Use `keep_attributes = TRUE` to preserve them.
+
 ## Data Info
 
 Get information about a data entry:
@@ -63,22 +101,6 @@ Get information about a data entry:
 data_info("inputs.raw.sales")
 # Returns path, type, and metadata
 ```
-
-## Supported Formats
-
-Framework supports these data formats:
-
-| Type | Extension | Reader |
-|------|-----------|--------|
-| `csv` | .csv | `readr::read_csv()` |
-| `rds` | .rds | `readRDS()` |
-| `parquet` | .parquet | `arrow::read_parquet()` |
-| `excel` | .xlsx | `readxl::read_excel()` |
-| `json` | .json | `jsonlite::read_json()` |
-
-## Data Integrity
-
-Framework automatically tracks data integrity using hashes. When you save data, a hash is computed and stored. On subsequent reads, you can verify the data hasn't been modified.
 
 ## Organization Best Practices
 
@@ -109,8 +131,12 @@ data:
     path: inputs/final/sales_ready.rds
 ```
 
-## Next Steps
+---
 
-- Learn about [caching](/docs/caching) expensive operations
-- Set up [database connections](/docs/connections)
-- Explore the [data_read](/docs/data-read) function reference
+<div style="display: flex; justify-content: space-between">
+
+[← Packages](/docs/packages)
+
+[Functions →](/docs/functions)
+
+</div>

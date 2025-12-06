@@ -13,26 +13,19 @@
     <div class="min-w-0 max-w-none flex-auto px-4 py-16 lg:pr-0 lg:pl-8 xl:px-16">
         <article>
             <header class="mb-9 space-y-1">
-                <p class="font-display text-sm font-medium text-sky-500">
-                    {{ if section == "getting_started" }}Getting Started{{ /if }}
-                    {{ if section == "core_concepts" }}Core Concepts{{ /if }}
-                    {{ if section == "project_types" }}Project Types{{ /if }}
-                </p>
+                <p class="font-display text-sm font-medium text-sky-500">Example</p>
                 <h1 class="font-display text-3xl tracking-tight text-slate-900 dark:text-white">{{ title }}</h1>
                 {{ if description }}
-                    <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">{{ description }}</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-500">{{ description }}</p>
                 {{ /if }}
             </header>
 
-            <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 prose-code:before:content-none prose-code:after:content-none">
-                {{ content | raw | markdown }}
+            <hr class="my-8 border-slate-200 dark:border-slate-800">
+
+            <div class="prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-600 prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 prose-code:before:content-none prose-code:after:content-none prose-h2:mt-12">
+                {{ content | markdown }}
             </div>
         </article>
-
-        <!-- Navigation -->
-        <dl class="mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800">
-            <!-- Previous/Next navigation could go here -->
-        </dl>
     </div>
 
     <!-- Right sidebar: On This Page -->
@@ -40,17 +33,14 @@
         <nav aria-labelledby="on-this-page-title" class="w-56">
             <h2 id="on-this-page-title" class="font-display text-sm font-medium text-slate-900 dark:text-white">On this page</h2>
             <ol role="list" class="mt-4 space-y-3 text-sm" x-data="{ headings: [] }" x-init="
-                headings = [...document.querySelectorAll('article h2, article h3, article h4')].map(el => {
-                    const anchor = el.querySelector('a.heading-permalink');
-                    return {
-                        id: anchor ? anchor.id : el.id,
-                        text: el.textContent.trim(),
-                        level: parseInt(el.tagName.charAt(1))
-                    };
-                }).filter(h => h.id)
+                headings = [...document.querySelectorAll('article h2, article h3')].map(el => ({
+                    id: el.id,
+                    text: el.textContent,
+                    level: el.tagName === 'H2' ? 2 : 3
+                }))
             ">
                 <template x-for="heading in headings" :key="heading.id">
-                    <li :class="{ 'pl-4': heading.level === 3, 'pl-8': heading.level === 4 }">
+                    <li :class="heading.level === 3 ? 'pl-4' : ''">
                         <a :href="'#' + heading.id" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300" x-text="heading.text"></a>
                     </li>
                 </template>

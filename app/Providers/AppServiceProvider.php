@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Statamic\Facades\Markdown;
 use Statamic\Statamic;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Markdown::extend('default', function ($parser) {
+            return $parser->withStatamicDefaults()->withHeadingPermalinks();
+        });
+
         // Statamic::vite('app', [
         //     'resources/js/cp.js',
         //     'resources/css/cp.css',

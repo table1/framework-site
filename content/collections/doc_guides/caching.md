@@ -9,6 +9,24 @@ description: 'Caching expensive computations for faster iteration'
 
 Framework's caching system lets you save the results of expensive computations and reuse them in future sessions. This dramatically speeds up iterative analysis work.
 
+Cached items are stored as RDS files in your project's cache directory. Framework tracks creation time, expiration, and a hash for integrity verification.
+
+**Default cache directories by project type:**
+
+| Project Type | Cache Directory |
+|--------------|-----------------|
+| project | `outputs/cache` |
+| project_sensitive | `outputs/private/cache` |
+| course | `cache` |
+| presentation | `cache` |
+
+Cache directories are created lazily—they don't exist until you first cache something. You can customize the cache directory per project type in the GUI under **Project Defaults**, or in `settings.yml`:
+
+```yaml
+directories:
+  cache: my/cache/path
+```
+
 ## Basic Caching
 
 Use `cache_remember()` to cache a computation:
@@ -17,10 +35,10 @@ Use `cache_remember()` to cache a computation:
 # First run: executes the code and caches result
 processed_data <- cache_remember("my_analysis", {
   # Expensive operation
-  raw_data %>%
-    mutate(date = parse_date(date_string)) %>%
-    filter(valid == TRUE) %>%
-    group_by(category) %>%
+  raw_data |>
+    mutate(date = parse_date(date_string)) |>
+    filter(valid == TRUE) |>
+    group_by(category) |>
     summarize(total = sum(amount))
 })
 
@@ -57,41 +75,45 @@ updated <- cache_remember("my_analysis", {
 }, refresh = TRUE)
 ```
 
-## Cache Management
 
-### List Cached Items
+## Store a Value
+
+```r
+# Manually cache a value
+cache("processed_results", my_data)
+
+# With expiration (hours)
+cache("temp_results", my_data, expire_after = 24)
+```
+
+## Retrieve a Value
+
+```r
+# Get cached value (returns NULL if not found or expired)
+cached <- cache_get("processed_results")
+```
+
+## Delete a Cached Item
+
+```r
+# Remove a specific cache
+cache_forget("my_analysis")
+```
+
+## List All Cached Items
 
 ```r
 cache_list()
-# Shows all cached items with sizes and dates
+# Returns data frame with name, expire_at, created_at, status
 ```
 
-### Delete Specific Cache
+
+## Clear All Cached Items
 
 ```r
-cache_delete("my_analysis")
-```
-
-### Clear All Caches
-
-```r
+# Remove all cached items
 cache_flush()
 ```
-
-### Get Cache Info
-
-```r
-cache_info("my_analysis")
-# Returns metadata about the cached item
-```
-
-## How It Works
-
-Framework stores cached data in your project's cache directory (default: `outputs/private/cache/`). Each cached item is stored as an RDS file with metadata tracking:
-
-- Creation timestamp
-- Expiration time (if set)
-- Hash for integrity verification
 
 ## Best Practices
 
