@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Statamic\Facades\Entry;
 
 // Documentation index
@@ -17,7 +18,7 @@ Route::statamic('/blog', 'blog.index', [
 
 // Search index JSON endpoint
 Route::get('/search-index.json', function () {
-    $entries = Entry::query()
+    $functions = Entry::query()
         ->where('collection', 'doc_functions')
         ->where('published', true)
         ->get()
@@ -52,6 +53,7 @@ Route::get('/search-index.json', function () {
             }
 
             return [
+                'type' => 'function',
                 'name' => $entry->get('name'),
                 'title' => $entry->get('title') ?? $entry->get('name'),
                 'url' => $entry->url(),
@@ -65,5 +67,36 @@ Route::get('/search-index.json', function () {
             ];
         });
 
-    return response()->json($entries);
+    $guideSections = [
+        'getting_started' => 'Getting Started',
+        'features' => 'Features',
+    ];
+
+    $guides = Entry::query()
+        ->where('collection', 'doc_guides')
+        ->whereIn('section', array_keys($guideSections))
+        ->where('published', true)
+        ->get()
+        ->map(function ($entry) use ($guideSections) {
+            $description = trim($entry->get('description') ?? '');
+            if ($description !== '') {
+                $description = Str::limit($description, 140);
+            }
+
+            $section = $entry->get('section');
+
+            return [
+                'type' => 'guide',
+                'title' => $entry->get('title'),
+                'url' => $entry->url(),
+                'description' => $description,
+                'section' => $section,
+                'section_label' => $guideSections[$section] ?? null,
+            ];
+        });
+
+    return response()->json([
+        'functions' => $functions,
+        'guides' => $guides,
+    ]);
 })->name('search-index');
