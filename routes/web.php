@@ -27,13 +27,40 @@ Route::get('/search-index.json', function () {
             if (strlen($description) > 100) {
                 $description = substr($description, 0, 100) . '...';
             }
+
+            $usage = $entry->get('usage') ?? '';
+            $usage = trim($usage);
+            $signature = '';
+            $signatureArgs = '';
+
+            if ($usage !== '') {
+                $cleanUsage = preg_replace('/\s+/', ' ', $usage);
+                $cleanUsage = preg_replace('/\(\s+/', '(', $cleanUsage);
+                $cleanUsage = preg_replace('/\s+\)/', ')', $cleanUsage);
+                $cleanUsage = preg_replace('/\s+\(/', '(', $cleanUsage);
+                $cleanUsage = preg_replace('/,\s+/', ', ', $cleanUsage);
+                $cleanUsage = trim($cleanUsage);
+                $signature = $cleanUsage;
+
+                $name = $entry->get('name');
+                if ($name && str_starts_with($cleanUsage, $name)) {
+                    $signatureArgs = ltrim(substr($cleanUsage, strlen($name)));
+                    $signatureArgs = $signatureArgs !== '' ? $signatureArgs : '()';
+                } else {
+                    $signatureArgs = $cleanUsage !== '' ? " {$cleanUsage}" : '()';
+                }
+            }
+
             return [
                 'name' => $entry->get('name'),
                 'title' => $entry->get('title') ?? $entry->get('name'),
                 'url' => $entry->url(),
-                'usage' => $entry->get('usage'),
+                'usage' => $usage,
+                'signature' => $signature,
+                'signature_args' => $signatureArgs,
                 'description' => trim($description),
                 'category' => $entry->get('category')?->title ?? null,
+                'is_common' => (bool) $entry->get('is_common'),
                 'keywords' => $entry->get('keywords'),
             ];
         });

@@ -30,6 +30,7 @@
                     searchOpen: false,
                     searchQuery: '',
                     searchResults: [],
+                    searchGroups: [],
                     searchIndex: [],
                     selectedIndex: -1,
 
@@ -52,19 +53,81 @@
                     search() {
                         if (!this.searchQuery.trim()) {
                             this.searchResults = [];
+                            this.searchGroups = [];
                             this.selectedIndex = -1;
                             return;
                         }
                         const query = this.searchQuery.toLowerCase();
-                        this.searchResults = this.searchIndex
-                            .filter(item =>
-                                item.name?.toLowerCase().includes(query) ||
-                                item.usage?.toLowerCase().includes(query) ||
-                                item.title?.toLowerCase().includes(query) ||
-                                item.description?.toLowerCase().includes(query) ||
-                                item.keywords?.toLowerCase().includes(query)
-                            )
-                            .slice(0, 10);
+
+                        const rankedResults = this.searchIndex
+                            .map(item => {
+                                const name = item.name?.toLowerCase() || '';
+                                const title = item.title?.toLowerCase() || '';
+                                const keywordsSource = item.keywords ?? '';
+                                const keywords = Array.isArray(keywordsSource)
+                                    ? keywordsSource.join(' ').toLowerCase()
+                                    : (typeof keywordsSource === 'string' ? keywordsSource.toLowerCase() : '');
+                                let rank = Infinity;
+
+                                if (name) {
+                                    if (name === query) {
+                                        rank = 0;
+                                    } else if (name.startsWith(query)) {
+                                        rank = 1;
+                                    } else if (name.includes(query)) {
+                                        rank = 2;
+                                    }
+                                }
+
+                                if (rank === Infinity && title.includes(query)) {
+                                    rank = 3;
+                                }
+
+                                if (rank === Infinity && keywords.includes(query)) {
+                                    rank = 4;
+                                }
+
+                                return { item, rank };
+                            })
+                            .filter(entry => entry.rank !== Infinity)
+                            .sort((a, b) => {
+                                if (a.rank !== b.rank) return a.rank - b.rank;
+                                const aNameLength = a.item.name?.length ?? Number.MAX_SAFE_INTEGER;
+                                const bNameLength = b.item.name?.length ?? Number.MAX_SAFE_INTEGER;
+                                if (aNameLength !== bNameLength) return aNameLength - bNameLength;
+                                return (a.item.name || '').localeCompare(b.item.name || '');
+                            })
+                            .map(entry => entry.item);
+
+                        const common = rankedResults.filter(item => item.is_common);
+                        const others = rankedResults.filter(item => !item.is_common);
+                        const combined = [];
+                        const maxResults = 12;
+
+                        outer: for (const bucket of [common, others]) {
+                            for (const item of bucket) {
+                                combined.push(item);
+                                if (combined.length >= maxResults) {
+                                    break outer;
+                                }
+                            }
+                        }
+
+                        this.searchResults = combined;
+
+                        const groupOrder = [];
+                        const groupMap = new Map();
+                        combined.forEach((item, index) => {
+                            const label = item.is_common ? 'Common functions' : 'All functions';
+                            if (!groupMap.has(label)) {
+                                const group = { label, items: [] };
+                                groupMap.set(label, group);
+                                groupOrder.push(group);
+                            }
+                            groupMap.get(label).items.push({ ...item, flatIndex: index });
+                        });
+
+                        this.searchGroups = groupOrder;
                         this.selectedIndex = this.searchResults.length > 0 ? 0 : -1;
                     },
 
@@ -99,6 +162,7 @@
                         this.searchOpen = true;
                         this.searchQuery = '';
                         this.searchResults = [];
+                        this.searchGroups = [];
                         this.selectedIndex = -1;
                         setTimeout(() => {
                             document.getElementById('search-input')?.focus();
@@ -109,6 +173,7 @@
                         this.searchOpen = false;
                         this.searchQuery = '';
                         this.searchResults = [];
+                        this.searchGroups = [];
                         this.selectedIndex = -1;
                     }
                 });
@@ -136,42 +201,53 @@
             <div x-show="$store.app.searchOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-slate-900/40" @click="$store.app.closeSearch()"></div>
 
             <!-- Modal -->
-            <div class="relative flex min-h-full items-start justify-center p-4 pt-[15vh]">
-                <div x-show="$store.app.searchOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="relative w-full max-w-2xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-slate-900/10 dark:bg-slate-800 dark:ring-slate-700">
+            <div class="relative flex min-h-full items-start justify-center p-4 pt-[13vh]">
+                <div x-show="$store.app.searchOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="relative w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-800">
                     <!-- Search input -->
-                    <div class="relative">
-                        <svg class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-                        </svg>
-                        <input id="search-input" x-model="$store.app.searchQuery" @input="$store.app.search()" @keydown.down.prevent="$store.app.selectNext()" @keydown.up.prevent="$store.app.selectPrev()" @keydown.enter.prevent="$store.app.goToSelected()" type="text" class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm dark:text-white dark:placeholder:text-slate-500" placeholder="Search functions...">
-                        <div class="pointer-events-none absolute right-4 top-3.5 hidden items-center gap-2 sm:flex">
-                            <kbd class="rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-xs text-slate-400 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-500">&uarr;&darr;</kbd>
-                            <kbd class="rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-xs text-slate-400 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-500">esc</kbd>
+                    <div class="border-b border-slate-200/80 px-5 pt-2 pb-2 dark:border-slate-700">
+                        <div class="relative">
+                            <svg class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 dark:text-slate-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                            </svg>
+                            <input id="search-input" x-model="$store.app.searchQuery" @input="$store.app.search()" @keydown.down.prevent="$store.app.selectNext()" @keydown.up.prevent="$store.app.selectPrev()" @keydown.enter.prevent="$store.app.goToSelected()" type="text" class="h-12 w-full rounded-xl border border-transparent bg-white/95 pl-10 pr-20 text-base text-slate-900 placeholder:text-slate-400 shadow-none focus:border-transparent focus:outline-none focus:ring-0 dark:bg-slate-900/70 dark:text-white dark:placeholder:text-slate-500" placeholder="Search functions...">
+                            <div class="pointer-events-none absolute inset-y-0 right-4 hidden items-center gap-2 text-xs sm:flex">
+                                <kbd class="rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-[11px] text-slate-400 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-500">&uarr;&darr;</kbd>
+                                <kbd class="rounded border border-slate-200 bg-slate-50 px-1.5 font-mono text-[11px] text-slate-400 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-500">esc</kbd>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Results -->
-                    <div x-show="$store.app.searchResults.length > 0" class="max-h-96 scroll-py-2 overflow-y-auto border-t border-slate-200 dark:border-slate-700">
-                        <ul class="py-2">
-                            <template x-for="(result, index) in $store.app.searchResults" :key="result.url">
-                                <li :data-search-index="index">
-                                    <a :href="result.url" class="block px-4 py-3 transition-colors" :class="$store.app.selectedIndex === index ? 'bg-sky-50 dark:bg-sky-900/30' : 'hover:bg-slate-50 dark:hover:bg-slate-700/50'" @click="$store.app.closeSearch()" @mouseenter="$store.app.selectedIndex = index">
-                                        <div class="flex items-start gap-3">
-                                            <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg" :class="$store.app.selectedIndex === index ? 'bg-sky-100 dark:bg-sky-800/50' : 'bg-slate-100 dark:bg-slate-700'">
-                                                <svg class="h-4 w-4" :class="$store.app.selectedIndex === index ? 'text-sky-600 dark:text-sky-400' : 'text-slate-500 dark:text-slate-400'" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v11.5A2.25 2.25 0 004.25 18h11.5A2.25 2.25 0 0018 15.75V4.25A2.25 2.25 0 0015.75 2H4.25zm4.03 6.28a.75.75 0 00-1.06-1.06L4.97 9.47a.75.75 0 000 1.06l2.25 2.25a.75.75 0 001.06-1.06l-1.72-1.72 1.72-1.72zm3.44-1.06a.75.75 0 10-1.06 1.06l1.72 1.72-1.72 1.72a.75.75 0 101.06 1.06l2.25-2.25a.75.75 0 000-1.06l-2.25-2.25z" clip-rule="evenodd" />
-                                                </svg>
-                                            </div>
-                                            <div class="min-w-0 flex-auto">
-                                                <p class="font-mono text-sm" :class="$store.app.selectedIndex === index ? 'text-sky-700 dark:text-sky-300' : 'text-slate-900 dark:text-white'" x-text="result.usage || result.name + '()'"></p>
-                                                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400" x-text="result.description"></p>
-                                                <p class="mt-1 text-xs font-medium" :class="$store.app.selectedIndex === index ? 'text-sky-600/70 dark:text-sky-400/70' : 'text-slate-400 dark:text-slate-500'" x-text="result.category"></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+                    <div x-show="$store.app.searchResults.length > 0" class="max-h-96 overflow-y-auto border-t border-slate-200 pt-3 dark:border-slate-700">
+                        <div class="pb-2">
+                            <template x-for="group in $store.app.searchGroups" :key="group.label">
+                                <div class="pb-4 last:pb-0">
+                                    <p class="px-6 pt-1 pb-3 text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500" x-text="group.label"></p>
+                                    <ul>
+                                        <template x-for="result in group.items" :key="result.url">
+                                            <li :data-search-index="result.flatIndex">
+                                                <a :href="result.url" class="block px-6 py-3 transition-colors" :class="$store.app.selectedIndex === result.flatIndex ? 'bg-sky-50 dark:bg-sky-900/30' : 'hover:bg-slate-50 dark:hover:bg-slate-700/50'" @click="$store.app.closeSearch()" @mouseenter="$store.app.selectedIndex = result.flatIndex">
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="flex h-8 w-8 flex-none items-center justify-center rounded-lg" :class="$store.app.selectedIndex === result.flatIndex ? 'bg-sky-100 dark:bg-sky-800/50' : 'bg-slate-100 dark:bg-slate-700'">
+                                                            <svg class="h-4 w-4" :class="$store.app.selectedIndex === result.flatIndex ? 'text-sky-600 dark:text-sky-400' : 'text-slate-500 dark:text-slate-400'" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 002 4.25v11.5A2.25 2.25 0 004.25 18h11.5A2.25 2.25 0 0018 15.75V4.25A2.25 2.25 0 0015.75 2H4.25zm4.03 6.28a.75.75 0 00-1.06-1.06L4.97 9.47a.75.75 0 000 1.06l2.25 2.25a.75.75 0 001.06-1.06l-1.72-1.72 1.72-1.72zm3.44-1.06a.75.75 0 10-1.06 1.06l1.72 1.72-1.72 1.72a.75.75 0 101.06 1.06l2.25-2.25a.75.75 0 000-1.06l-2.25-2.25z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </div>
+                                                        <div class="min-w-0 flex-auto">
+                                                            <p class="font-mono text-sm" :class="$store.app.selectedIndex === result.flatIndex ? 'text-sky-700 dark:text-sky-300' : 'text-slate-900 dark:text-white'">
+                                                                <span class="font-semibold" x-text="result.name"></span><span class="text-slate-500 dark:text-slate-400" x-text="result.signature_args || result.signature || '()'"></span>
+                                                            </p>
+                                                            <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400" x-text="result.description"></p>
+                                                            <p class="mt-1 text-xs font-medium" :class="$store.app.selectedIndex === result.flatIndex ? 'text-sky-600/70 dark:text-sky-400/70' : 'text-slate-400 dark:text-slate-500'" x-text="result.category"></p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
                             </template>
-                        </ul>
+                        </div>
                     </div>
 
                     <!-- Empty state -->
