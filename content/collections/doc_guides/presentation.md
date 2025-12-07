@@ -1,9 +1,9 @@
 ---
-id: project-type-presentation
-title: Presentation Type
+id: presentation
+title: Presentation
 section: project_types
-position: 23
-description: 'Streamlined structure for presentations and reports'
+position: 14
+description: 'Minimal structure for slides and presentations'
 ---
 ## Overview
 
@@ -13,56 +13,36 @@ The **Presentation** type is a minimal structure for focused, single-output work
 
 ```
 my-presentation/
-├── config.yml           # Configuration
-├── scaffold.R           # Environment setup
 ├── presentation.qmd     # Main document
-├── framework.db         # Metadata database
-│
-├── functions/           # Support functions
-│   └── helpers.R
-│
-├── inputs/              # Data inputs
-│   └── data.csv
-│
-└── outputs/             # Generated files
-    ├── private/
-    │   └── cache/
-    └── public/
-        └── presentation.html
+└── settings.yml         # Configuration
 ```
+
+Optional directories available in the GUI: `data/`, `functions/`, `outputs/`, `scripts/`
 
 ## Creating a Presentation
 
 ```r
-init(
-  project_name = "Quarterly Report",
-  project_type = "presentation"
-)
+new_presentation("quarterly-report", "~/presentations/q4")
 ```
 
 This creates a streamlined structure with a main `presentation.qmd` file.
 
 ## Configuration
 
-Example `config.yml`:
+Example `settings.yml`:
 
 ```yaml
 default:
   project_type: presentation
 
   directories:
-    functions: functions
-    cache: outputs/private/cache
+    data: data
 
   packages:
-    - dplyr
-    - ggplot2
-    - gt
-
-  # Quarto output settings
-  quarto:
-    format: revealjs
-    theme: dark
+    - name: dplyr
+      auto_attach: true
+    - name: ggplot2
+      auto_attach: true
 ```
 
 ## Workflow
@@ -70,14 +50,15 @@ default:
 ### 1. Set Up
 
 ```r
-source("scaffold.R")
+library(framework)
+scaffold()
 ```
 
 ### 2. Edit Presentation
 
 Work directly in `presentation.qmd`:
 
-```yaml
+````qmd
 ---
 title: "Q4 Sales Analysis"
 author: "Your Name"
@@ -93,7 +74,7 @@ Key findings from Q4 sales data.
 ```{r}
 sales_plot
 ```
-```
+````
 
 ### 3. Render
 
@@ -139,7 +120,7 @@ The presentation type is for single deliverables. For multi-document projects, u
 
 ### Use Functions
 
-Even in minimal projects, extract reusable code:
+Even in minimal projects, extract reusable code by enabling the `functions/` directory:
 
 ```r
 # functions/plots.R
@@ -170,14 +151,16 @@ summary_stats <- cache_remember("summary", {
 - One-time reports
 - Quick analyses
 
-**Consider Project type for:**
+**Consider Standard Project for:**
 - Ongoing analyses
 - Multiple deliverables
 - Complex data pipelines
 - Collaborative work
 
-## Next Steps
+---
 
-- Learn about [Quarto formats](https://quarto.org/docs/output-formats/)
-- Explore [caching](/docs/caching) for faster renders
-- See [configuration](/docs/configuration) options
+<div style="display: flex; justify-content: space-between">
+
+[← Course/Teaching](/docs/course-teaching)
+
+</div>

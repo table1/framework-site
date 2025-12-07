@@ -1,8 +1,8 @@
 ---
 id: caching
 title: Caching
-section: core_concepts
-position: 11
+section: features
+position: 12
 description: 'Caching expensive computations for faster iteration'
 ---
 ## Overview
@@ -50,15 +50,15 @@ processed_data <- cache_remember("my_analysis", {
 
 ## Cache Expiration
 
-Set an expiration time for cached data:
+Set an expiration time for cached data. You can pass hours as a number, or human-readable strings:
 
 ```r
 # Cache expires after 1 hour
 fresh_data <- cache_remember("live_data", {
   fetch_from_api()
-}, expire_after = "1 hour")
+}, expire_after = 1)
 
-# Other time formats
+# Human-readable strings also work
 cache_remember("daily", expr, expire_after = "1 day")
 cache_remember("weekly", expr, expire_after = "7 days")
 ```
@@ -150,8 +150,12 @@ api_data <- cache_remember("exchange_rates", {
 }, expire_after = "1 hour")
 ```
 
-## Next Steps
+---
 
-- Explore the [cache_remember](/docs/cache-remember) function reference
-- Learn about [data management](/docs/data-management)
-- Set up [database connections](/docs/connections)
+<div style="display: flex; justify-content: space-between">
+
+[← AI Assistants](/docs/ai-assistants)
+
+[Database Connections →](/docs/connections)
+
+</div>

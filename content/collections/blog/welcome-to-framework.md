@@ -1,63 +1,47 @@
 ---
 id: 110eb8e9-0945-4e6e-baf4-a2563fe45580
 blueprint: post
-title: 'Welcome to Framework'
-author: 'Framework Team'
-excerpt: 'Introducing Framework, a data management and project scaffolding system for reproducible data analysis workflows in R.'
+title: 'Why I Built Framework'
+author: 'Erik Westlund'
+excerpt: 'Framework was born out of the repetitive problems I kept running into while managing data projects—here’s what it aims to solve.'
 date: '2024-12-04'
 tags:
   - announcement
   - getting-started
 ---
-We're excited to introduce **Framework**: a comprehensive data management and project scaffolding system designed for reproducible data analysis workflows in R.
+Framework exists because the same operational problems kept repeating across my projects: directory structures drifted, data sources weren’t documented, connection settings lived in stale notebooks, and every engagement started with hours of setup. Framework is the set of tools I assembled so those issues stopped consuming time.
 
-## Why Framework?
+## Problems Framework Addresses
 
-Data science projects often start simple but quickly become complex. Files get scattered, data transformations become hard to track, and reproducibility suffers. Framework addresses these challenges with a "convention over configuration" approach.
+1. **Project structure** — every repository should have the same directories, notebooks, and defaults so handoffs take minutes, not hours.
+2. **Data traceability** — inputs are defined once in a catalog with hashing, so I know exactly which file a notebook read.
+3. **Connection management** — database and object storage credentials live in config plus `.env`, not in scripts.
+4. **Automation hooks** — caching, git hooks, and the GUI automate repetitive tasks like syncing AI context files or running pre-commit checks.
 
-## Key Features
+Framework isn’t trying to be clever; it just keeps these workflows predictable.
 
-### Project Scaffolding
-
-Create well-structured projects with a single command:
+## Everyday Usage
 
 ```r
 library(framework)
 project_create("my-analysis")
 ```
 
-Framework sets up directories for inputs, outputs, functions, notebooks, and more — following best practices out of the box.
-
-### Smart Data Management
-
-Framework's data catalog tracks your data files with integrity verification:
-
 ```r
-# Register data in your catalog
-data_add("survey", "inputs/raw/survey_2024.csv")
-
-# Load with automatic validation
-df <- data_read("survey")
+df <- data_read("inputs.raw.survey_2024")
 ```
-
-### Intelligent Caching
-
-Cache expensive computations and skip them when inputs haven't changed:
 
 ```r
 results <- cache_remember("model_results", {
-    # This only runs if not cached
-    train_expensive_model(data)
+  train_expensive_model(data)
 })
 ```
-
-### Visual GUI
-
-Manage your projects through a beautiful web interface:
 
 ```r
 gui()
 ```
+
+Those workflows—creating projects, registering data, caching expensive steps, and reviewing inputs/outputs in the GUI—are what Framework offers right now.
 
 ## Getting Started
 
@@ -77,12 +61,12 @@ project_create("my-project")
 
 Check out our [documentation](/docs) for detailed guides and examples.
 
-## What's Next
+## What’s Next
 
-We're actively developing Framework and would love your feedback. Visit our [GitHub repository](https://github.com/table1/framework) to:
+I’m still building Framework and treating it as a living toolkit. If these conventions solve the same problems you run into, let me know what’s missing. The [GitHub repository](https://github.com/table1/framework) is the best place to:
 
 - Report issues
 - Suggest features
 - Contribute code
 
-Welcome to reproducible data science with Framework!
+Framework won’t eliminate every workflow wrinkle, but it removes a lot of the waste that used to slow me down. I hope it helps you do the same.

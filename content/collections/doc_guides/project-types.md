@@ -2,125 +2,153 @@
 id: project-types
 title: Project Types Overview
 section: project_types
-position: 20
+position: 10
 description: 'Understanding the different project types in Framework'
 ---
 ## Overview
 
-Framework supports three project types, each optimized for different workflows:
+Framework supports four project types, each optimized for different workflows:
 
 | Type | Best For |
 |------|----------|
-| **Project** | Data analysis, research, reporting |
-| **Course** | Academic courses with lectures and assignments |
-| **Presentation** | Single presentations or reports |
+| **Standard Project** | Data analysis, research, reporting |
+| **Privacy Sensitive Project** | Research with private/public data separation |
+| **Course/Teaching** | Academic courses with lectures and assignments |
+| **Presentation** | Slides and presentations |
 
 ## Choosing a Project Type
 
-### Project (Default)
+### Standard Project (Default)
+
+Full-featured with organized data, work, and output directories.
 
 Use for most data analysis work:
-- Exploratory data analysis
 - Research projects
-- Recurring reports
 - Data pipelines
+- Exploratory data analysis
 
-**Structure:**
+**Default structure:**
 ```
 my-analysis/
-├── config.yml
-├── scaffold.R
-├── notebooks/       # Analysis notebooks
-├── scripts/         # Automation scripts
-├── functions/       # Custom functions
-├── inputs/          # Data files
-└── outputs/         # Results
+├── functions/
+├── inputs/
+│   ├── raw/
+│   ├── intermediate/
+│   └── final/
+├── notebooks/
+├── outputs/
+│   └── notebooks/
+├── scripts/
+└── settings.yml
 ```
 
-### Course
+Optional directories available in the GUI: `docs/`, `scratch/`
 
-Use for teaching and academic courses:
-- Lecture slides
-- Student assignments
-- Course materials
-- Module organization
+### Privacy Sensitive Project
 
-**Structure:**
+Enhanced privacy controls with separate private/public flows.
+
+Use for research involving sensitive or protected data:
+- Research with sensitive data, such as protected health information
+- Projects requiring clear public/private separation
+
+**Default structure:**
+```
+my-study/
+├── functions/
+├── inputs/
+│   ├── private/
+│   │   ├── raw/
+│   │   ├── intermediate/
+│   │   └── final/
+│   └── public/
+│       ├── raw/
+│       ├── intermediate/
+│       └── final/
+├── notebooks/
+├── outputs/
+│   └── private/
+│       └── notebooks/
+├── scripts/
+└── settings.yml
+```
+
+Optional directories available in the GUI: `docs/`, `scratch/`
+
+### Course/Teaching
+
+Simplified structure for teaching materials, such as lecture slides, student assignments, and course materials
+
+**Default structure:**
 ```
 my-course/
-├── config.yml
-├── scaffold.R
-├── slides/          # Lecture presentations
-├── assignments/     # Student work
-├── modules/         # Course modules
-├── course_docs/     # Syllabi, guides
-└── functions/       # Shared functions
+├── assignments/
+├── course_docs/
+├── data/
+├── readings/
+├── slides/
+└── settings.yml
 ```
+
+Optional directories available in the GUI: `functions/`, `modules/`, `scripts/`
 
 ### Presentation
 
-Use for focused, single-output work:
-- Conference presentations
-- Standalone reports
-- One-off analyses
+Minimal structure for slides and presentations.
 
-**Structure:**
+**Default structure:**
 ```
 my-presentation/
-├── config.yml
-├── scaffold.R
-├── presentation.qmd # Main presentation
-├── functions/       # Support functions
-└── outputs/         # Generated files
+├── presentation.qmd
+└── settings.yml
 ```
+
+Optional directories available in the GUI: `data/`, `functions/`, `outputs/`, `scripts/`
 
 ## Creating Projects
 
-### Interactive Wizard
+### Using the GUI
+
+The easiest way to create projects is through the GUI:
 
 ```r
-library(framework)
-init()  # Launches wizard
+framework::setup()
 ```
+
+Navigate to **New Project** and follow the wizard.
 
 ### Programmatic Creation
 
 ```r
 # Create a standard project
-init(
-  project_name = "Sales Analysis",
-  project_type = "project",
-  directory = "~/projects/sales-analysis"
-)
+new_project("sales-analysis", "~/projects/sales-analysis")
+
+# Create a privacy sensitive project
+new_project_sensitive("medical-study", "~/projects/medical")
 
 # Create a course
-init(
-  project_name = "Data Science 101",
-  project_type = "course",
-  directory = "~/teaching/ds101"
-)
+new_course("data-science-101", "~/teaching/ds101")
 
 # Create a presentation
-init(
-  project_name = "Q4 Report",
-  project_type = "presentation",
-  directory = "~/presentations/q4-report"
-)
+new_presentation("q4-report", "~/presentations/q4")
 ```
 
 ## Shared Features
 
 All project types include:
 
-- **Configuration** (`config.yml`) - Project settings
-- **Scaffolding** (`scaffold.R`) - Environment setup
-- **Functions directory** - Custom R functions
-- **Outputs directory** - Generated files
-- **Git integration** - Version control ready
+- **Configuration** (`settings.yml`) - Project settings
+- **Git integration** - Version control ready with appropriate `.gitignore`
 - **Quarto support** - Modern document rendering
+- **AI assistant context** - Optional CLAUDE.md/AGENTS.md generation
 
-## Next Steps
 
-- Deep dive into [Project type](/docs/project-type-project)
-- Explore [Course type](/docs/project-type-course)
-- Learn about [Presentation type](/docs/project-type-presentation)
+---
+
+<div style="display: flex; justify-content: space-between">
+
+[← Publishing](/docs/publishing)
+
+[Standard Project →](/docs/standard-project)
+
+</div>

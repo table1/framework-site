@@ -1,13 +1,13 @@
 ---
 id: connections
-title: Database Connections
-section: core_concepts
-position: 12
-description: 'Connecting to databases and running queries'
+title: Connections
+section: features
+position: 13
+description: 'Connecting to databases and object storage providers'
 ---
 ## Overview
 
-Framework provides a unified interface for connecting to databases and executing queries. Define connections in `settings.yml` and Framework handles the rest.
+Framework provides a unified interface for connecting to databases and object storage. Define connections once in `settings.yml` and Framework handles the rest. For running queries and working with database helpers, see the [Database Integration guide](/docs/database).
 
 ## Configuring Connections
 
@@ -43,80 +43,30 @@ DB_USER=analyst
 DB_PASSWORD=secret
 ```
 
-## Running Queries
+## Object Storage Connections
 
-### Get Data
-
-```r
-# Query and return results
-users <- db_query("SELECT * FROM users WHERE active = true", "analytics")
-```
-
-### Execute Statements
-
-```r
-# Execute without returning data
-db_execute("UPDATE stats SET last_run = NOW()", "analytics")
-```
-
-### Manual Connections
-
-For direct DBI access:
-
-```r
-# Get a connection (remember to disconnect!)
-conn <- db_connect("analytics")
-DBI::dbListTables(conn)
-DBI::dbDisconnect(conn)
-```
-
-Prefer `db_query()` and `db_execute()` which handle connections automatically.
-
-## Supported Databases
-
-| Driver | Package | Use Case |
-|--------|---------|----------|
-| `postgres` / `postgresql` | RPostgres | PostgreSQL databases |
-| `sqlite` | RSQLite | Local SQLite files |
-| `duckdb` | duckdb | Analytical workloads, Parquet files |
-| `mysql` / `mariadb` | RMariaDB | MySQL/MariaDB |
-| `sqlserver` / `mssql` | odbc | SQL Server |
-
-### DuckDB Configuration
-
-DuckDB supports additional options:
+Define object storage endpoints and buckets in `settings.yml`, then use helpers like `s3_ls()`, `s3_download()`, and `s3_upload()` to browse or sync data:
 
 ```yaml
-connections:
-  warehouse:
-    driver: duckdb
-    database: data/warehouse.duckdb
-    read_only: false
-    memory_limit: "4GB"
-    threads: 4
+object_storage:
+  raw_data:
+    provider: s3
+    bucket: env("S3_BUCKET")
+    region: env("AWS_REGION")
+    access_key_id: env("AWS_ACCESS_KEY_ID")
+    secret_access_key: env("AWS_SECRET_ACCESS_KEY")
 ```
 
-## The Framework Database
-
-Every project includes a local SQLite database (`framework.db`) for internal tracking:
-
-```r
-# Query Framework's internal database
-cache_entries <- db_query("SELECT * FROM cache", "framework")
-```
-
-This tracks:
-- Data integrity hashes
-- Cache metadata
-- Results registry
+Both the GUI and the R helpers respect these connection profiles, so you can browse buckets in `framework::gui()` or automate transfers in code.
 
 ## Listing Connections
 
-View all configured connections:
+View all configured connections (databases and object storage) with `connections_list()`, or limit to only database entries using `db_list()`:
 
 ```r
-db_list()
-# Shows connection names, drivers, hosts, and databases
+connections_list()
+
+db_list()  # Databases only
 ```
 
 ## Best Practices
@@ -148,5 +98,7 @@ connections:
 <div style="display: flex; justify-content: space-between">
 
 [← Caching](/docs/caching)
+
+[Environment →](/docs/environment)
 
 </div>

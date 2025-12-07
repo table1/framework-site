@@ -16,11 +16,11 @@
             </ul>
         </li>
 
-        <!-- Core Concepts -->
+        <!-- Features -->
         <li>
-            <h2 class="font-display font-medium text-slate-900 dark:text-white">Core Concepts</h2>
+            <h2 class="font-display font-medium text-slate-900 dark:text-white">Features</h2>
             <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
-                {{ collection:doc_guides section:is="core_concepts" sort="position:asc" }}
+                {{ collection:doc_guides section:is="features" sort="position:asc" }}
                 <li class="relative">
                     <a href="/docs/{{ slug }}"
                        class="block w-full pl-3.5 before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full
@@ -54,9 +54,9 @@
             <ul role="list" class="mt-2 space-y-6 border-l-2 border-slate-100 lg:mt-4 lg:border-slate-200 dark:border-slate-800">
                 {{ collection:doc_categories sort="title:asc" }}
                 <li>
-                    <a href="/docs/{{ slug }}"
+                    <a href="{{ url }}"
                        class="block w-full pl-3.5 font-medium before:pointer-events-none before:absolute before:top-1/2 before:-left-1 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full relative
-                       {{ if {segment_2} == {slug} }}text-sky-500 before:bg-sky-500{{ else }}text-slate-600 before:hidden before:bg-slate-300 hover:text-slate-800 hover:before:block dark:text-slate-300 dark:before:bg-slate-700 dark:hover:text-white{{ /if }}">
+                       {{ if {segment_3} == {slug} }}text-sky-500 before:bg-sky-500{{ else }}text-slate-600 before:hidden before:bg-slate-300 hover:text-slate-800 hover:before:block dark:text-slate-300 dark:before:bg-slate-700 dark:hover:text-white{{ /if }}">
                         {{ title }}
                     </a>
                     <!-- All functions for this category -->
@@ -65,9 +65,9 @@
                         <ul role="list" class="mt-2 space-y-2 pl-3.5">
                             {{ functions }}
                             <li class="relative">
-                                <a href="/docs/{{ slug }}"
+                                <a href="{{ url }}"
                                    class="block text-sm before:pointer-events-none before:absolute before:top-1/2 before:-left-[1.125rem] before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full
-                                   {{ if {segment_2} == {slug} }}font-semibold text-sky-500 before:bg-sky-500{{ else }}text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300{{ /if }}">
+                                   {{ if {segment_3} == {slug} }}font-semibold text-sky-500 before:bg-sky-500{{ else }}text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300{{ /if }}">
                                     {{ name }}
                                 </a>
                             </li>

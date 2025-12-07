@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="min-w-0 flex-auto">
                                         <h3 class="font-mono text-sm font-semibold text-slate-900 dark:text-white">
-                                            <a href="/docs/{{ slug }}" class="hover:text-sky-500">
+                                            <a href="{{ url }}" class="hover:text-sky-500">
                                                 <span class="absolute -inset-px rounded-xl"></span>
                                                 {{ name }}()
                                             </a>
@@ -60,26 +60,24 @@
                     {{ if other_funcs | count > 0 }}
                         <h2 id="other-functions">Other Functions</h2>
 
-                        <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
-                            <table class="min-w-full divide-y divide-slate-700 text-left">
-                                <thead class="bg-slate-800/60">
-                                    <tr>
-                                        <th scope="col" class="py-3 pl-4 pr-3 text-sm font-semibold text-slate-100">Function</th>
-                                        <th scope="col" class="px-3 py-3 text-sm font-semibold text-slate-100">Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-800">
-                                    {{ other_funcs }}
-                                    <tr class="hover:bg-slate-800/50 transition-colors">
-                                        <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm align-top">
-                                            <a href="/docs/{{ slug }}" class="font-mono font-medium text-sky-400 hover:text-sky-300">{{ name }}()</a>
-                                        </td>
-                                        <td class="px-3 py-3 text-sm text-slate-300">{{ description | truncate:100 }}</td>
-                                    </tr>
-                                    {{ /other_funcs }}
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="docs-table my-6">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th scope="col" class="border-b border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-700 dark:text-slate-200">Function</th>
+                                    <th scope="col" class="border-b border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-700 dark:text-slate-200">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{ other_funcs }}
+                                <tr class="border-b border-slate-200 last:border-0 dark:border-slate-700">
+                                    <td class="whitespace-nowrap px-4 py-2 align-top">
+                                        <a href="{{ url }}" class="font-mono font-medium text-sky-500 hover:text-sky-600 dark:text-sky-300 dark:hover:text-sky-200">{{ name }}()</a>
+                                    </td>
+                                    <td class="px-4 py-2 text-slate-600 dark:text-slate-400">{{ description | truncate:100 }}</td>
+                                </tr>
+                                {{ /other_funcs }}
+                            </tbody>
+                        </table>
                     {{ /if }}
                 {{ /collection:doc_functions }}
 
@@ -89,26 +87,24 @@
                 {{ unless has_common | count > 0 }}
                     <h2 id="all-functions">All Functions</h2>
 
-                    <div class="not-prose my-6 overflow-hidden rounded-2xl bg-slate-900 shadow-md dark:ring-1 dark:ring-white/10">
-                        <table class="min-w-full divide-y divide-slate-700 text-left">
-                            <thead class="bg-slate-800/60">
-                                <tr>
-                                    <th scope="col" class="py-3 pl-4 pr-3 text-sm font-semibold text-slate-100">Function</th>
-                                    <th scope="col" class="px-3 py-3 text-sm font-semibold text-slate-100">Description</th>
+                    <table class="docs-table my-6">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-800">
+                                    <th scope="col" class="border-b border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-700 dark:text-slate-200">Function</th>
+                                    <th scope="col" class="border-b border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-700 dark:text-slate-200">Description</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800">
-                                {{ collection:doc_functions category:contains="{id}" sort="name:asc" }}
-                                <tr class="hover:bg-slate-800/50 transition-colors">
-                                    <td class="whitespace-nowrap py-3 pl-4 pr-3 text-sm align-top">
-                                        <a href="/docs/{{ slug }}" class="font-mono font-medium text-sky-400 hover:text-sky-300">{{ name }}()</a>
-                                    </td>
-                                    <td class="px-3 py-3 text-sm text-slate-300">{{ description | truncate:100 }}</td>
-                                </tr>
-                                {{ /collection:doc_functions }}
-                            </tbody>
-                        </table>
-                    </div>
+                        <tbody>
+                            {{ collection:doc_functions category:contains="{id}" sort="name:asc" }}
+                            <tr class="border-b border-slate-200 last:border-0 dark:border-slate-700">
+                                <td class="whitespace-nowrap px-4 py-2 align-top">
+                                    <a href="{{ url }}" class="font-mono font-medium text-sky-500 hover:text-sky-600 dark:text-sky-300 dark:hover:text-sky-200">{{ name }}()</a>
+                                </td>
+                                <td class="px-4 py-2 text-slate-600 dark:text-slate-400">{{ description | truncate:100 }}</td>
+                            </tr>
+                            {{ /collection:doc_functions }}
+                        </tbody>
+                    </table>
                 {{ /unless }}
             </div>
         </article>

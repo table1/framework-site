@@ -1,8 +1,8 @@
 ---
 id: ai-assistants
 title: AI Assistants
-section: core_concepts
-position: 7
+section: features
+position: 11
 description: 'Configuring AI coding assistants in Framework projects'
 ---
 ## Overview
@@ -30,6 +30,8 @@ framework::setup()
 The canonical file is your source of truth. Choose one format as primary—Framework mirrors its content to other assistant files when sync hooks run.
 
 Options: `CLAUDE.md`, `AGENTS.md`, or `.github/copilot-instructions.md`
+
+By default, Framework creates `CLAUDE.md` even if you haven't listed assistants, so `ai_regenerate_context()` works immediately. Change the canonical file in settings if you prefer a different file.
 
 ## Context Templates
 
@@ -73,6 +75,6 @@ This refreshes directory structure, data catalog entries, and package lists whil
 
 [← Git Integration](/docs/git)
 
-[Database Connections →](/docs/connections)
+[Caching →](/docs/caching)
 
 </div>

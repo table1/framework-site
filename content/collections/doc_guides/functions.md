@@ -1,8 +1,8 @@
 ---
 id: functions
 title: Functions
-section: core_concepts
-position: 4
+section: features
+position: 5
 description: 'Organizing reusable functions in Framework projects'
 ---
 ## Overview

@@ -79,21 +79,8 @@ When you create a project, Framework:
 4. Creates IDE workspace files (VS Code/Positron)
 5. Adds AI assistant configuration (CLAUDE.md) if enabled
 6. Initializes git if configured
-
-## Next Steps
-
-After creating a project:
-
-1. Open the project in your IDE
-2. Run `scaffold()` to set up your environment
-3. Start working with `make_notebook()` or `make_script()`
-
-```r
-library(framework)
-scaffold()
-
-make_notebook("01-exploration")
-```
+   - If git identity isn’t configured, the initial commit is skipped with a note
+   - Set `git config user.name` and `git config user.email` to enable auto-commit
 
 ---
 

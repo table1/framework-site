@@ -11,6 +11,36 @@ Every Framework project has a `settings.yml` file that controls project-specific
 
 Settings use the config package's environment format with a `default:` key (and optional environment overrides like `production:`).
 
+
+## Split Files
+
+For larger projects, split complex sections into separate files. Replace inline content with a file path:
+
+```yaml
+default:
+  connections: settings/connections.yml
+  data: settings/data.yml
+```
+
+Then create the referenced files:
+
+**settings/connections.yml:**
+```yaml
+db:
+  driver: postgresql
+  host: env("DB_HOST")
+  database: mydb
+```
+
+**settings/data.yml:**
+```yaml
+raw.survey:
+  path: inputs/raw/survey.csv
+  type: csv
+```
+
+**Note:** Root `settings.yml` values win if they conflict with a split file (Framework warns when this happens; `options` are merged).
+
 ## Sections
 
 ### Basics
@@ -193,35 +223,6 @@ Store actual values in `.env` (which is gitignored):
 DB_HOST=localhost
 DB_PASS=secret123
 ```
-
-## Split Files
-
-For larger projects, split complex sections into separate files. Replace inline content with a file path:
-
-```yaml
-default:
-  connections: settings/connections.yml
-  data: settings/data.yml
-```
-
-Then create the referenced files:
-
-**settings/connections.yml:**
-```yaml
-db:
-  driver: postgresql
-  host: env("DB_HOST")
-  database: mydb
-```
-
-**settings/data.yml:**
-```yaml
-raw.survey:
-  path: inputs/raw/survey.csv
-  type: csv
-```
-
-**Note:** Settings in the root `settings.yml` take precedence over split files.
 
 ## Environment-Specific Settings
 

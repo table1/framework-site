@@ -1,8 +1,8 @@
 ---
 id: git
 title: Git Integration
-section: core_concepts
-position: 6
+section: features
+position: 10
 description: 'Version control and git hooks in Framework'
 ---
 ## Overview
@@ -36,11 +36,7 @@ framework::setup()
 
 ### Commit Identity
 
-Framework manages two levels of git identity:
-
-**GitHub Identity**: Your GitHub username and email, used for commits and repository operations.
-
-**Git Identity Override**: Optional local overrides if you want commits attributed to a different name or email than your GitHub identity.
+Framework manages your git identity directly. Configure the name and email you want on commits once in the GUI (or via git config), and Framework reuses that for project initialization. If the identity is missing, Framework skips the initial auto-commit and prints guidance—set `user.name` and `user.email` to enable auto-commits.
 
 ### Git Hooks
 
@@ -51,14 +47,14 @@ git:
   hooks:
     ai_sync: true
     data_security: true
-    warn_unignored_sensitive: true
+    check_sensitive_dirs: true
 ```
 
 **Sync AI Files Before Commit**: Updates non-canonical AI assistant files so all assistants share the same instructions. If your canonical file is `CLAUDE.md`, this syncs changes to `AGENTS.md` and other AI config files.
 
 **Check for Secrets**: Scans staged files for API keys, credentials, and other secrets before allowing a commit. Helps prevent accidentally committing sensitive data.
 
-**Warn About Unignored Sensitive Directories**: Blocks commits if directories with sensitive names (like `outputs/private/`) aren't properly gitignored. Catches misconfigured projects before data leaks.
+**Warn About Unignored Sensitive Directories**: Blocks commits if directories with sensitive names (like `outputs/private/`) aren't properly gitignored. Catches misconfigured projects before data leaks. (Alias `warn_unignored_sensitive` is also accepted.)
 
 ## Git Helper Functions
 
@@ -87,7 +83,7 @@ git_push()
 
 <div style="display: flex; justify-content: space-between">
 
-[← Templates](/docs/templates)
+[← Saving Work](/docs/saving-work)
 
 [AI Assistants →](/docs/ai-assistants)
 

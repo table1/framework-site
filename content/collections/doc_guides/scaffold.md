@@ -1,7 +1,7 @@
 ---
 id: scaffold
 title: scaffold()
-section: core_concepts
+section: features
 position: 1
 description: 'Initialize your project environment'
 ---
@@ -154,8 +154,8 @@ options(scipen = 999)
 
 <div style="display: flex; justify-content: space-between">
 
-[← Conventions](/docs/conventions)
+[← Making a New Project](/docs/new-project)
 
-[Packages →](/docs/packages)
+[framework.db →](/docs/framework-db)
 
 </div>

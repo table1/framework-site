@@ -1,8 +1,8 @@
 ---
 id: templates
 title: Templates
-section: core_concepts
-position: 5
+section: features
+position: 6
 description: 'Customizing notebook, script, and project templates'
 ---
 ## Overview
@@ -72,9 +72,9 @@ Edit `~/.config/framework/templates/notebook-default.qmd`:
 
 ````qmd
 ---
-title: "{{title}}"
-author: "{{author}}"
-date: today
+title: "{{ title }}"
+author: "{{ author }}"
+date: "{{ date }}"
 format:
   html:
     toc: true
@@ -92,16 +92,16 @@ scaffold()
 Your analysis starts here.
 ````
 
-Variables like `{{title}}` and `{{author}}` are replaced when creating new files.
+Variables like `{{ title }}` and `{{ author }}` are replaced when creating new files. Framework also accepts the compact `{{title}}` style, so either spacing works in custom templates.
 
 ### Script Template
 
 Edit `~/.config/framework/templates/script-default.R`:
 
 ```r
-# {{title}}
-# Author: {{author}}
-# Created: {{date}}
+# {{ title }}
+# Author: {{ author }}
+# Created: {{ date }}
 
 library(framework)
 scaffold()
@@ -131,6 +131,6 @@ You can also use the **Reset to default** button in the GUI.
 
 [← Functions](/docs/functions)
 
-[Git Integration →](/docs/git)
+[Quarto Integration →](/docs/quarto)
 
 </div>

@@ -40,14 +40,16 @@ Global settings are stored in `~/.config/framework/`:
 
 ```
 ~/.config/framework/
-├── global-settings.yml    # Your defaults from setup()
+├── templates/             # Template files are stored here
+├── settings.yml           # Your defaults from setup()
 ├── projects.yml           # Registry of your Framework projects
 └── .env                   # Global environment variables
 ```
 
-- **global-settings.yml**: All defaults configured through the GUI
+- **templates/**: All default template files
+- **settings.yml**: All default settings
 - **projects.yml**: List of projects you've created, used by `project_open()`
-- **.env**: Environment variables available to all projects
+- **.env**: Environment variable defaults
 
 These files are created automatically when you first run `setup()`. You can edit them directly, but the GUI is the recommended way to manage global settings.
 

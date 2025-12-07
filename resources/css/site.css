@@ -150,25 +150,60 @@ pre code {
 /* Screenshot styling in prose */
 .prose img {
   @apply rounded-lg border border-slate-200 shadow-xl bg-white relative;
+  padding: 0 0.25rem;
 }
 
 .dark .prose img {
   @apply border-slate-700;
 }
 
-/* Fade overlay on screenshot container */
-.prose p:has(> img) {
-  @apply relative;
+/* Fade overlay removed to keep screenshots clean */
+
+/* Table styling */
+.prose table {
+  @apply w-full border-collapse text-sm overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm;
 }
 
-.prose p:has(> img)::after {
-  content: '';
-  @apply absolute bottom-0 left-0 right-0 h-16 pointer-events-none;
-  margin: 0 1px 1px 1px;
-  border-radius: 0 0 0.4rem 0.4rem;
-  background: linear-gradient(to bottom, transparent 0%, white 100%);
+.prose table thead th {
+  @apply bg-slate-50 px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-slate-500;
 }
 
-.dark .prose p:has(> img)::after {
-  background: linear-gradient(to bottom, transparent 0%, rgb(15, 23, 42) 100%);
+.prose table tbody tr {
+  @apply border-t border-slate-100;
+}
+
+.prose table td {
+  @apply px-4 py-3 text-slate-700 align-top;
+}
+
+.dark .prose table {
+  @apply border-slate-700 bg-slate-900/40 shadow-none;
+}
+
+.dark .prose table thead th {
+  @apply bg-slate-800 text-slate-200;
+}
+
+.dark .prose table tbody tr {
+  @apply border-slate-800;
+}
+
+.dark .prose table td {
+  @apply text-slate-300;
+}
+
+.docs-table {
+  @apply w-full border-collapse text-sm overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900/40;
+}
+
+.docs-table thead th {
+  @apply bg-slate-50 px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 border-b border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700;
+}
+
+.docs-table tbody tr {
+  @apply border-t border-slate-100 dark:border-slate-800;
+}
+
+.docs-table td {
+  @apply px-4 py-3 text-slate-700 align-top dark:text-slate-300;
 }

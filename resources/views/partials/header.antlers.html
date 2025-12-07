@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 flex-none bg-white py-4 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none dark:bg-slate-900/95 dark:backdrop-blur dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/80" x-data="{ gettingStartedOpen: false, coreConceptsOpen: false, mobileMenuOpen: false }">
+<header class="sticky top-0 z-50 flex-none bg-white py-4 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none dark:bg-slate-900/95 dark:backdrop-blur dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/80" x-data="{ gettingStartedOpen: false, featuresOpen: false, mobileMenuOpen: false }">
     <div class="mx-auto flex items-center justify-between px-6 sm:px-8 lg:px-12 {{ if segment_1 == 'docs' }}max-w-8xl{{ else }}max-w-7xl{{ /if }}">
         <!-- Logo -->
         <div class="flex items-center">
@@ -18,7 +18,7 @@
                         <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                     </svg>
                 </button>
-                <div x-show="gettingStartedOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute left-0 top-full z-50 mt-1 w-72 origin-top-left rounded-xl bg-white p-2 shadow-lg ring-1 ring-slate-900/5 dark:bg-slate-800 dark:ring-white/10" x-cloak>
+                <div x-show="gettingStartedOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-72 origin-top rounded-xl bg-white p-2 shadow-lg ring-1 ring-slate-900/5 dark:bg-slate-800 dark:ring-white/10" x-cloak>
                     <a href="/docs/installation" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
                         <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
                         <div>
@@ -44,7 +44,7 @@
                         <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="currentColor" viewBox="0 0 512 512"><path d="M32 96c0-17.7 14.3-32 32-32l124.1 0c8.5 0 16.6 3.4 22.6 9.4l35.9 35.9c12 12 28.3 18.7 45.3 18.7L448 128c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32L64 448c-17.7 0-32-14.3-32-32L32 96zM64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64L291.9 96c-8.5 0-16.6-3.4-22.6-9.4L233.4 50.7c-12-12-28.3-18.7-45.3-18.7L64 32zM208 192l0 .7c0 1-.8 3.4-4.1 5.3c-3.2 1.8-5.5 1.4-6.5 .8l-.6-.3c-15.3-8.8-34.9-3.6-43.7 11.7l-16 27.7c-8.8 15.3-3.6 34.9 11.7 43.7l.6 .3c.9 .5 2.6 2.4 2.6 6.1s-1.6 5.6-2.6 6.1l-.6 .3c-15.3 8.8-20.5 28.4-11.7 43.7l16 27.7c8.8 15.3 28.4 20.6 43.7 11.7l.6-.3c.9-.5 3.3-1 6.5 .8c3.3 1.9 4.1 4.3 4.1 5.3l0 .7c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32l0-.7c0-1 .8-3.4 4.1-5.3c3.2-1.8 5.5-1.4 6.5-.8l.6 .3c15.3 8.8 34.9 3.6 43.7-11.7l16-27.7c8.8-15.3 3.6-34.9-11.7-43.7l-.6-.3c-.9-.5-2.6-2.4-2.6-6.1s1.6-5.6 2.6-6.1l.6-.3c15.3-8.8 20.6-28.4 11.7-43.7l-16-27.7c-8.8-15.3-28.4-20.5-43.7-11.7l-.6 .3c-.9 .5-3.3 1-6.5-.8c-3.3-1.9-4.1-4.3-4.1-5.3l0-.7c0-17.7-14.3-32-32-32l-32 0c-17.7 0-32 14.3-32 32zm64 0l0 .7c0 15.1 9.4 26.8 20 33c10.7 6.2 25.5 8.3 38.5 .8l.6-.3 16 27.7-.6 .3c-13 7.5-18.6 21.4-18.6 33.8s5.5 26.3 18.6 33.8l.6 .3-16 27.7-.6-.3c-13-7.5-27.8-5.4-38.5 .8c-10.6 6.2-20 17.9-20 33l0 .7-32 0 0-.7c0-15.1-9.4-26.8-20-33c-10.7-6.2-25.5-8.3-38.5-.8l-.6 .3-16-27.7 .6-.3c13-7.5 18.6-21.4 18.6-33.8s-5.5-26.3-18.6-33.8l-.6-.3 16-27.7 .6 .3c13 7.5 27.8 5.4 38.5-.8c10.6-6.2 20-17.9 20-33l0-.7 32 0zm8 96a24 24 0 1 0 -48 0 24 24 0 1 0 48 0z"/></svg>
                         <div>
                             <div class="text-sm font-medium text-slate-900 dark:text-white">settings.yml</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Project configuration reference</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400">Project-wide settings</div>
                         </div>
                     </a>
                     <a href="/docs/new-project" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
@@ -57,78 +57,129 @@
                 </div>
             </div>
 
-            <!-- Core Concepts Dropdown -->
-            <div class="relative" @mouseenter="coreConceptsOpen = true" @mouseleave="coreConceptsOpen = false">
+            <!-- Features Dropdown -->
+            <div class="relative" @mouseenter="featuresOpen = true" @mouseleave="featuresOpen = false">
                 <button type="button" class="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
-                    Core Concepts
+                    Features
                     <svg class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                     </svg>
                 </button>
-                <div x-show="coreConceptsOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute left-0 top-full z-50 mt-1 w-72 origin-top-left rounded-xl bg-white p-2 shadow-lg ring-1 ring-slate-900/5 dark:bg-slate-800 dark:ring-white/10" x-cloak>
-                    <a href="/docs/scaffold" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008Z" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">scaffold()</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Initialize your environment</div>
-                        </div>
-                    </a>
-                    <a href="/docs/packages" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">Packages</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Manage R dependencies</div>
-                        </div>
-                    </a>
-                    <a href="/docs/data-management" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 15.75h7.5" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">Data Management</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Catalog and integrity tracking</div>
-                        </div>
-                    </a>
-                    <a href="/docs/functions" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">Functions</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Auto-loaded helper functions</div>
-                        </div>
-                    </a>
-                    <a href="/docs/templates" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">Templates</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Notebook and script starters</div>
-                        </div>
-                    </a>
-                    <a href="/docs/database-connections" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">Database Connections</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Connect to databases</div>
-                        </div>
-                    </a>
-                    <a href="/docs/caching" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">Caching</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Speed up expensive operations</div>
-                        </div>
-                    </a>
-                    <a href="/docs/git" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">Git Integration</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Hooks and version control</div>
-                        </div>
-                    </a>
-                    <a href="/docs/ai-assistants" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                        <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" /></svg>
-                        <div>
-                            <div class="text-sm font-medium text-slate-900 dark:text-white">AI Assistants</div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">Claude, Copilot, and more</div>
-                        </div>
-                    </a>
+                <div x-show="featuresOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[600px] origin-top rounded-xl bg-white p-2 shadow-lg ring-1 ring-slate-900/5 dark:bg-slate-800 dark:ring-white/10" x-cloak>
+                    <div class="grid grid-cols-2 gap-1">
+                        <a href="/docs/scaffold" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008Z" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">scaffold()</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Initialize your environment</div>
+                            </div>
+                        </a>
+                        <a href="/docs/framework-db" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75c0-.621.504-1.125 1.125-1.125h14.25c.621 0 1.125.504 1.125 1.125v10.5c0 .621-.504 1.125-1.125 1.125H4.875a1.125 1.125 0 0 1-1.125-1.125V6.75Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 9h9m-9 3h9m-9 3h5.25" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">framework.db</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Project metadata database</div>
+                            </div>
+                        </a>
+                        <a href="/docs/packages" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Packages</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Manage R dependencies</div>
+                            </div>
+                        </a>
+                        <a href="/docs/data-management" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 15.75h7.5" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Data Management</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Catalog and integrity tracking</div>
+                            </div>
+                        </a>
+                        <a href="/docs/functions" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Functions</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Auto-loaded helper functions</div>
+                            </div>
+                        </a>
+                        <a href="/docs/templates" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Templates</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Notebook and script starters</div>
+                            </div>
+                        </a>
+                        <a href="/docs/quarto" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Quarto Integration</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Notebooks and presentations</div>
+                            </div>
+                        </a>
+                        <a href="/docs/viewing-work" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Viewing Work</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Interactive HTML viewer</div>
+                            </div>
+                        </a>
+                        <a href="/docs/saving-work" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Saving Work</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Save with automatic tracking</div>
+                            </div>
+                        </a>
+                        <a href="/docs/git" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Git Integration</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Hooks and version control</div>
+                            </div>
+                        </a>
+                        <a href="/docs/ai-assistants" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">AI Assistants</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Claude, Copilot, and more</div>
+                            </div>
+                        </a>
+                        <a href="/docs/caching" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Caching</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Speed up expensive operations</div>
+                            </div>
+                        </a>
+                        <a href="/docs/connections" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Connections</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Connect to databases and object storage</div>
+                            </div>
+                        </a>
+                        <a href="/docs/database" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Database Integration</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Query helpers and framework.db</div>
+                            </div>
+                        </a>
+                        <a href="/docs/environment" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Environment</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Secrets and session state</div>
+                            </div>
+                        </a>
+                        <a href="/docs/publishing" class="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                            <svg class="mt-0.5 h-5 w-5 shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+                            <div>
+                                <div class="text-sm font-medium text-slate-900 dark:text-white">Publishing</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Publish to S3 storage</div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -194,21 +245,27 @@
             <a href="/docs/setup" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Setup</a>
             <a href="/docs/conventions" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Conventions</a>
             <a href="/docs/settings-yml" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">settings.yml</a>
+            <a href="/docs/framework-db" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">framework.db</a>
             <a href="/docs/new-project" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">New Project</a>
 
             <div class="my-2 border-t border-slate-200 dark:border-slate-700"></div>
 
-            <!-- Core Concepts Section -->
-            <p class="px-4 pt-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Core Concepts</p>
+            <!-- Features Section -->
+            <p class="px-4 pt-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Features</p>
             <a href="/docs/scaffold" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">scaffold()</a>
             <a href="/docs/packages" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Packages</a>
             <a href="/docs/data-management" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Data Management</a>
             <a href="/docs/functions" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Functions</a>
             <a href="/docs/templates" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Templates</a>
-            <a href="/docs/database-connections" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Database Connections</a>
-            <a href="/docs/caching" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Caching</a>
+            <a href="/docs/quarto" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Quarto Integration</a>
+            <a href="/docs/viewing-work" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Viewing Work</a>
+            <a href="/docs/saving-work" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Saving Work</a>
             <a href="/docs/git" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Git Integration</a>
             <a href="/docs/ai-assistants" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">AI Assistants</a>
+            <a href="/docs/caching" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Caching</a>
+            <a href="/docs/connections" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Connections</a>
+            <a href="/docs/environment" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Environment</a>
+            <a href="/docs/publishing" class="block rounded-lg px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">Publishing</a>
 
             <div class="my-2 border-t border-slate-200 dark:border-slate-700"></div>
 

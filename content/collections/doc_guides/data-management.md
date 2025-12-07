@@ -1,8 +1,8 @@
 ---
 id: data-management
 title: Data Management
-section: core_concepts
-position: 3
+section: features
+position: 4
 description: 'Managing data files with the declarative data catalog'
 ---
 ## Overview
@@ -28,6 +28,44 @@ data:
     type: rds
 ```
 
+## Editing the Catalog
+
+The GUI makes catalog maintenance fast. In `framework::gui()` under **Data**, Framework scans your input directories and shows files that aren’t yet in the catalog. Click to add them and Framework will:
+
+- Prefill dot notation keys from the path (e.g., `inputs/public/raw/mtcars.csv` → `inputs.public.raw.mtcars`)
+- Guess the file type
+- Stage the change so you can review and save
+
+![Scanning inputs for uncataloged files in framework::gui()](/images/data-catalog-input-scan.png)
+
+You can also view existing entries, copy their paths (relative or full), or copy the `data_read()` command directly.
+
+Once an entry is saved, it appears with dedicated copy buttons for the relative path, absolute path, and a ready-to-run `data_read()` helper so you can drop the same reference into scripts, notebooks, or tests without hunting for file names.
+
+![Copy helpers for catalog entries](/images/data-catalog-copy-tools.png)
+
+
+## Supported Formats
+
+Framework supports these data formats:
+
+| Type | Extensions | Reader | Package |
+|------|------------|--------|---------|
+| `csv` | .csv | `readr::read_delim()` | readr |
+| `tsv` | .tsv, .txt, .dat | `readr::read_delim()` | readr |
+| `rds` | .rds | `readRDS()` | base R |
+| `excel` | .xlsx, .xls | `readxl::read_excel()` | readxl |
+| `stata` | .dta | `haven::read_dta()` | haven |
+| `spss` | .sav, .zsav | `haven::read_sav()` | haven |
+| `spss_por` | .por | `haven::read_por()` | haven |
+| `sas` | .sas7bdat, .sas7bcat | `haven::read_sas()` | haven |
+| `sas_xpt` | .xpt | `haven::read_xpt()` | haven |
+| `parquet` | .parquet | `arrow::read_parquet()` | arrow |
+
+For Stata, SPSS, and SAS files, Framework strips variable labels and formats by default for cleaner data frames. Use `keep_attributes = TRUE` to preserve them.
+
+Parquet support requires the `arrow` package.
+
 ## Reading Data
 
 Use `data_read()` to load data by its catalog name:
@@ -49,10 +87,10 @@ Save data to the catalog with `data_save()`:
 
 ```r
 # Process and save
-merged <- sales %>%
+merged <- sales |>
   left_join(customers, by = "customer_id")
 
-data_save(merged, "inputs.final.merged")
+data_save(merged, "inputs.final.merged")  # Automatically registers in the catalog
 ```
 
 ## Data Integrity
@@ -75,23 +113,6 @@ data:
     locked: true  # Error if file changes unexpectedly
 ```
 
-## Supported Formats
-
-Framework supports these data formats:
-
-| Type | Extensions | Reader | Package |
-|------|------------|--------|---------|
-| `csv` | .csv | `readr::read_delim()` | readr |
-| `tsv` | .tsv, .txt, .dat | `readr::read_delim()` | readr |
-| `rds` | .rds | `readRDS()` | base R |
-| `excel` | .xlsx, .xls | `readxl::read_excel()` | readxl |
-| `stata` | .dta | `haven::read_dta()` | haven |
-| `spss` | .sav, .zsav | `haven::read_sav()` | haven |
-| `spss_por` | .por | `haven::read_por()` | haven |
-| `sas` | .sas7bdat, .sas7bcat | `haven::read_sas()` | haven |
-| `sas_xpt` | .xpt | `haven::read_xpt()` | haven |
-
-For Stata, SPSS, and SAS files, Framework strips variable labels and formats by default for cleaner data frames. Use `keep_attributes = TRUE` to preserve them.
 
 ## Data Info
 
