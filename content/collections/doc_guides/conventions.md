@@ -7,11 +7,28 @@ description: 'Framework conventions and project organization'
 ---
 ## Philosophy
 
-Framework favors **convention over configuration**: sensible defaults that work for most projects. But everything is customizable, so you never have to fight the conventions for your own needs or preferences.
+Framework favors **convention over configuration**, providing sensible defaults that work for most projects.  If you have needs or preferences that differ from the defaults, nearly everything about how Framework structures projects is customizable.
+
+Once you have your settings configured, you should be able to create new projects without thinking about organizational details, saving time and providing consistency across your work.
+
+We will on this page explain basic features and conventions that guide the design of Framework.
+
+## scaffold()
+
+Most notebooks or scripts in your project will start with:
+
+```r
+library(framework)
+scaffold()
+```
+
+If you prefer fully namespacing things, you simply write `framework::scaffold()`.
+
+The `scaffold()` function ensures all packages your project uses are installed, attaches specified packages to the environment, loads a function library from the `functions/` directory, and performs a handful of other quality of life features, such as setting a random seed or `ggplot2` theme, depending on your configuration.
 
 ## Package Loading
 
-Use `library()` for packages and fully namespace functions from packages not commonly used across your project. This lets you trust that `scaffold()` provides consistent behavior.
+Scaffold will call `library()` on auto-attached packages. We recommend fully namespacing functions in packages not commonly used across your project. Alternatively, you can call `library()` for these uncommon packages after `scaffold()`. 
 
 With an example `settings.yml`:
 
@@ -111,7 +128,7 @@ See [Data Management](/docs/data-management) for full documentation.
 
 ### Outputs
 
-Files you produce live in `outputs/`, organized by type:
+Files your project creates live in `outputs/`, organized by type:
 
 ```
 outputs/
@@ -163,13 +180,11 @@ This helps catch accidental data modifications and ensures reproducibility.
 
 All project types are fully customizable:
 
-- **Standard projects**: Can add/remove any directories
-- **Courses**: Structured for lectures, assignments, modules
+- **Standard projects**: Default, general purpose data projects and pipelines
+- **Courses**: Structured for lectures, assignments, and course documents
 - **Presentations**: Minimal structure for RevealJS slides
 
-Courses and presentations are common use cases for data scientists with their own optimized defaults, but you can adjust any project type's structure to fit your workflow.
-
-Configure defaults globally in `setup()` or per-project in `settings.yml`.
+Configure defaults globally in `framework::setup()` or per-project in `settings.yml`.
 
 ---
 

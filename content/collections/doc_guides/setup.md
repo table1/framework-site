@@ -7,15 +7,17 @@ description: 'Configure Framework defaults using the GUI'
 ---
 ## Launch the Setup GUI
 
+Framework ships with a graphical user interface (GU) to help manage your settings and projects. This GUI is powered by a lightweight [plumber](https://www.rplumber.io/) server and [VueJS](https://vuejs.org) web application. 
+
 After installing Framework, configure your defaults by running:
 
 ```r
 framework::setup()
 ```
 
-This opens a web interface where you set **defaults for new projects**. Any settings you configure here are applied automatically when you create a project with `new_project()`. You can always override them per-project.
+This opens the web interface where you can set **global defaults for new projects**. Any settings you configure here are applied automatically when you create a project in the GUI or with `new_project()`. You can always override them per-project.
 
-If the settings page doesn't open automatically, click **New Project Defaults** in the left sidebar.
+When using the GUI, you can always access the global settings by clicking **New Project Defaults** in the left sidebar.
 
 ![Framework Setup GUI](/images/setup-gui.png)
 
@@ -36,7 +38,7 @@ Click **Save Changes** to persist your defaults.
 
 ## Where Settings Are Stored
 
-Global settings are stored in `~/.config/framework/`:
+Global default settings are stored in `~/.config/framework/`:
 
 ```
 ~/.config/framework/

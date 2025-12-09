@@ -7,10 +7,9 @@ description: 'Understanding the settings.yml configuration file'
 ---
 ## Overview
 
-Every Framework project has a `settings.yml` file that controls project-specific settings. You can edit it directly or through the GUI.
+Every Framework project has a `settings.yml` file that controls project-specific settings. You can edit it directly in your project root or through the GUI, by selecting the project after running `framework::gui()`.
 
 Settings use the config package's environment format with a `default:` key (and optional environment overrides like `production:`).
-
 
 ## Split Files
 

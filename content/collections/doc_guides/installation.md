@@ -7,9 +7,10 @@ description: 'How to install Framework'
 ---
 ## Requirements
 
-Framework requires:
-- **R** version 4.1 or higher
-- Any R IDE — Framework supports [Positron](https://positron.posit.co/) (we built Framework with it!), [VS Code](https://code.visualstudio.com/), and [RStudio](https://posit.co/products/open-source/rstudio/)
+- **R** version 4.1 or higher.
+- Any editor, including the console. 
+
+Framework works well with [Positron](https://positron.posit.co/) (we built Framework with it!), [VS Code](https://code.visualstudio.com/), and [RStudio](https://posit.co/products/open-source/rstudio/)
 
 ## Install from GitHub
 
